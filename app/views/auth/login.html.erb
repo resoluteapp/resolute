@@ -1,0 +1,41 @@
+<div class="flex items-center justify-center h-screen w-screen">
+    <div class="w-96 h-auto bg-gray-800 border-t-4 border-green-400 rounded-md p-7 text-white">
+        <% if alert %>
+            <div class="alert mb-6" data-controller="alert">
+                <%= alert %>
+                <button data-action="alert#hide" class="bg-transparent text-xl">×</button>
+            </div>
+        <% end %>
+
+        <% if notice %>
+            <div class="notice mb-6" data-controller="alert">
+                <%= notice %>
+                <button data-action="alert#hide" class="bg-transparent text-xl">×</button>
+            </div>
+        <% end %>
+
+        <%= form_with do |form| %>
+            <%= form.email_field :email, placeholder: "Email", class: "input mb-4", autofocus: !@focus_password, required: true, value: @prefill_email %>
+            <%= form.password_field :password, placeholder: "Password", class: "input mb-6", autofocus: @focus_password, required: true %>
+
+            <div class="flex justify-between items-center">
+                <%= form.submit "Log in", class: "btn" %>
+                <a href="/forgot-password" class="text-sm">Forgot password?</a>
+            </div>
+        <% end %>
+
+        <h3 class="text-gray-500 mt-10 mb-4 text-center">Continue with</h3>
+
+        <div class="flex gap-3">
+            <%# <a class="flex-1" href="/login/twitter">
+                <button class="w-full btn clr-btn bg-blue-500">Twitter</button>
+            </a> %>
+            <a class="flex-1" href="/login/github">
+                <button class="w-full btn clr-btn bg-black">GitHub</button>
+            </a>
+            <%# <a class="flex-1" href="/login/google">
+                <button class="w-full btn clr-btn bg-red-500">Google</button>
+            </a> %>
+        </div>
+    </div>
+</div>

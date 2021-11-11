@@ -1,0 +1,22 @@
+<%= render "header", selected: "reminders" %>
+
+<turbo-frame id="reminders">
+    <div class="w-full max-w-4xl block mx-auto bg-gray-800 p-7 rounded-md">
+        <%= form_with do |form| %>
+            <div class="flex gap-4 mb-10 items-stretch">
+                <input type="text" class="input block" placeholder="Remind me to..." name="title" autofocus required />
+                <button class="btn" type="submit">Add</button>
+            </div>
+        <% end %>
+
+        <% if @reminders.length == 0 %>
+            <h2 class="text-center mb-10 mt-16 text-gray-500">Nothing here, yet...</h2>
+        <% else %>
+            <div class="grid grid-cols-2 gap-5">
+                <% @reminders.each do |reminder|%>
+                    <%= render reminder %>
+                <% end %>
+            </div>
+        <% end %>
+    </div>
+</turbo-frame>

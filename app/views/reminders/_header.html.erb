@@ -1,0 +1,12 @@
+<div class="flex py-5 px-10 justify-between sticky top-0 bg-black mb-5 z-40">
+    <div class="flex items-center gap-5">
+        <a href="/home" class="<%= "text-gray-500" unless selected == "reminders" %>">Reminders</a>
+        <a href="/integrations" class="<%= "text-gray-500" unless selected == "integrations" %>">Integrations</a>
+        <a href="/settings" class="<%= "text-gray-500" unless selected == "settings" %>">Settings</a>
+    </div>
+
+    <div class="flex items-center gap-5">
+        <a href="/logout"><button class="btn clr-btn bg-gray-700">Log out</button></a href="/logout">
+        <%= gravatar @current_user.email %>
+    </div>
+</div>
