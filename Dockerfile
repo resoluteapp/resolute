@@ -1,5 +1,7 @@
 FROM ruby:3.0.0
 
+ARG BUCKET_NAME=${BUCKET_NAME}
+
 WORKDIR /usr/src/app
 
 COPY . .
