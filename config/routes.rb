@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   root to: 'landing#index'
 
   get 'signup', to: 'landing#signup'
+  post 'signup', to: 'landing#signup_submit'
 
   scope '/login' do
     get '/', to: 'auth#login'

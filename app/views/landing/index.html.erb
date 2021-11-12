@@ -1,5 +1,9 @@
-<h1 class="text-3xl">Welcome to <span class="font-bold">Taskalla</span>.</h1> <a href="/login">Log in</a>.
+<div class="h-screen flex justify-center items-center flex-col gap-5">
+    <h1 class="text-6xl font-light">Welcome.</h1>
+    <h2>This is not a landing page.</h2>
 
-<%= @current_user&.email || "not logged in" %>
-
-<%= gravatar @current_user.email if @current_user %>
+    <div class="flex gap-5">
+        <a class="btn mt-3" href="/login">Log in</a>
+        <a class="btn mt-3" href="/signup">Sign up</a>
+    </div>
+</div>

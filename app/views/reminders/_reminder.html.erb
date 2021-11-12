@@ -1,4 +1,4 @@
 <div class="<%= flash[:highlighted_reminder] == reminder.id && "reminder--highlighted" %> bg-black text-xl p-5 rounded-md flex justify-between items-center gap-5 border-2 border-transparent">
     <h1 class="font-bold"><%= reminder.title %></h1>
-    <h3 class="text-gray-500 text-sm flex-shrink-0"><%= distance_of_time_in_words_to_now reminder.created_at %> ago</h3>
+    <%# <h3 class="text-gray-500 text-sm flex-shrink-0">Delete</h3> %>
 </div>

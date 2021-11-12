@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>insert name here</title>
+    <title><%= content_for(:page_title) || "Taskalla" %></title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="turbo-cache-control" content="no-preview">
     <%= csrf_meta_tags %>

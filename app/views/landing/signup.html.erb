@@ -1,26 +1,28 @@
 <div class="flex items-center justify-center h-screen w-screen">
     <div class="w-96 h-auto bg-gray-800 border-t-4 border-green-400 rounded-md p-7 text-white">
-        <% if alert %>
-            <div class="alert mb-6" data-controller="alert">
-                <%= alert %>
-                <button data-action="alert#hide" class="bg-transparent text-xl">×</button>
-            </div>
-        <% end %>
+        <turbo-frame id="signup">
+            <% if alert %>
+                <div class="alert mb-6" data-controller="alert">
+                    <%= alert %>
+                    <button data-action="alert#hide" class="bg-transparent text-xl">×</button>
+                </div>
+            <% end %>
 
-        <% if notice %>
-            <div class="notice mb-6" data-controller="alert">
-                <%= notice %>
-                <button data-action="alert#hide" class="bg-transparent text-xl">×</button>
-            </div>
-        <% end %>
+            <% if notice %>
+                <div class="notice mb-6" data-controller="alert">
+                    <%= notice %>
+                    <button data-action="alert#hide" class="bg-transparent text-xl">×</button>
+                </div>
+            <% end %>
 
-        <%= form_with do |form| %>
-            <%= form.email_field :email, placeholder: "Email", class: "input mb-4", autofocus: @prefill_email.nil?, required: true, value: @prefill_email %>
-            <%= form.password_field :password, placeholder: "Password", class: "input mb-6", autofocus: !@prefill_email.nil?, required: true %>
+            <%= form_with do |form| %>
+                <%= form.email_field :email, placeholder: "Email", class: "input mb-4", autofocus: @prefill_email.nil?, required: true, value: @prefill_email %>
+                <%= form.password_field :password, placeholder: "Password", class: "input mb-6", autofocus: !@prefill_email.nil?, required: true %>
 
-            <div class="flex justify-between items-center">
-                <%= form.submit "Sign up", class: "btn" %>
-            </div>
-        <% end %>
+                <div class="flex justify-between items-center">
+                    <%= form.submit "Sign up", class: "btn" %>
+                </div>
+            <% end %>
+        </turbo-frame>
     </div>
 </div>
