@@ -5,14 +5,14 @@
         <% if alert %>
             <div class="alert mb-6" data-controller="alert">
                 <%= alert %>
-                <button data-action="alert#hide" class="bg-transparent text-xl">×</button>
+                <button data-action="alert#dismiss" class="bg-transparent text-xl -mt-1">×</button>
             </div>
         <% end %>
 
         <% if notice %>
             <div class="notice mb-6" data-controller="alert">
                 <%= notice %>
-                <button data-action="alert#hide" class="bg-transparent text-xl">×</button>
+                <button data-action="alert#dismiss" class="bg-transparent text-xl -mt-1">×</button>
             </div>
         <% end %>
 
