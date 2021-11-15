@@ -1,28 +1,34 @@
-<div class="flex items-center justify-center h-screen w-screen">
+<% content_for :page_title, "Sign up" %>
+
+<div class="flex flex-col gap-5 items-center justify-center h-screen w-screen">
     <div class="w-96 h-auto bg-gray-800 border-t-4 border-green-400 rounded-md p-7 text-white">
-        <turbo-frame id="signup">
-            <% if alert %>
-                <div class="alert mb-6" data-controller="alert">
-                    <%= alert %>
-                    <button data-action="alert#hide" class="bg-transparent text-xl">×</button>
-                </div>
-            <% end %>
+        <% if alert %>
+            <div class="alert mb-6" data-controller="alert">
+                <%= alert %>
+                <button data-action="alert#hide" class="bg-transparent text-xl">×</button>
+            </div>
+        <% end %>
 
-            <% if notice %>
-                <div class="notice mb-6" data-controller="alert">
-                    <%= notice %>
-                    <button data-action="alert#hide" class="bg-transparent text-xl">×</button>
-                </div>
-            <% end %>
+        <% if notice %>
+            <div class="notice mb-6" data-controller="alert">
+                <%= notice %>
+                <button data-action="alert#hide" class="bg-transparent text-xl">×</button>
+            </div>
+        <% end %>
 
-            <%= form_with do |form| %>
-                <%= form.email_field :email, placeholder: "Email", class: "input mb-4", autofocus: @prefill_email.nil?, required: true, value: @prefill_email %>
-                <%= form.password_field :password, placeholder: "Password", class: "input mb-6", autofocus: !@prefill_email.nil?, required: true %>
+        <h2 class="text-2xl mb-6 ml-1">Sign up</h2>
 
-                <div class="flex justify-between items-center">
-                    <%= form.submit "Sign up", class: "btn" %>
-                </div>
-            <% end %>
-        </turbo-frame>
+        <%= form_with do |form| %>
+            <%= form.email_field :email, placeholder: "Email", class: "input mb-4", autofocus: @prefill_email.nil?, required: true, value: @prefill_email %>
+            <%= form.password_field :password, placeholder: "Password", class: "input mb-6", autofocus: !@prefill_email.nil?, required: true %>
+
+            <div class="flex justify-between items-center">
+                <%= form.submit "Sign up", class: "btn" %>
+            </div>
+        <% end %>
+    </div>
+
+    <div class="w-96 text-left text-gray-500">
+        <a href="/" class="text-gray-500">← Home</a>
     </div>
 </div>

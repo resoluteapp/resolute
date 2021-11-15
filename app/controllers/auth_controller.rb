@@ -1,6 +1,13 @@
 class AuthController < ApplicationController
   before_action :redirect_if_signed_in, except: [:logout]
 
+  def login
+    if flash[:prefill_email]
+      @prefill_email = flash[:prefill_email]
+      @focus_password = true
+    end
+  end
+
   def auth
     user = User.where(email: params['email']).take
 
