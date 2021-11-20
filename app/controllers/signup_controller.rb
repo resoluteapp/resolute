@@ -27,7 +27,7 @@ class SignupController < ApplicationController
 
   def verify
     request = SignupRequest.find_by(code: params[:code], fulfilled: false)
-    unless request
+    if request.nil? || request.user_signed_up?
       flash.alert = 'Invalid verification link.'
       return redirect_to '/signup'
     end
