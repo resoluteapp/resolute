@@ -2,8 +2,8 @@
 
 one:
   email: MyString
-  hashed_password: MyString
+  password_digest: MyString
 
 two:
   email: MyString
-  hashed_password: MyString
+  password_digest: MyString
