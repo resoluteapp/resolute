@@ -68,6 +68,13 @@ Rails.application.configure do
   # Set this to true and configure the email server for immediate delivery to raise delivery errors.
   # config.action_mailer.raise_delivery_errors = false
 
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+    address: Rails.application.credentials.mail[:address],
+    user_name: Rails.application.credentials.mail[:username],
+    password: Rails.application.credentials.mail[:password]
+  }
+
   config.action_mailer.default_url_options = { host: 'taskalla.calebden.io' }
 
   # Enable locale fallbacks for I18n (makes lookups for any locale fall back to
