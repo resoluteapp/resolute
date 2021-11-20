@@ -20,6 +20,8 @@ gem 'stimulus-rails'
 gem 'faraday'
 gem 'faraday_middleware'
 
+gem "pundit"
+
 gem 'pg', '~> 1.2', '>= 1.2.3'
 
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder

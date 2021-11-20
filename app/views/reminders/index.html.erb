@@ -1,8 +1,8 @@
-<%= render "header", selected: "reminders" %>
+<%= render "layouts/header", selected: "reminders" %>
 
 <turbo-frame id="reminders">
     <div class="w-full max-w-4xl block mx-auto bg-gray-800 p-7 rounded-md">
-        <%= form_with do |form| %>
+        <%= form_with url: "/reminders" do |form| %>
             <div class="flex gap-4 mb-10 items-stretch">
                 <input type="text" class="input block" placeholder="Remind me to..." name="title" autofocus required />
                 <button class="btn" type="submit">Add</button>

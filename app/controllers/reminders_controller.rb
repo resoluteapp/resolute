@@ -12,4 +12,13 @@ class RemindersController < ApplicationController
 
     redirect_to '/home'
   end
+
+  def destroy
+    reminder = Reminder.find(params[:id])
+
+    authorize reminder
+    reminder.destroy
+
+    redirect_to '/home'
+  end
 end

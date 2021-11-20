@@ -7,6 +7,13 @@ Rails.application.routes.draw do
   get 'verify', to: 'signup#verify'
   post 'verify', to: 'signup#finalize'
 
+  get 'forgot-password', to: 'auth#forgot_password'
+
+  scope '/callback' do
+    get 'github', to: 'oauth_callback#github'
+    get 'twitter', to: 'oauth_callback#twitter'
+  end
+
   scope '/login' do
     get '/', to: 'auth#login'
     post '/', to: 'auth#auth'
@@ -18,12 +25,5 @@ Rails.application.routes.draw do
   get 'logout', to: 'auth#logout'
 
   get 'home', to: 'reminders#index'
-  post 'home', to: 'reminders#create'
-
-  get 'forgot-password', to: 'auth#forgot_password'
-
-  scope '/callback' do
-    get 'github', to: 'oauth_callback#github'
-    get 'twitter', to: 'oauth_callback#twitter'
-  end
+  resources :reminders, except: [:show]
 end

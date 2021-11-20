@@ -1,5 +1,5 @@
-Welcome to Taskalla, <b><%= @email %></b>!
+Welcome to Taskalla, <%= @email %>!
 
 <br />
 
-One more step: just click <a href="<%= url_for controller: 'signup', action: 'verify', code: @verification_code %>">this link</a> to verify your email address.
+<b>One more step:</b> just click <a href="<%= url_for controller: 'signup', action: 'verify', code: @verification_code %>">this link</a> to verify your email address.
