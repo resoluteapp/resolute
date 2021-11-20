@@ -2,8 +2,10 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   root to: 'landing#index'
 
-  get 'signup', to: 'landing#signup'
-  post 'signup', to: 'landing#signup_submit'
+  get 'signup', to: 'signup#index'
+  post 'signup', to: 'signup#submit'
+  get 'verify', to: 'signup#verify'
+  post 'verify', to: 'signup#finalize'
 
   scope '/login' do
     get '/', to: 'auth#login'

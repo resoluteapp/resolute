@@ -9,7 +9,7 @@ class AuthController < ApplicationController
   end
 
   def auth
-    user = User.where(email: params['email']).take
+    user = User.find_by(email: params['email'])
 
     if user.nil?
       flash.now[:alert] = 'User not found.'

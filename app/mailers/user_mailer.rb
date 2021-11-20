@@ -3,7 +3,7 @@ class UserMailer < ApplicationMailer
 
   def signup_verification
     @email = params[:email]
-    @url = params[:url]
+    @verification_code = params[:verification_code]
 
     mail(to: @email, subject: 'Verify your Taskalla email address')
   end

@@ -23,7 +23,7 @@ class OauthCallbackController < ApplicationController
       e['primary']
     end)['email']
 
-    user = User.where(email: email).take
+    user = User.find_by(email: email)
 
     if user.nil?
       redirect_to_signup email

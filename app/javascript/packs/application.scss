@@ -27,6 +27,10 @@ a {
   @apply bg-black block w-full py-3 px-4 rounded-md placeholder-gray-500 border-2 border-gray-700 focus:outline-none focus:border-green-500;
 }
 
+.input:disabled {
+  @apply cursor-not-allowed text-gray-500;
+}
+
 .alert,
 .notice {
   @apply text-white rounded-md py-3 px-4 border-l-4 flex justify-between items-center gap-3;

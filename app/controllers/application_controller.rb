@@ -1,10 +1,12 @@
 class ApplicationController < ActionController::Base
   before_action :authenticate
 
+  attr_reader :current_user
+
   # Fetches the logged-in user
   def authenticate
     token = session[:token]
-    session = Session.where(token: token).take
+    session = Session.find_by(token: token)
 
     @current_user = session.user unless session.nil?
   end
