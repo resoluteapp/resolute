@@ -1,0 +1,7 @@
+%p Welcome to Taskalla, #{@email}!
+
+%p
+    %b One more step:
+    just click
+    %a{href: url_for(controller: 'signup', action: 'verify', code: @verification_code)} this link
+    to verify your email address.

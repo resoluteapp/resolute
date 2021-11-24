@@ -20,7 +20,9 @@ gem 'stimulus-rails'
 gem 'faraday'
 gem 'faraday_middleware'
 
-gem "pundit"
+gem 'pundit'
+
+gem 'haml', '~> 5.2'
 
 gem 'pg', '~> 1.2', '>= 1.2.3'
 
