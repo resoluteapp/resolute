@@ -1,0 +1,6 @@
+{
+  "[haml]": {
+    "editor.detectIndentation": false,
+    "editor.insertSpaces": false
+  }
+}
