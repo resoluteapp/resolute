@@ -60,7 +60,7 @@ Rails.application.configure do
 
   # Use a real queuing backend for Active Job (and separate queues per environment).
   # config.active_job.queue_adapter     = :resque
-  # config.active_job.queue_name_prefix = "taskalla_production"
+  # config.active_job.queue_name_prefix = "resolute_production"
 
   config.action_mailer.perform_caching = false
 
@@ -75,7 +75,7 @@ Rails.application.configure do
     password: Rails.application.credentials.mail[:password]
   }
 
-  config.action_mailer.default_url_options = { host: 'taskalla.calebden.io' }
+  config.action_mailer.default_url_options = { host: 'resolute.calebden.io' }
 
   # Enable locale fallbacks for I18n (makes lookups for any locale fall back to
   # the I18n.default_locale when a translation cannot be found).

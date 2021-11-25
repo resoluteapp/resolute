@@ -1,5 +1,5 @@
 {
-  "name": "taskalla",
+  "name": "resolute",
   "private": true,
   "dependencies": {
     "@babel/preset-typescript": "^7.16.0",
