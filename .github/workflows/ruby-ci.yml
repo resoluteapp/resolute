@@ -12,4 +12,4 @@ jobs:
       - uses: ruby/setup-ruby@v1
         with:
           bundler-cache: true
-      - run: rubocop app/
+      - run: bundle exec rubocop app/
