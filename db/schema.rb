@@ -10,7 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_11_25_033049) do
+ActiveRecord::Schema.define(version: 2021_11_25_050029) do
+
+  create_table "oauth_apps", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.string "client_id"
+    t.string "client_secret"
+    t.string "redirect_uri"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.string "name"
+    t.index ["client_id"], name: "index_oauth_apps_on_client_id", unique: true
+    t.index ["client_secret"], name: "index_oauth_apps_on_client_secret", unique: true
+    t.index ["user_id"], name: "index_oauth_apps_on_user_id"
+  end
 
   create_table "reminders", force: :cascade do |t|
     t.integer "user_id", null: false
@@ -47,6 +60,7 @@ ActiveRecord::Schema.define(version: 2021_11_25_033049) do
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 
+  add_foreign_key "oauth_apps", "users"
   add_foreign_key "reminders", "users"
   add_foreign_key "sessions", "users"
 end

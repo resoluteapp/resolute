@@ -1,0 +1,15 @@
+= render "shared/header", selected: ""
+
+.w-full.max-w-4xl.block.mx-auto.bg-gray-800.p-7.rounded-md
+	.flex.justify-between.items-start.mb-10
+		%h1.text-xl
+			%span.text-gray-500
+				%a.text-gray-500(href="/developer") Developer
+				\/ 
+			Apps
+		%a.btn{href: new_oauth_app_path} Create
+
+	.flex.flex-col.gap-5
+		- @apps.each do |app|
+			%a.text-white{href: oauth_app_path(app)}
+				.text-xl.p-5.bg-black.rounded-md.text-white= app.name

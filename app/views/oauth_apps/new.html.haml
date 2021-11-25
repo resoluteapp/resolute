@@ -1,0 +1,14 @@
+= render "shared/header", selected: ""
+
+.w-full.max-w-4xl.block.mx-auto.bg-gray-800.p-7.rounded-md
+	%h1.text-xl.mb-10
+		%span.text-gray-500
+			%a.text-gray-500(href="/developer") Developer
+			\/ 
+			%a.text-gray-500(href="/developer/apps") Apps
+			\/ 
+		Create
+	
+	= form_with model: OauthApp.new, class: "w-1/2 block mx-auto" do |form|
+		= form.text_field :name, class: "input mb-4", placeholder: "App name", autofocus: true, required: true
+		= form.submit "Create", class: "btn"

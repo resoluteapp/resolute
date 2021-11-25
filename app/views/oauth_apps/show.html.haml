@@ -1,0 +1,12 @@
+= render "shared/header", selected: ""
+
+.w-full.max-w-4xl.block.mx-auto.bg-gray-800.p-7.rounded-md
+	%h1.text-xl.mb-10
+		%span.text-gray-500
+			%a.text-gray-500(href="/developer") Developer
+			\/ 
+			%a.text-gray-500(href="/developer/apps") Apps
+			\/ 
+		= @app.name
+
+	%p very cool app
