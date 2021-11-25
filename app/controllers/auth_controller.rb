@@ -1,34 +1,29 @@
+# frozen_string_literal: true
+
 class AuthController < ApplicationController
   before_action :redirect_if_signed_in, except: [:logout]
 
   def login
-    if flash[:prefill_email]
-      @prefill_email = flash[:prefill_email]
-      @focus_password = true
-    end
+    return unless flash[:prefill_email]
+
+    @prefill_email = flash[:prefill_email]
+    @focus_password = true
   end
 
   def auth
     user = User.find_by(email: params['email'])
 
-    if user.nil?
-      flash.now[:alert] = 'User not found.'
-      @prefill_email = params['email']
+    @prefill_email = params['email']
 
-      return render 'login', status: :unprocessable_entity
-    end
+    return fail_auth 'User not found.' if user.nil?
 
     unless user.authenticate(params['password'])
-      flash.now[:alert] = 'Incorrect password.'
-      @prefill_email = params['email']
       @focus_password = true
 
-      return render 'login', status: :unprocessable_entity
+      return fail_auth 'Incorrect password.'
     end
 
     log_in user
-
-    redirect_to '/home'
   end
 
   def logout
@@ -38,5 +33,13 @@ class AuthController < ApplicationController
     flash.notice = "You've been logged out!"
 
     redirect_to '/login'
+  end
+
+  private
+
+  def fail_auth(message)
+    flash.now[:alert] = message
+
+    render 'login', status: :unprocessable_entity
   end
 end

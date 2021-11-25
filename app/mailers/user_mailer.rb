@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class UserMailer < ApplicationMailer
   default from: 'Taskalla <noreply@taskalla.calebden.io>'
 

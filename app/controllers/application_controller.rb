@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class ApplicationController < ActionController::Base
   include Pundit
 
@@ -15,11 +17,11 @@ class ApplicationController < ActionController::Base
 
   # Redirects to login if not logged in
   def require_auth
-    unless @current_user
-      flash.notice = 'You need to log in first!'
+    return if @current_user
 
-      redirect_to '/login'
-    end
+    flash.notice = 'You need to log in first!'
+
+    redirect_to '/login'
   end
 
   # Redirects to home if signed in
@@ -32,5 +34,17 @@ class ApplicationController < ActionController::Base
     Session.create!(user: user, token: token)
 
     session[:token] = token
+
+    redirect_to '/home'
+  end
+
+  def flash_notice_and_redirect(message, url)
+    flash.notice = message
+    redirect_to url
+  end
+
+  def flash_alert_and_redirect(message, url)
+    flash.alert = message
+    redirect_to url
   end
 end

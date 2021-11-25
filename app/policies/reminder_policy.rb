@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class ReminderPolicy
   attr_reader :user, :reminder
 

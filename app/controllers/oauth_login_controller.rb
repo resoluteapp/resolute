@@ -1,6 +1,8 @@
+# frozen_string_literal: true
+
 class OauthLoginController < ApplicationController
   def github
-    redirect_to "https://github.com/login/oauth/authorize?scope=user:email&client_id=#{Rails.application.credentials.github[:client_id]}"
+    redirect_to OauthService::Github.new(Rails.application.credentials.github[:client_id]).authorization_url
   end
 
   def twitter; end

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class RemindersController < ApplicationController
   before_action :require_auth
 

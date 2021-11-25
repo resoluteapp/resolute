@@ -1,36 +1,20 @@
-require 'faraday'
-require 'faraday_middleware'
-require 'uri'
+# frozen_string_literal: true
 
 class OauthCallbackController < ApplicationController
   def github
-    conn = Faraday.new do |f|
-      f.response :json # decode response bodies as JSON
-    end
+    access_token = OauthService::Github.new(
+      Rails.application.credentials.github[:client_id],
+      Rails.application.credentials.github[:client_secret]
+    ).exchange_code(params[:code])
 
-    response = conn.post 'https://github.com/login/oauth/access_token',
-                         URI.encode_www_form({ client_id: Rails.application.credentials.github[:client_id],
-                                               client_secret: Rails.application.credentials.github[:client_secret],
-                                               code: params['code'] }), { 'Accept' => 'application/json' }
+    return redirect_to '/' if access_token.nil?
 
-    return redirect_to '/' if response.body['access_token'].nil?
-
-    token = response.body['access_token']
-
-    emails = conn.get 'https://api.github.com/user/emails', nil, 'Authorization' => "Bearer #{token}"
-
-    email = (emails.body.find do |e|
-      e['primary']
-    end)['email']
-
+    email = GithubService.new(access_token).primary_email
     user = User.find_by(email: email)
 
-    if user.nil?
-      redirect_to_signup email
-    else
-      log_in user
-      redirect_to '/home'
-    end
+    return redirect_to_signup email if user.nil?
+
+    log_in user
   end
 
   def twitter

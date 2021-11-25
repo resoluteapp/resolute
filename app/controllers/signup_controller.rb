@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'date'
 
 class SignupController < ApplicationController
@@ -16,10 +18,9 @@ class SignupController < ApplicationController
       return render 'index', status: :unprocessable_entity
     end
 
-    code = SecureRandom.urlsafe_base64
-    SignupRequest.create!(email: @email, expires_at: Time.now + 900, code: code)
+    request = SignupRequest.create!(email: @email)
 
-    UserMailer.with(email: @email, verification_code: code).signup_verification.deliver_later
+    UserMailer.with(email: @email, verification_code: request.code).signup_verification.deliver_later
 
     # Hack to get Turbo Drive to work properly
     render status: :unprocessable_entity
@@ -27,33 +28,24 @@ class SignupController < ApplicationController
 
   def verify
     request = SignupRequest.find_by(code: params[:code], fulfilled: false)
-    if request.nil? || request.user_signed_up?
-      flash.alert = 'Invalid verification link.'
-      return redirect_to '/signup'
-    end
 
-    if request.expired?
-      flash.alert = 'Verification link expired.'
-      return redirect_to '/signup'
-    end
+    return flash_alert_and_redirect 'Invalid verification link.', '/signup' if request.nil? || request.user_signed_up?
+    return flash_alert_and_redirect 'Verification link expired.', '/signup' if request.expired?
 
     @email = request.email
     @verification_code = request.code
   end
 
   def finalize
-    request = SignupRequest.find_by!(code: params[:verification_code], fulfilled: false)
-    if request.expired?
-      flash.alert = 'Verification link expired.'
-      return redirect_to '/signup'
-    end
+    request = SignupRequest.find_by(code: params[:verification_code], fulfilled: false)
+
+    return flash_alert_and_redirect 'Invalid verification link.', '/signup' if request.nil? || request.user_signed_up?
+    return flash_alert_and_redirect 'Verification link expired.', '/signup' if request.expired?
 
     request.fulfilled = true
     request.save
 
     user = User.create(email: request.email, password: params[:password])
     log_in user
-
-    redirect_to '/home'
   end
 end
