@@ -1,0 +1,31 @@
+.flex.flex-col.gap-5.items-center.justify-center.h-screen.w-screen
+	.w-96.h-auto.bg-gray-800.border-t-4.border-green-400.rounded-md.p-7.text-white
+		- if alert
+			%div.alert.mb-6(data-controller="alert")
+				= alert
+				%button.bg-transparent.text-xl.-mt-1(data-action="alert#dismiss") ×
+
+		- if notice
+			%div.notice.mb-6(data-controller="alert")
+				= notice
+				%button.bg-transparent.text-xl.-mt-1(data-action="alert#dismiss") ×
+
+		%h2.text-2xl.mb-4.ml-1.font-normal
+			Grant
+			%strong= @app.name
+			access to your account?
+
+		- if @app.official
+			.text-gray-400.text-sm
+				%i.fas.fa-fw.fa-shield-alt.text-green-500
+				%strong= @app.name
+				is a trusted app created by Resolute.
+		- else
+			.text-gray-400.text-sm
+				%i.fas.fa-fw.fa-info-circle
+				%strong= @app.name
+				hasn't been verified by Resolute.
+
+		.flex.gap-3.mt-6
+			%button.btn Grant access
+			%button.btn.clr-btn.bg-gray-700 Cancel

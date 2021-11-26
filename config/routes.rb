@@ -34,4 +34,8 @@ Rails.application.routes.draw do
       end
     end
   end
+
+  namespace :api do
+    get 'oauth/authorize', to: 'oauth#authorize'
+  end
 end
