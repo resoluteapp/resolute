@@ -28,6 +28,10 @@ Rails.application.routes.draw do
   resources :reminders, except: [:show]
 
   scope '/developer' do
-    resources :oauth_apps, path: 'apps'
+    resources :oauth_apps, path: 'apps' do
+      member do
+        get 'advanced'
+      end
+    end
   end
 end

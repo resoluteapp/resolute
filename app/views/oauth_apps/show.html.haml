@@ -1,12 +1,12 @@
-= render "shared/header", selected: ""
+= render "layout", selected: "credentials" do
+	.mb-5
+		.text-sm.text-gray-400 Client ID
+		.flex.items-center.gap-3{"data-controller" => "copy", "data-copy-text-value" => @app.client_id}
+			.text-lg.font-mono= @app.client_id
+			%button.btn.text-sm.clr-btn.bg-gray-700(data-action="copy#copy") Copy
 
-.w-full.max-w-4xl.block.mx-auto.bg-gray-800.p-7.rounded-md
-	%h1.text-xl.mb-10
-		%span.text-gray-500
-			%a.text-gray-500(href="/developer") Developer
-			\/ 
-			%a.text-gray-500(href="/developer/apps") Apps
-			\/ 
-		= @app.name
-
-	%p very cool app
+	%div
+		.text-sm.text-gray-400 Client Secret
+		.flex.items-center.gap-3{"data-controller" => "copy", "data-copy-text-value" => @app.client_secret}
+			.text-lg.font-mono= @app.client_secret
+			%button.btn.text-sm.clr-btn.bg-gray-700(data-action="copy#copy") Copy

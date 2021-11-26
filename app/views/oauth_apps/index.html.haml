@@ -2,14 +2,27 @@
 
 .w-full.max-w-4xl.block.mx-auto.bg-gray-800.p-7.rounded-md
 	.flex.justify-between.items-start.mb-10
-		%h1.text-xl
+		%h1.text-lg
 			%span.text-gray-500
 				%a.text-gray-500(href="/developer") Developer
 				\/ 
 			Apps
-		%a.btn{href: new_oauth_app_path} Create
+		%a.btn{href: new_oauth_app_path} New
 
-	.flex.flex-col.gap-5
-		- @apps.each do |app|
-			%a.text-white{href: oauth_app_path(app)}
-				.text-xl.p-5.bg-black.rounded-md.text-white= app.name
+	- if alert
+		%div.alert.mb-6(data-controller="alert")
+			= alert
+			%button.bg-transparent.text-xl.-mt-1(data-action="alert#dismiss") ×
+
+	- if notice
+		%div.notice.mb-6(data-controller="alert")
+			= notice
+			%button.bg-transparent.text-xl.-mt-1(data-action="alert#dismiss") ×
+
+	- if @apps.length == 0
+		%h2.text-center.mb-10.mt-15.text-gray-500 Nothing here, yet...
+	- else
+		.grid.grid-cols-2.gap-5
+			- @apps.each do |app|
+				%a.text-white{href: oauth_app_path(app)}
+					.text-xl.p-5.bg-black.rounded-md.text-white= app.name

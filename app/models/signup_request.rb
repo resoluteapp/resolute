@@ -16,7 +16,7 @@ class SignupRequest < ApplicationRecord
   end
 
   def set_defaults
-    self.expires_at ||= Time.now.utc + 900
-    self.code ||= SecureRandom.urlsafe_base64
+    self.expires_at = Time.now.utc + 900 if expires_at.nil?
+    self.code = SecureRandom.urlsafe_base64 if code.nil?
   end
 end

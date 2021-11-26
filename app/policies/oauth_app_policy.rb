@@ -11,4 +11,8 @@ class OauthAppPolicy
   def show?
     oauth_app.user == user
   end
+
+  def destroy?
+    oauth_app.user == user
+  end
 end

@@ -1,0 +1,18 @@
+= render "shared/header", selected: ""
+
+.w-full.max-w-4xl.block.mx-auto.bg-gray-800.p-7.rounded-md
+	%h1.text-lg.mb-10
+		%span.text-gray-500
+			%a.text-gray-500(href="/developer") Developer
+			\/ 
+			%a.text-gray-500(href="/developer/apps") Apps
+			\/ 
+		= @app.name
+
+	.flex.gap-7
+		.w-64
+			%ul.flex.flex-col
+				%a.px-4.py-2.border-gray-700.border-2.border-b-0.rounded-t-md.cursor-pointer.hover:bg-gray-700{href: oauth_app_path(@app), class: selected != "credentials" && "text-white"} OAuth credentials
+				%a.px-4.py-2.border-gray-700.border-2.border-b-0.cursor-pointer.hover:bg-gray-700{href: edit_oauth_app_path(@app), class: selected != "settings" && "text-white"} Settings
+				%a.px-4.py-2.border-gray-700.border-2.rounded-b-md.cursor-pointer.hover:bg-gray-700{href: advanced_oauth_app_path(@app), class: selected != "advanced" && "text-white"} Advanced
+		.flex-grow= yield

@@ -1,0 +1,7 @@
+= render "layout", selected: "advanced" do
+	.border-2.border-red-500.rounded-md.p-5.flex.justify-between.items-center
+		.flex.flex-col
+			.text-lg Delete this app
+			.text-sm.text-gray-400 This can't be undone.
+		= form_with url: oauth_app_path(@app), method: :delete do |form|
+			%button.btn.clr-btn.bg-red-500(type="submit") Delete app

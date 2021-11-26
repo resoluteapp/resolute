@@ -5,3 +5,6 @@ import { application } from "./application";
 
 import AlertController from "./alert_controller";
 application.register("alert", AlertController);
+
+import CopyController from "./copy_controller";
+application.register("copy", CopyController);
