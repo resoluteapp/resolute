@@ -1,8 +1,11 @@
 module.exports = {
-  purge: [],
+  purge: ["./app/views/**/*.html.{haml,erb}"],
   darkMode: false, // or 'media' or 'class'
   theme: {
     extend: {},
+    fontFamily: {
+      heading: ["Outfit", "sans-serif"],
+    },
   },
   variants: {
     extend: {

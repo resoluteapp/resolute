@@ -918,6 +918,11 @@
   resolved "https://registry.yarnpkg.com/@csstools/convert-colors/-/convert-colors-1.4.0.tgz#ad495dc41b12e75d588c6db8b9834f08fa131eb7"
   integrity sha512-5a6wqoJV/xEdbRNKVo6I4hO3VjyDq//8q2f9I6PBAvMesJHFauXDorcNCsr9RzvsZnaWi5NYCcfyqP1QeFHFbw==
 
+"@fontsource/outfit@^4.5.0":
+  version "4.5.0"
+  resolved "https://registry.yarnpkg.com/@fontsource/outfit/-/outfit-4.5.0.tgz#3e262007bbe58192f0e30896145578898f148716"
+  integrity sha512-H2Z8Z8WNKl4DkDlwjOTGJsPM8SueXjSmAXHP2Ex6NEXcz/TtZ2pWkcKbT2K6BV2V16a0ZeddM/X3cFOnm+br9Q==
+
 "@fortawesome/fontawesome-free@^5.15.4":
   version "5.15.4"
   resolved "https://registry.yarnpkg.com/@fortawesome/fontawesome-free/-/fontawesome-free-5.15.4.tgz#ecda5712b61ac852c760d8b3c79c96adca5554e5"

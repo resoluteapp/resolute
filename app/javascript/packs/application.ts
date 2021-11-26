@@ -10,6 +10,9 @@ import "channels";
 
 import "../controllers";
 
+import "@fontsource/outfit/300.css";
+import "@fortawesome/fontawesome-free/css/all.css";
+
 Rails.start();
 ActiveStorage.start();
 
