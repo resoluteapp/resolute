@@ -1,6 +1,6 @@
 .flex.py-5.px-10.justify-between.sticky.top-0.bg-black.mb-5.z-40
 	.flex.items-center.gap-5
-		= image_tag "icon-128.png", size: "50x50"
+		= image_tag "icon-128.png", size: "50x50", class: "mr-5"
 		%a{href: "/home", class: [selected != "reminders" && "text-gray-500"]} Reminders
 		%a{href: "/integrations", class: [selected != "integrations" && "text-gray-500"]} Integrations
 		%a{href: "/settings", class: [selected != "settings" && "text-gray-500"]} Settings

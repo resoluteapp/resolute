@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class UserMailer < ApplicationMailer
-  default from: 'Resolute <noreply@resolute.calebden.io>'
+  default from: 'Resolute <noreply@useresolute.com>'
 
   def signup_verification
     @email = params[:email]

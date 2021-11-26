@@ -11,6 +11,7 @@ import "channels";
 import "../controllers";
 
 import "@fontsource/outfit/300.css";
+import "@fontsource/outfit/600.css";
 import "@fortawesome/fontawesome-free/css/all.css";
 
 Rails.start();
