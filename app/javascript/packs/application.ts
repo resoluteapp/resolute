@@ -4,9 +4,8 @@
 // that code so it'll be compiled.
 
 import "@hotwired/turbo";
-import "channels";
 
-import "../controllers";
+import "controllers";
 
 import "@fontsource/outfit/300.css";
 import "@fontsource/outfit/600.css";
