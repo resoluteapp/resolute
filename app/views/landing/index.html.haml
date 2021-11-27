@@ -1,8 +1,25 @@
-.h-screen.flex.justify-center.items-center.flex-col.gap-5
-	.flex.gap-5.mb-10.items-center
-		= image_tag "icon-128.png", size: "75x75"
-		%h1.font-heading.text-5xl.font-light resolute
+.flex.py-5.px-10.justify-between.sticky.top-0.bg-black.z-40.items-center
+	.flex.items-start.gap-1
+		.flex.gap-5.items-center
+			= image_pack_tag "media/images/icon-128.png", size: "50x50", alt: "Resolute logo"
+			%h1.font-heading.text-4xl.font-light resolute
+		.bg-blue-600.rounded-md.text-xs.text-blue-100(class="py-0.5 px-1.5") Beta
 
-	.flex.gap-5
-		%a.btn(href="/login") Log in
+	.flex.gap-5.items-center
+		%a.btn.clr-btn.bg-gray-700(href="/login") Log in
 		%a.btn(href="/signup") Sign up
+
+.bg-gray-800.px-96.py-48.text-center
+	%h1.text-7xl.font-heading.font-bold
+		Personal task management that
+		%em works.
+.px-96.py-40.text-center.h-96
+	%h2.text-4xl.font-heading
+		%strong Hold on tight!
+		Resolute is still under development.
+	%h3.text-xl.mt-5
+		Why not check us out on
+		%a(href="https://github.com/cjdenio/resolute" target="_blank")
+			%i.fab.fa-github
+			GitHub
+		while you wait?

@@ -27,7 +27,11 @@ Rails.application.routes.draw do
   get 'home', to: 'reminders#index'
   resources :reminders, except: [:show]
 
+  get 'settings', to: 'settings#index'
+
   scope '/developer' do
+    get '/', to: 'settings#developer'
+
     resources :oauth_apps, path: 'apps' do
       member do
         get 'advanced'
