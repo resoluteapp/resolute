@@ -14,10 +14,18 @@ class OauthAppsController < ApplicationController
     redirect_to app
   end
 
+  def update
+    @app.update(params.require(:oauth_app).permit(:name, :redirect_uri))
+
+    flash.notice = 'App has been updated.'
+
+    redirect_to edit_oauth_app_path(@app)
+  end
+
   def destroy
     @app.destroy
 
-    flash_notice_and_redirect "App \"#{@app.name}\" successfully deleted.", oauth_apps_path
+    flash_notice_and_redirect "App \"#{@app.name}\" has been deleted.", oauth_apps_path
   end
 
   private
