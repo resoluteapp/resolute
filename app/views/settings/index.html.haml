@@ -1,2 +1,6 @@
 = render "layout", selected: "general" do
-	\// TODO
+	.flex.items-center.gap-5
+		= gravatar @current_user.email, 100
+		%div
+			.text-xl= @current_user.email
+			%em.text-sm Update your avatar at <a href="https://gravatar.com" target="_blank">Gravatar</a>
