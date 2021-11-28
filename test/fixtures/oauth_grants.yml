@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  code: MyString
+  scope: MyString
+  user: one
+  oauth_app: one
+
+two:
+  code: MyString
+  scope: MyString
+  user: two
+  oauth_app: two

@@ -10,10 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_11_26_050826) do
+ActiveRecord::Schema.define(version: 2021_11_28_044302) do
+
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
 
   create_table "oauth_apps", force: :cascade do |t|
-    t.integer "user_id", null: false
+    t.bigint "user_id", null: false
     t.string "client_id"
     t.string "client_secret"
     t.string "redirect_uri"
@@ -26,8 +29,21 @@ ActiveRecord::Schema.define(version: 2021_11_26_050826) do
     t.index ["user_id"], name: "index_oauth_apps_on_user_id"
   end
 
+  create_table "oauth_grants", force: :cascade do |t|
+    t.string "code"
+    t.string "scope", array: true
+    t.bigint "user_id", null: false
+    t.bigint "oauth_app_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "expires_at"
+    t.index ["code"], name: "index_oauth_grants_on_code", unique: true
+    t.index ["oauth_app_id"], name: "index_oauth_grants_on_oauth_app_id"
+    t.index ["user_id"], name: "index_oauth_grants_on_user_id"
+  end
+
   create_table "reminders", force: :cascade do |t|
-    t.integer "user_id", null: false
+    t.bigint "user_id", null: false
     t.string "title"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -36,7 +52,7 @@ ActiveRecord::Schema.define(version: 2021_11_26_050826) do
 
   create_table "sessions", force: :cascade do |t|
     t.string "token"
-    t.integer "user_id", null: false
+    t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["token"], name: "index_sessions_on_token", unique: true
@@ -62,6 +78,8 @@ ActiveRecord::Schema.define(version: 2021_11_26_050826) do
   end
 
   add_foreign_key "oauth_apps", "users"
+  add_foreign_key "oauth_grants", "oauth_apps"
+  add_foreign_key "oauth_grants", "users"
   add_foreign_key "reminders", "users"
   add_foreign_key "sessions", "users"
 end

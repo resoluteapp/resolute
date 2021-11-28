@@ -42,5 +42,6 @@ Rails.application.routes.draw do
   namespace :api do
     get 'oauth/authorize', to: 'oauth#authorize'
     post 'oauth/authorize', to: 'oauth#authorize_submit'
+    post 'oauth/token', to: 'oauth#token'
   end
 end

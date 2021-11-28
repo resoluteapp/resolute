@@ -5,6 +5,8 @@ class OauthApp < ApplicationRecord
 
   after_initialize :set_defaults
 
+  private
+
   def set_defaults
     self.client_id = SecureRandom.hex if client_id.nil?
     self.client_secret = SecureRandom.hex if client_secret.nil?

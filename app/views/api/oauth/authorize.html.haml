@@ -19,7 +19,7 @@
 			- if @app.user == @current_user
 				.mt-4.p-5.border-2.border-green-500.rounded-md
 					.text-gray-400.text-xs.mb-1 <i class="fas fa-eye"></i> Only you can see this
-					Fix this by adding a valid redirect URI in <a href="#{edit_oauth_app_path(@app)}">your app's settings</a>.
+					Fix this by adding a valid redirect URI in <a href="#{edit_oauth_app_path(@app)}" target="_blank">your app's settings</a>.
 		- else
 			%h2.text-2xl.mb-6.ml-1.font-normal.font-heading Connect <strong>#{@app.name}</strong> to your account?
 
@@ -47,6 +47,7 @@
 				.flex.gap-3.mt-6
 					= form.hidden_field :client_id, value: @app.client_id
 					= form.hidden_field :scope, value: @scopes.to_json
+					= form.hidden_field :state, value: @state unless @state.blank?
 					= form.submit "Connect", class: "btn"
 					= form.submit "Cancel", class: "btn clr-btn bg-gray-700"
 

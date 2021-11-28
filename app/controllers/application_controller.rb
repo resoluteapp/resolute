@@ -7,6 +7,8 @@ class ApplicationController < ActionController::Base
 
   attr_reader :current_user
 
+  private
+
   # Fetches the logged-in user
   def authenticate
     token = session[:token]

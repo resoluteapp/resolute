@@ -33,7 +33,7 @@ class OauthAppsController < ApplicationController
   def find_app
     return unless params[:id]
 
-    @app = OauthApp.find_by(id: params[:id])
+    @app = OauthApp.find(params[:id])
 
     authorize @app, :show?
   end

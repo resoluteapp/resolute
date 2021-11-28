@@ -1,5 +1,9 @@
-module Api::OauthHelper
-  def scope_description(name)
-    Oauth.scopes[name]
+# frozen_string_literal: true
+
+module Api
+  module OauthHelper
+    def scope_description(name)
+      Oauth.scopes[name]
+    end
   end
 end
