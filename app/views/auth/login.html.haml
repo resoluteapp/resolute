@@ -12,7 +12,7 @@
 				= notice
 				%button.bg-transparent.text-xl.-mt-1(data-action="alert#dismiss") ×
 
-		%h2.text-2xl.mb-6.ml-1 Log in
+		%h2.text-2xl.mb-6.ml-1.font-heading Log in
 
 		= form_with do |form|
 			= form.email_field :email, placeholder: "Email", class: "input mb-4", autofocus: !@focus_password, required: true, value: @prefill_email
@@ -28,4 +28,4 @@
 				%button.w-full.btn.clr-btn.bg-black GitHub
 
 	.w-96.text-left.text-gray-500
-		%a.text-gray-500(href="/")← Home
+		%a.text-gray-500(href="/") ← Home

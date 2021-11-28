@@ -1,7 +1,4 @@
 %p Welcome to Resolute, #{@email}!
 
 %p
-	%b One more step:
-	just click
-	%a{href: url_for(controller: 'signup', action: 'verify', code: @verification_code)} this link
-	to verify your email address.
+	<strong>One more step:</strong> just click <a href="#{url_for(controller: 'signup', action: 'verify', code: @verification_code)}">this link</a> to verify your email address.

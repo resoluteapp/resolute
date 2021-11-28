@@ -37,7 +37,7 @@ a {
 
 .alert,
 .notice {
-  @apply text-white rounded-md py-3 px-4 border-l-4 flex justify-between items-center gap-3;
+  @apply text-white rounded-md py-3 px-4 flex justify-between items-center gap-3;
 }
 
 .alert {

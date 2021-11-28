@@ -1,13 +1,18 @@
 .flex.py-5.px-10.justify-between.sticky.top-0.bg-black.z-40.items-center
 	.flex.items-start.gap-1
 		.flex.gap-5.items-center
-			= image_pack_tag "media/images/icon-128.png", size: "50x50", alt: "Resolute logo"
+			= image_pack_tag "media/images/icon.svg", size: "50x50", alt: "Resolute logo"
 			%h1.font-heading.text-4xl.font-light resolute
 		.bg-blue-600.rounded-md.text-xs.text-blue-100(class="py-0.5 px-1.5") Beta
 
-	.flex.gap-5.items-center
-		%a.btn.clr-btn.bg-gray-700(href="/login") Log in
-		%a.btn(href="/signup") Sign up
+	- if @current_user.nil?
+		.flex.gap-5.items-center
+			%a.btn.clr-btn.bg-gray-700(href="/login") Log in
+			%a.btn(href="/signup") Sign up
+	- else
+		.flex.gap-5.items-center
+			%a.btn(href="/home") Launch app
+			= gravatar @current_user.email
 
 .bg-gray-800.px-96.py-48.text-center
 	%h1.text-7xl.font-heading.font-bold

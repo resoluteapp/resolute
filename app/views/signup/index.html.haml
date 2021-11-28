@@ -12,7 +12,7 @@
 				= notice
 				%button.bg-transparent.text-xl.-mt-1(data-action="alert#dismiss") ×
 
-		%h2.text-2xl.mb-6.ml-1 Sign up
+		%h2.text-2xl.mb-6.ml-1.font-heading Sign up
 
 		= form_with do |form|
 			= form.email_field :email, placeholder: "Email", class: "input mb-6", autofocus: true, required: true, value: @prefill_email

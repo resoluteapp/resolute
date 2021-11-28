@@ -10,22 +10,46 @@
 				= notice
 				%button.bg-transparent.text-xl.-mt-1(data-action="alert#dismiss") ×
 
-		%h2.text-2xl.mb-4.ml-1.font-normal
-			Grant
-			%strong= @app.name
-			access to your account?
-
-		- if @app.official
-			.text-gray-400.text-sm
-				%i.fas.fa-fw.fa-shield-alt.text-green-500
-				%strong= @app.name
-				is a trusted app created by Resolute.
+		- if @app.nil?
+			%h2.text-2xl.mb-5.ml-1.font-normal <i class="fas fa-exclamation-triangle text-red-500 mr-2"></i> Something went wrong:
+			.border-2.border-red-500.rounded-md.p-5 App not found.
+		- elsif @app.redirect_uri.blank?
+			%h2.text-2xl.mb-5.ml-1.font-normal <i class="fas fa-exclamation-triangle text-red-500 mr-2"></i> Something went wrong:
+			.border-2.border-red-500.rounded-md.p-5 App "#{@app.name}" has no OAuth redirect URI configured.
+			- if @app.user == @current_user
+				.mt-4.p-5.border-2.border-green-500.rounded-md
+					.text-gray-400.text-xs.mb-1 <i class="fas fa-eye"></i> Only you can see this
+					Fix this by adding a valid redirect URI in <a href="#{edit_oauth_app_path(@app)}">your app's settings</a>.
 		- else
-			.text-gray-400.text-sm
-				%i.fas.fa-fw.fa-info-circle
-				%strong= @app.name
-				hasn't been verified by Resolute.
+			%h2.text-2xl.mb-6.ml-1.font-normal.font-heading Connect <strong>#{@app.name}</strong> to your account?
 
-		.flex.gap-3.mt-6
-			%button.btn Grant access
-			%button.btn.clr-btn.bg-gray-700 Cancel
+			- if @scopes.length > 0
+				.border-gray-600.border-2.mb-6.p-5.rounded-md
+					.mb-1.font-bold #{@app.name} will be able to:
+
+					%ul.list-disc.list-inside
+						- @scopes.map {|scope| scope_description(scope)}.each do |scope|
+							%li= scope
+
+
+			- if @app.official
+				.text-gray-400.text-sm
+					%i.fas.fa-fw.fa-shield-alt.text-green-500
+					%strong= @app.name
+					is a trusted integration created by Resolute.
+			- else
+				.text-gray-400.text-sm
+					%i.fas.fa-fw.fa-info-circle
+					%strong= @app.name
+					hasn't been verified by Resolute.
+
+			= form_with data: { turbo: false } do |form|
+				.flex.gap-3.mt-6
+					= form.hidden_field :client_id, value: @app.client_id
+					= form.hidden_field :scope, value: @scopes.to_json
+					= form.submit "Connect", class: "btn"
+					= form.submit "Cancel", class: "btn clr-btn bg-gray-700"
+
+	- if @app.nil? || @app.redirect_uri.blank?
+		.w-96.text-left.text-gray-500
+			%a.text-gray-500(href="/home") ← Home
