@@ -10,6 +10,10 @@ class OauthGrant < ApplicationRecord
     Time.now.utc > expires_at
   end
 
+  def fulfill!
+    update fulfilled: true
+  end
+
   private
 
   def set_defaults

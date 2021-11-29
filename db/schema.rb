@@ -10,10 +10,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_11_28_044302) do
+ActiveRecord::Schema.define(version: 2021_11_29_020838) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "api_tokens", force: :cascade do |t|
+    t.bigint "oauth_app_id", null: false
+    t.bigint "user_id", null: false
+    t.string "token"
+    t.string "scope", array: true
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["oauth_app_id"], name: "index_api_tokens_on_oauth_app_id"
+    t.index ["user_id"], name: "index_api_tokens_on_user_id"
+  end
 
   create_table "oauth_apps", force: :cascade do |t|
     t.bigint "user_id", null: false
@@ -37,6 +48,7 @@ ActiveRecord::Schema.define(version: 2021_11_28_044302) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.datetime "expires_at"
+    t.boolean "fulfilled", default: false
     t.index ["code"], name: "index_oauth_grants_on_code", unique: true
     t.index ["oauth_app_id"], name: "index_oauth_grants_on_oauth_app_id"
     t.index ["user_id"], name: "index_oauth_grants_on_user_id"
@@ -77,6 +89,8 @@ ActiveRecord::Schema.define(version: 2021_11_28_044302) do
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 
+  add_foreign_key "api_tokens", "oauth_apps"
+  add_foreign_key "api_tokens", "users"
   add_foreign_key "oauth_apps", "users"
   add_foreign_key "oauth_grants", "oauth_apps"
   add_foreign_key "oauth_grants", "users"

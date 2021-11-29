@@ -40,10 +40,7 @@ module Api
 
       return render_oauth_error 'invalid_grant' unless check_grant_validity(code)
 
-      render json: {
-        access_token: 'hi',
-        token_type: 'bearer'
-      }
+      issue_access_token
     rescue ActionController::ParameterMissing
       render_oauth_error 'invalid_request'
     end
@@ -54,16 +51,36 @@ module Api
       render json: { error: error }, status: :bad_request
     end
 
+    # Ensures that
+    #   - the client ID belongs to an app
+    #   - the client secret is valid
     def authenticate_oauth_app(client_id, client_secret)
       @app = OauthApp.find_by(client_id: client_id)
 
       !(@app.nil? || @app.client_secret != client_secret)
     end
 
+    # Ensures that
+    #   - the OAuth grant exists
+    #   - the grant was created by the current app
     def check_grant_validity(code)
       @grant = OauthGrant.find_by(code: code)
 
-      !(@grant.nil? || @grant.expired? || @grant.oauth_app != @app)
+      !(@grant.nil? || @grant.fulfilled || @grant.expired? || @grant.oauth_app != @app)
+    end
+
+    # Issues an access token
+    def issue_access_token
+      token = ApiToken.create(scope: @grant.scope, oauth_app: @app, user: @grant.user)
+      @grant.fulfill!
+
+      # TODO: actually generate token
+
+      render json: {
+        access_token: token.token,
+        token_type: 'bearer',
+        scope: @grant.scope.join(', ')
+      }
     end
   end
 end
