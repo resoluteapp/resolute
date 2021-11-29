@@ -2,4 +2,8 @@
 
 json.id @user.id
 
-json.email @user.email if @token.scope.include?('user:email')
+if @token.scope.include?('user:email')
+	json.email @user.email
+else
+	json.email nil
+end

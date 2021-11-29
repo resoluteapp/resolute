@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Api
 	class RemindersController < Api::ApplicationController
 		before_action { require_scope('reminders:view') }
