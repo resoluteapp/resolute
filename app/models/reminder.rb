@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class Reminder < ApplicationRecord
-  belongs_to :user
+	belongs_to :user
 
-  validates :title, presence: true
+	validates :title, presence: true
 end

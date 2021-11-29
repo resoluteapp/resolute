@@ -4,6 +4,11 @@ Style/Documentation:
   Enabled: false
 Metrics/AbcSize:
   Severity: info
+Layout/IndentationStyle:
+  EnforcedStyle: tabs
+  IndentationWidth: 1
+Layout/IndentationWidth:
+  Width: 1
 
 # Some defaults
 Gemspec/DateAssignment: # new in 1.10

@@ -1,52 +1,52 @@
 # frozen_string_literal: true
 
 class ApplicationController < ActionController::Base
-  include Pundit
+	include Pundit
 
-  before_action :authenticate
+	before_action :authenticate
 
-  attr_reader :current_user
+	attr_reader :current_user
 
-  private
+	private
 
-  # Fetches the logged-in user
-  def authenticate
-    token = session[:token]
-    session = Session.find_by(token: token)
+	# Fetches the logged-in user
+	def authenticate
+		token = session[:token]
+		session = Session.find_by(token: token)
 
-    @current_user = session.user unless session.nil?
-  end
+		@current_user = session.user unless session.nil?
+	end
 
-  # Redirects to login if not logged in
-  def require_auth
-    return if @current_user
+	# Redirects to login if not logged in
+	def require_auth
+		return if @current_user
 
-    flash.notice = 'You need to log in first!'
+		flash.notice = 'You need to log in first!'
 
-    redirect_to '/login'
-  end
+		redirect_to '/login'
+	end
 
-  # Redirects to home if signed in
-  def redirect_if_signed_in
-    redirect_to '/home' if @current_user
-  end
+	# Redirects to home if signed in
+	def redirect_if_signed_in
+		redirect_to '/home' if @current_user
+	end
 
-  def log_in(user)
-    token = SecureRandom.urlsafe_base64
-    Session.create!(user: user, token: token)
+	def log_in(user)
+		token = SecureRandom.urlsafe_base64
+		Session.create!(user: user, token: token)
 
-    session[:token] = token
+		session[:token] = token
 
-    redirect_to '/home'
-  end
+		redirect_to '/home'
+	end
 
-  def flash_notice_and_redirect(message, url)
-    flash.notice = message
-    redirect_to url
-  end
+	def flash_notice_and_redirect(message, url)
+		flash.notice = message
+		redirect_to url
+	end
 
-  def flash_alert_and_redirect(message, url)
-    flash.alert = message
-    redirect_to url
-  end
+	def flash_alert_and_redirect(message, url)
+		flash.alert = message
+		redirect_to url
+	end
 end
