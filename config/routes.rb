@@ -45,5 +45,6 @@ Rails.application.routes.draw do
 		post 'oauth/token', to: 'oauth#token'
 
 		get 'users/me', to: 'users#me'
+		get 'users/me/reminders', to: 'reminders#index'
 	end
 end

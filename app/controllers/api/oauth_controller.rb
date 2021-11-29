@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module Api
-	class OauthController < ApplicationController
+	class OauthController < ::ApplicationController
 		before_action :require_auth, only: %i[authorize authorize_submit]
 		skip_before_action :verify_authenticity_token, only: [:token]
 

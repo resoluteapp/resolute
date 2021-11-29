@@ -23,7 +23,7 @@ class ApplicationController < ActionController::Base
 
 		flash.notice = 'You need to log in first!'
 
-		redirect_to '/login'
+		redirect_to "/login?redirect_to=#{URI.encode_www_form_component(request.fullpath)}"
 	end
 
 	# Redirects to home if signed in
@@ -36,6 +36,8 @@ class ApplicationController < ActionController::Base
 		Session.create!(user: user, token: token)
 
 		session[:token] = token
+
+		return redirect_to params[:redirect_to] if params[:redirect_to]
 
 		redirect_to '/home'
 	end
