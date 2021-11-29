@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 module Api
-	class ApiController < ActionController::Base
+	class ApplicationController < ActionController::Base
 		before_action :authenticate
 
 		private
@@ -13,10 +15,10 @@ module Api
 		end
 
 		def require_scope(scope)
-			unless @token.scope.include?(scope)
-				render json: { error: 'missing_scope', description: "Missing scope: #{scope}" },
-											status: :forbidden
-			end
+			return if @token.scope.include?(scope)
+
+			render json: { error: 'missing_scope', description: "Missing scope: #{scope}" },
+										status: :forbidden
 		end
 	end
 end

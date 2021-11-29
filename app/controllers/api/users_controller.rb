@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 module Api
-	class UsersController < ApiController
+	class UsersController < Api::ApplicationController
 		def me
 			@user = @token.user
 		end
