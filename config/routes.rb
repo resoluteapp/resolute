@@ -39,12 +39,12 @@ Rails.application.routes.draw do
 		end
 	end
 
-	namespace :api do
+	namespace :api, defaults: { format: 'json' } do
 		get 'oauth/authorize', to: 'oauth#authorize'
 		post 'oauth/authorize', to: 'oauth#authorize_submit'
 		post 'oauth/token', to: 'oauth#token'
 
 		get 'users/me', to: 'users#me'
-		get 'users/me/reminders', to: 'reminders#index'
+		resources :reminders, only: [:index]
 	end
 end
