@@ -2,10 +2,8 @@
 
 class OauthCallbackController < ApplicationController
 	def github
-		access_token = OauthService::Github.new(
-			Rails.application.credentials.github[:client_id],
-			Rails.application.credentials.github[:client_secret]
-		).exchange_code(params[:code])
+		state = decode_state(params[:state]) if params[:state].present?
+		access_token = OauthService::Github.new.exchange_code(params[:code])
 
 		return redirect_to '/' if access_token.nil?
 
@@ -14,7 +12,7 @@ class OauthCallbackController < ApplicationController
 
 		return redirect_to_signup email if user.nil?
 
-		log_in user
+		log_in user, state&.[]('r')
 	end
 
 	def twitter
@@ -28,5 +26,9 @@ class OauthCallbackController < ApplicationController
 		flash[:email] = email
 
 		redirect_to '/signup'
+	end
+
+	def decode_state(state)
+		JSON.parse(Base64.urlsafe_decode64(state))
 	end
 end

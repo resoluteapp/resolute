@@ -31,15 +31,13 @@ class ApplicationController < ActionController::Base
 		redirect_to '/home' if @current_user
 	end
 
-	def log_in(user)
+	def log_in(user, redirect_to = nil)
 		token = SecureRandom.urlsafe_base64
 		Session.create!(user: user, token: token)
 
 		session[:token] = token
 
-		return redirect_to params[:redirect_to] if params[:redirect_to]
-
-		redirect_to '/home'
+		redirect_to(redirect_to || '/home')
 	end
 
 	def flash_notice_and_redirect(message, url)

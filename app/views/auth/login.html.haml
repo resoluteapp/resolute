@@ -25,8 +25,8 @@
 		%h3.text-gray-500.mt-10.mb-4.text-center Continue with
 
 		.flex.gap-3
-			%a.flex-1(href="/login/github")
-				%button.w-full.btn.clr-btn.bg-black GitHub
+			%a.flex-1{href: github_authorization_url(@redirect_to)}
+				%button.w-full.btn.clr-btn.bg-black <i class="fab fa-github mr-1"></i> GitHub
 
 	.w-96.text-left.text-gray-500
 		%a.text-gray-500(href="/") ← Home
