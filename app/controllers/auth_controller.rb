@@ -42,6 +42,8 @@ class AuthController < ApplicationController
 	def fail_auth(message)
 		flash.now[:alert] = message
 
+		@redirect_to = params[:redirect_to]
+
 		render 'login', status: :unprocessable_entity
 	end
 end

@@ -5,6 +5,8 @@ namespace :api do
 		post 'token', to: 'oauth#token'
 	end
 
-	get 'me', to: 'users#me'
-	resources :reminders, only: [:index]
+	defaults format: :json do
+		get 'me', to: 'users#me'
+		resources :reminders, only: [:index]
+	end
 end
