@@ -14,13 +14,8 @@ Rails.application.routes.draw do
 		get 'twitter', to: 'oauth_callback#twitter'
 	end
 
-	scope '/login' do
-		get '/', to: 'auth#login'
-		post '/', to: 'auth#auth'
-
-		get 'twitter', to: 'oauth_login#twitter'
-		get 'github', to: 'oauth_login#github'
-	end
+	get 'login', to: 'auth#login'
+	post 'login', to: 'auth#auth'
 
 	get 'logout', to: 'auth#logout'
 
