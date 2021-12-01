@@ -11,7 +11,9 @@ module OauthService
 			if redirect_to.blank?
 				"https://github.com/login/oauth/authorize?scope=user:email&client_id=#{@client_id}"
 			else
+				# rubocop:disable Layout/LineLength
 				"https://github.com/login/oauth/authorize?scope=user:email&client_id=#{@client_id}&state=#{Base64.urlsafe_encode64({ r: redirect_to }.to_json)}"
+				# rubocop:enable Layout/LineLength
 			end
 		end
 
