@@ -10,7 +10,7 @@ module Api
 		end
 
 		def create
-			@reminder = Reminder.create!(params.permit(:title).merge({ user: @token.user }))
+			@reminder = Reminder.create!(params.permit(:title).merge({ user: @token.user, oauth_app: @token.oauth_app }))
 
 			render 'show'
 		end
