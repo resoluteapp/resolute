@@ -3,6 +3,20 @@
 module Api
 	class ApplicationController < ActionController::Base
 		before_action :authenticate
+		skip_before_action :verify_authenticity_token
+
+		rescue_from ActionController::ParameterMissing do |e|
+			render json: {
+				error: 'invalid_input',
+				description: "Missing required parameter: #{e.param}"
+			}, status: :bad_request
+		end
+		rescue_from ActiveRecord::RecordInvalid do |e|
+			render json: {
+				error: 'invalid_input',
+				description: e
+			}, status: :bad_request
+		end
 
 		private
 
