@@ -1,0 +1,15 @@
+%li.bg-black.p-5.rounded-md.flex.justify-between.items-center.gap-1
+	.flex.flex-col.gap-1
+		%div
+			%i.block.text-gray-500.mr-1.fab{class: ["fa-#{browser_to_icon(session.browser)}", session == @current_session && "text-green-500"]}
+			%span #{session.browser.name} on #{session.browser.platform.name}
+			%span.font-mono.text-gray-400.inline-block.ml-2 #{session.ip}
+		.text-sm.text-gray-400
+			#{time_ago_in_words session.created_at} ago
+			- unless session.login_method.blank?
+				&middot; via #{session.login_method}
+			- if session == @current_session
+				&middot; <span class="text-green-500">current session</span>
+
+	= form_with url: session_path(session), method: :delete do
+		%button.btn.clr-btn.bg-gray-700.flex-shrink-0.hover:bg-red-500(type="submit") Log out
