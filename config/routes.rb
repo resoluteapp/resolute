@@ -23,6 +23,9 @@ Rails.application.routes.draw do
 	resources :reminders, except: [:show]
 
 	get 'settings', to: 'settings#index'
+	get 'settings/security', to: 'settings#security'
+
+	resources :sessions, path: 'settings/security/sessions', only: [:destroy]
 
 	scope '/developer' do
 		get '/', to: 'settings#developer'

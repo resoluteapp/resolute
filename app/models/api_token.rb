@@ -4,7 +4,7 @@ class ApiToken < ApplicationRecord
 	belongs_to :oauth_app
 	belongs_to :user
 
-	after_initialize :set_defaults
+	before_create :set_defaults
 
 	private
 

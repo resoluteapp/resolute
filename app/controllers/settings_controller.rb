@@ -6,4 +6,12 @@ class SettingsController < ApplicationController
 	def developer
 		@app_count = current_user.oauth_apps.length
 	end
+
+	def security
+		# TODO: limit
+		@sessions = @current_user.sessions.order(created_at: :desc)
+		@apps = ApiToken.select('oauth_app_id, MAX(created_at) AS last_authorized_at')
+																		.group('oauth_app_id')
+																		.order(last_authorized_at: :desc)
+	end
 end

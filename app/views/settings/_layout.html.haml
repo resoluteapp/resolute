@@ -1,16 +1,12 @@
 = render "shared/header", selected: "settings"
 
 .w-full.max-w-4xl.block.mx-auto.bg-gray-800.p-7.rounded-md
-	%h1.text-lg.mb-10
-		%span
-			- if selected == "developer"
-				Developer
-			- else
-				Settings
+	%h1.text-xl.mb-10.font-heading.font-semibold Settings
 
 	.flex.gap-7
 		.w-64
 			%ul.flex.flex-col
 				%a.px-4.py-2.border-gray-700.border-2.border-b-0.rounded-t-md.cursor-pointer.hover:bg-gray-700{href: "/settings", class: selected != "general" && "text-white"} General
+				%a.px-4.py-2.border-gray-700.border-2.border-b-0.cursor-pointer.hover:bg-gray-700{href: "/settings/security", class: selected != "security" && "text-white"} Security
 				%a.px-4.py-2.border-gray-700.border-2.rounded-b-md.cursor-pointer.hover:bg-gray-700{href: "/developer", class: selected != "developer" && "text-white"} Developer
 		.flex-grow= yield

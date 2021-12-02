@@ -5,6 +5,8 @@
 body {
   background: black;
   color: white;
+
+  @apply mb-10;
 }
 
 a {
@@ -57,7 +59,7 @@ a {
 
 @keyframes reminder-highlight {
   from {
-    @apply border-yellow-500;
+    @apply border-yellow-600;
   }
 
   to {

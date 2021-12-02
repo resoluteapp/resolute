@@ -12,9 +12,9 @@ class ApplicationController < ActionController::Base
 	# Fetches the logged-in user
 	def authenticate
 		token = session[:token]
-		session = Session.find_by(token: token)
+		@current_session = Session.find_by(token: token)
 
-		@current_user = session.user unless session.nil?
+		@current_user = @current_session.user unless @current_session.nil?
 	end
 
 	# Redirects to login if not logged in
@@ -33,7 +33,7 @@ class ApplicationController < ActionController::Base
 
 	def log_in(user, redirect_to = nil)
 		token = SecureRandom.urlsafe_base64
-		Session.create!(user: user, token: token)
+		Session.create!(user: user, token: token, ip: request.ip, user_agent: request.headers['User-Agent'])
 
 		session[:token] = token
 

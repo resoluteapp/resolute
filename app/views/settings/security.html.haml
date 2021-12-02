@@ -1,0 +1,31 @@
+= render "layout", selected: "security" do
+	%h2.text-lg.text-gray-400.mb-5 Sessions
+
+	%ul.flex.flex-col.gap-3.mb-10
+		- @sessions.each_with_index do |session, index|
+			%li.bg-black.p-5.rounded-md.flex.justify-between.items-center.gap-1
+				.flex.flex-col.gap-1
+					%div
+						%span #{session.browser.name} on #{session.browser.platform.name}
+						%span.font-mono.text-gray-400.inline-block.ml-2 #{session.ip}
+					.text-sm.text-gray-400
+						#{time_ago_in_words session.created_at} ago
+						- if session == @current_session
+							&middot; <span class="text-green-500">current session</span>
+				= form_with url: session_path(session), method: :delete do
+					%button.btn.clr-btn.bg-gray-700.flex-shrink-0.hover:bg-red-500(type="submit") Log out
+		-# %a(href="#") See all
+
+	%h2.text-lg.text-gray-400.mb-5 Authorized apps
+
+	- if @apps.length == 0
+		%h2.text-center.mb-8.text-gray-500 You haven't connected any apps to your account.
+	- else
+		%ul.flex.flex-col.gap-3
+			- @apps.each do |authorization|
+				%li.bg-black.p-5.rounded-md.flex.justify-between.items-center.gap-1
+					.flex.flex-col.gap-1
+						%div= authorization.oauth_app.name
+						.text-sm.text-gray-400 Last authorized #{time_ago_in_words authorization.last_authorized_at} ago
+					-# %button.btn.clr-btn.bg-gray-700.flex-shrink-0.hover:bg-red-500 Revoke
+			-# %a(href="#") See all
