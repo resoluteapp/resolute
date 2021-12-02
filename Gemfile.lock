@@ -65,7 +65,7 @@ GEM
     ast (2.4.2)
     bcrypt (3.1.16)
     bindex (0.8.1)
-    bootsnap (1.9.1)
+    bootsnap (1.9.3)
       msgpack (~> 1.0)
     browser (5.3.1)
     builder (3.2.4)
@@ -216,7 +216,6 @@ GEM
       actionpack (>= 4.0)
       activesupport (>= 4.0)
       sprockets (>= 3.0.0)
-    sqlite3 (1.4.2)
     stimulus-rails (0.7.2)
       rails (>= 6.0.0)
     temple (0.8.2)
@@ -226,6 +225,8 @@ GEM
       rails (>= 6.0.0)
     tzinfo (2.0.4)
       concurrent-ruby (~> 1.0)
+    tzinfo-data (1.2021.5)
+      tzinfo (>= 1.0.0)
     unicode-display_width (2.1.0)
     web-console (4.1.0)
       actionview (>= 6.0.0)
@@ -250,11 +251,12 @@ GEM
 
 PLATFORMS
   arm64-darwin-20
+  arm64-darwin-21
   x86_64-linux
 
 DEPENDENCIES
   bcrypt (~> 3.1.7)
-  bootsnap (>= 1.4.4)
+  bootsnap (~> 1.9, >= 1.9.3)
   browser (~> 5.3)
   byebug
   capybara (>= 3.26)
@@ -273,16 +275,15 @@ DEPENDENCIES
   rubocop-rails (~> 2.12)
   selenium-webdriver
   spring
-  sqlite3 (~> 1.4)
   stimulus-rails
   turbo-rails
-  tzinfo-data
+  tzinfo-data (~> 1.2021)
   web-console (>= 4.1.0)
   webdrivers
   webpacker (~> 5.0)
 
 RUBY VERSION
-   ruby 3.0.0p0
+   ruby 3.0.3p157
 
 BUNDLED WITH
-   2.2.21
+   2.2.32
