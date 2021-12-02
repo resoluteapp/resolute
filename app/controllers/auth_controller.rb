@@ -25,7 +25,7 @@ class AuthController < ApplicationController
 			return fail_auth 'Incorrect password.'
 		end
 
-		log_in user, params[:redirect_to]
+		log_in user: user, redirect_to: params[:redirect_to]
 	end
 
 	def logout

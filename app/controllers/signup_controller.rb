@@ -44,6 +44,6 @@ class SignupController < ApplicationController
 		request.save
 
 		user = User.create(email: request.email, password: params[:password])
-		log_in user
+		log_in user: user
 	end
 end

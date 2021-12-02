@@ -13,6 +13,8 @@
 						#{time_ago_in_words session.created_at} ago
 						- if session == @current_session
 							&middot; <span class="text-green-500">current session</span>
+						- unless session.login_method.blank?
+							&middot; logged in via #{session.login_method}
 				= form_with url: session_path(session), method: :delete do
 					%button.btn.clr-btn.bg-gray-700.flex-shrink-0.hover:bg-red-500(type="submit") Log out
 		-# %a(href="#") See all

@@ -12,7 +12,7 @@ class OauthCallbackController < ApplicationController
 
 		return redirect_to_signup email if user.nil?
 
-		log_in user, state&.[]('r')
+		log_in user: user, redirect_to: state&.[]('r'), method: 'GitHub'
 	end
 
 	def twitter
