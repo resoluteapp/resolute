@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 module SettingsHelper
+	# rubocop:disable Metrics/MethodLength
 	def browser_to_icon(browser)
 		if browser.chrome?
 			'chrome'
@@ -14,4 +15,5 @@ module SettingsHelper
 			'window-maximize'
 		end
 	end
+	# rubocop:enable Metrics/MethodLength
 end

@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class ApiToken < ApplicationRecord
-	belongs_to :oauth_app
+	belongs_to :oauth_app, optional: true
 	belongs_to :user
 
 	before_create :set_defaults

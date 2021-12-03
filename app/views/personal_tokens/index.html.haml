@@ -1,0 +1,35 @@
+= render "shared/header", selected: "settings"
+
+.w-full.max-w-4xl.block.mx-auto.bg-gray-800.p-7.rounded-md
+	.flex.justify-between.items-start.mb-10
+		%h1.text-xl.font-heading.font-semibold
+			%span.text-gray-500
+				%a.text-gray-500(href="/developer") Settings
+				\/
+			Personal tokens
+		%a.btn{href: new_personal_token_path} New
+
+	= render "shared/alert"
+	= render "shared/notice"
+	
+	- if flash[:personal_token]
+		.border-2.border-green-500.p-5.rounded-md.mb-10{"data-controller" => "copy", "data-copy-text-value" => flash[:personal_token]["token"]}
+			.mb-1 Token "#{flash[:personal_token]["description"]}" has been created.
+			.mb-3
+				%strong Please save it someplace safe, because you won't see it again.
+			.flex.items-center.gap-3
+				.font-mono.text-xl= flash[:personal_token]["token"]
+				%button.btn.text-sm.clr-btn.bg-gray-700(data-action="copy#copy" data-copy-target="button") Copy
+
+	- if @tokens.length == 0
+		%h2.text-center.mb-10.mt-15.text-gray-500 Nothing here, yet...
+	- else
+		.grid.grid-cols-2.gap-5
+			- @tokens.each do |token|
+				%li.bg-black.p-5.rounded-md.flex.justify-between.items-center.gap-1
+					.flex.flex-col.gap-1
+						.font-heading.text-xl.font-semibold= token.description
+						.text-sm.text-gray-400 Created #{time_ago_in_words token.created_at} ago
+
+					= form_with url: personal_token_path(token), method: :delete do
+						%button.btn.clr-btn.bg-gray-700.flex-shrink-0.hover:bg-red-500.transition-colors(type="submit") Revoke

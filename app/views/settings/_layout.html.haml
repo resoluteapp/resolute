@@ -10,14 +10,7 @@
 				%a.px-4.py-2.border-gray-700.border-2.border-b-0.cursor-pointer.hover:bg-gray-700{href: "/settings/security", class: selected != "security" && "text-white"} Security
 				%a.px-4.py-2.border-gray-700.border-2.rounded-b-md.cursor-pointer.hover:bg-gray-700{href: "/developer", class: selected != "developer" && "text-white"} Developer
 		.flex-grow
-			- if alert
-				%div.alert.mb-6(data-controller="alert")
-					= alert
-					%button.bg-transparent.text-xl.-mt-1(data-action="alert#dismiss") ×
-
-			- if notice
-				%div.notice.mb-6(data-controller="alert")
-					= notice
-					%button.bg-transparent.text-xl.-mt-1(data-action="alert#dismiss") ×
+			= render "shared/alert"
+			= render "shared/notice"
 
 			= yield

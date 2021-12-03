@@ -9,15 +9,8 @@
 			Apps
 		%a.btn{href: new_oauth_app_path} New
 
-	- if alert
-		%div.alert.mb-6(data-controller="alert")
-			= alert
-			%button.bg-transparent.text-xl.-mt-1(data-action="alert#dismiss") ×
-
-	- if notice
-		%div.notice.mb-6(data-controller="alert")
-			= notice
-			%button.bg-transparent.text-xl.-mt-1(data-action="alert#dismiss") ×
+	= render "shared/alert"
+	= render "shared/notice"
 
 	- if @apps.length == 0
 		%h2.text-center.mb-10.mt-15.text-gray-500 Nothing here, yet...

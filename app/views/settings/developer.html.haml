@@ -1,9 +1,12 @@
 = render "layout", selected: "developer" do
 	.grid.grid-cols-2.gap-5
-		%a.bg-blue-600.text-xl.p-5.font-semibold.font-heading.rounded-md.text-white.transform.transition-transform.hover:-translate-y-1.hover:no-underline(href="/developer/apps")
+		%a.bg-blue-600.text-xl.p-5.font-semibold.font-heading.rounded-md.text-white.transform.transition-transform.hover:-translate-y-1.hover:no-underline{href: oauth_apps_path}
 			%i.fas.fa-code.mr-2
 			Your apps
 			%span.text-sm.bg-blue-500.font-normal.font-sans.px-2.rounded-md(class="py-0.5")= @app_count
+		%a.bg-green-600.text-xl.p-5.font-semibold.font-heading.rounded-md.text-white.transform.transition-transform.hover:-translate-y-1.hover:no-underline{href: personal_tokens_path}
+			%i.fas.fa-key.mr-2
+			Personal tokens
 		%a.bg-yellow-600.text-xl.p-5.font-semibold.font-heading.rounded-md.text-white.transform.transition-transform.hover:-translate-y-1.hover:no-underline(href="https://api.useresolute.com" target="_blank" data-turbo="false")
 			%i.fas.fa-book.mr-2
 			Documentation

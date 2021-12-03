@@ -5,10 +5,10 @@
 		%span.text-gray-500
 			%a.text-gray-500(href="/developer") Settings
 			\/ 
-			%a.text-gray-500(href="/developer/apps") Apps
+			%a.text-gray-500{href: personal_tokens_path} Personal tokens
 			\/ 
 		New
 	
-	= form_with model: OauthApp.new, class: "block mx-auto" do |form|
-		= form.text_field :name, class: "input mb-4", placeholder: "App name", autofocus: true, required: true
+	= form_with url: personal_tokens_path, class: "block mx-auto" do |form|
+		= form.text_field :description, class: "input mb-4", placeholder: "Description", autofocus: true, required: true
 		= form.submit "Create", class: "btn"

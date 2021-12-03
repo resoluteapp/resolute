@@ -39,6 +39,8 @@ Rails.application.routes.draw do
 				get 'advanced'
 			end
 		end
+
+		resources :personal_tokens, except: [:show]
 	end
 
 	# load routes/api.rb
