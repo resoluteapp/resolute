@@ -13,10 +13,10 @@ COPY Gemfile Gemfile.lock ./
 COPY package.json yarn.lock ./
 
 RUN bundle install && \
-    yarn install && yarn cache clean
+    yarn install
 
 COPY . .
 
-RUN bin/rails assets:precompile
+RUN bin/rails assets:precompile && yarn cache clean
 
 CMD ["bin/rails", "server"]

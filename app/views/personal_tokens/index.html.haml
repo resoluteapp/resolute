@@ -18,7 +18,7 @@
 			.mb-3
 				%strong Please save it someplace safe, because you won't see it again.
 			.flex.items-center.gap-3
-				.font-mono.text-xl= flash[:personal_token]["token"]
+				.font-mono.text-xl.select-all= flash[:personal_token]["token"]
 				%button.btn.text-sm.clr-btn.bg-gray-700(data-action="copy#copy" data-copy-target="button") Copy
 
 	- if @tokens.length == 0

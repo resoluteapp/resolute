@@ -3,10 +3,7 @@
 @tailwind utilities;
 
 body {
-  background: black;
-  color: white;
-
-  @apply mb-10;
+  @apply bg-black text-white;
 }
 
 a {
@@ -19,35 +16,34 @@ a {
 
 .btn {
   @apply cursor-pointer text-white rounded-md py-2 px-4 shadow-md hover:shadow-lg hover:no-underline;
-}
 
-.btn:not(.clr-btn) {
-  @apply bg-green-600;
+  &:not(.clr-btn) {
+    @apply bg-green-600;
+  }
 }
 
 .input {
   @apply bg-black block w-full py-3 px-4 rounded-md placeholder-gray-500 border-2 border-gray-700 focus:outline-none focus:border-green-500;
+
+  &.unobtrusive {
+    @apply border-transparent focus:border-green-500;
+  }
+
+  &:disabled {
+    @apply cursor-not-allowed text-gray-500;
+  }
 }
 
-.input.unobtrusive {
-  @apply border-transparent focus:border-green-500;
-}
-
-.input:disabled {
-  @apply cursor-not-allowed text-gray-500;
-}
-
-.alert,
-.notice {
-  @apply text-white rounded-md py-3 px-4 flex justify-between items-center gap-3;
+@mixin alert($color) {
+  @apply text-white rounded-md py-3 px-4 flex justify-between items-center gap-3 bg-#{$color};
 }
 
 .alert {
-  @apply bg-red-500 border-red-700;
+  @include alert(red-500);
 }
 
 .notice {
-  @apply bg-yellow-600 border-yellow-700;
+  @include alert(yellow-600);
 }
 
 .reminder--highlighted {
