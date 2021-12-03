@@ -7,10 +7,10 @@
 		%a.bg-green-600.text-xl.p-5.font-semibold.font-heading.rounded-md.text-white.transform.transition-transform.hover:-translate-y-1.hover:no-underline{href: personal_tokens_path}
 			%i.fas.fa-key.mr-2
 			Personal tokens
+			%span.text-sm.bg-green-500.font-normal.font-sans.px-2.rounded-md(class="py-0.5")= @personal_token_count
 		%a.bg-yellow-600.text-xl.p-5.font-semibold.font-heading.rounded-md.text-white.transform.transition-transform.hover:-translate-y-1.hover:no-underline(href="https://api.useresolute.com" target="_blank" data-turbo="false")
 			%i.fas.fa-book.mr-2
 			Documentation
 	
 	.text-gray-400.mt-5.text-sm
-		%strong Psssst...
-		did you know that Resolute is <a href="https://github.com/cjdenio/resolute" target="_blank">open-source</a>?
+		<strong>Psssst...</strong> did you know that Resolute is <a href="https://github.com/cjdenio/resolute" target="_blank">open-source</a>?

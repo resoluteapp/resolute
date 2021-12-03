@@ -4,8 +4,7 @@ class SessionsController < ApplicationController
 	before_action :require_auth
 
 	def destroy
-		session = Session.find(params[:id])
-		return redirect_to '/settings/security' if session.nil?
+		session = Session.find_by!(id: params[:id], user: @current_user)
 
 		authorize session
 

@@ -5,6 +5,7 @@ class SettingsController < ApplicationController
 
 	def developer
 		@app_count = current_user.oauth_apps.length
+		@personal_token_count = ApiToken.where(oauth_app: nil, user: @current_user).count
 	end
 
 	def security
