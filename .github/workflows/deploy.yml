@@ -1,0 +1,17 @@
+name: Deploy
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  deploy:
+    name: Deploy
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: dokku/github-action@master
+        with:
+          git_remote_url: "ssh://dokku@159.223.133.179:22/resolute"
+          ssh_private_key: ${{ secrets.SSH_PRIVATE_KEY }}
+          ssh_host_key: 159.223.133.179 ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQC8iEFkcXYjxJJYdoiDGKrCdzMPVqEG96r1UF5jZ0dxXqX4iu1XAPIQbmXpsgeaWWEJOjOs9FaW6KLdb7JJ9d6hYSqRXz1Rt5NAeg2qgIIuLsuGLIE4twmeBfy88pTsof3k5z8bNViaEGugmJgFEt2Mn9uZ2x83XJy0tsGpRZ1XpZhDB2bAcnhJqRhdZhRtt6cVZR9qIoGQxxdVzfhxn1GVKe09MU3A4u8zEjx/mzXKavaSXzwV8CYMdMLJsG7wsIeVib2J5eXp3Ydh0PcBaqmmhfG4MFlODem0R/c9ZQ+tKXePIWQjAR6gMYuJvFXTBiLKIiqCX9uXB2l+/O3GIQD1MFSLpoDq17iZCEoUExxzm6f/e873ZthzM2sPasQGZG7ms+ddIV9Ok8MKrVA4L802EuFnmHkoKjDFe0fYpytsApIP8RKWWOnekDHCrIdBLWPyqIx8AbGLXLPqEQva0XXiafnWEPZ/6w3MQZGVOofbVeePq5/CesHLs+ZvLR6vKs0=
