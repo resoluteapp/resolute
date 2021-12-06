@@ -1,5 +1,5 @@
 .group.bg-black.text-xl.p-5.rounded-md.flex.justify-between.items-center.gap-5.border-2.border-transparent.relative.break-words.cursor-default{class: [flash[:highlighted_reminder] == reminder.id && "reminder--highlighted"]}
-	.flex.flex-col.gap-1
+	.flex.flex-col.gap-1.min-w-0
 		%h1.font-semibold.font-heading.break-words.min-w-0= reminder.title
 		- unless reminder.oauth_app.nil?
 			.text-xs.text-gray-400 Added by #{reminder.oauth_app.name}
