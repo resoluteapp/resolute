@@ -1,7 +1,7 @@
 .flex.py-5.px-10.justify-between.bg-black.mb-5.z-40
 	.flex.items-center.gap-5
 		%a.mr-5(href="/home" title="Resolute")
-			= image_pack_tag "media/images/icon.svg", size: "50x50", alt: "Resolute logo"
+			= image_tag "icon.svg", size: "50x50", alt: "Resolute logo"
 		%a{href: "/home", class: [selected != "reminders" && "text-gray-500"]} Reminders
 		%a{href: "/integrations", class: [selected != "integrations" && "text-gray-500"]} Integrations
 		%a{href: "/settings", class: [selected != "settings" && "text-gray-500"]} Settings

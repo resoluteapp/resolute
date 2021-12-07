@@ -8,17 +8,12 @@
     "moduleResolution": "node",
     "baseUrl": ".",
     "paths": {
-        "*": ["node_modules/*", "app/javascript/*"]
+      "*": ["node_modules/*", "app/javascript/*"]
     },
     "sourceMap": true,
-    "target": "es5",
+    "target": "es6",
     "noEmit": true
   },
-  "exclude": [
-    "**/*.spec.ts",
-    "node_modules",
-    "vendor",
-    "public"
-  ],
+  "exclude": ["**/*.spec.ts", "node_modules", "vendor", "public"],
   "compileOnSave": false
 }

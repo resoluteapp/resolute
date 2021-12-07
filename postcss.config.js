@@ -1,19 +1,12 @@
 module.exports = {
-  plugins: {
-    tailwindcss: {},
-    autoprefixer: {},
-  },
+  plugins: [
+    require("postcss-import"),
+    require("postcss-url")({
+      url: "copy",
+      useHash: true,
+    }),
+    require("tailwindcss"),
+    require("autoprefixer"),
+    require("cssnano"),
+  ],
 };
-
-// module.exports = {
-//   plugins: [
-//     require('postcss-import'),
-//     require('postcss-flexbugs-fixes'),
-//     require('postcss-preset-env')({
-//       autoprefixer: {
-//         flexbox: 'no-2009'
-//       },
-//       stage: 3
-//     })
-//   ]
-// }

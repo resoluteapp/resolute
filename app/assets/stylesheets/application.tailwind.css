@@ -1,3 +1,9 @@
+@import "@fontsource/outfit/300.css";
+@import "@fontsource/outfit/600.css";
+@import "@fontsource/outfit/700.css";
+
+@import "@fortawesome/fontawesome-free/css/all.css";
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -16,34 +22,27 @@ a {
 
 .btn {
   @apply cursor-pointer text-white rounded-md py-2 px-4 shadow-md hover:shadow-lg hover:no-underline;
-
-  &:not(.clr-btn) {
-    @apply bg-green-600;
-  }
+}
+.btn:not(.clr-btn) {
+  @apply bg-green-600;
 }
 
 .input {
   @apply bg-black block w-full py-3 px-4 rounded-md placeholder-gray-500 border-2 border-gray-700 focus:outline-none focus:border-green-500;
-
-  &.unobtrusive {
-    @apply border-transparent focus:border-green-500;
-  }
-
-  &:disabled {
-    @apply cursor-not-allowed text-gray-500;
-  }
 }
-
-@mixin alert($color) {
-  @apply text-white rounded-md py-3 px-4 flex justify-between items-center gap-3 bg-#{$color};
+.input.unobtrusive {
+  @apply border-transparent focus:border-green-500;
+}
+.input:disabled {
+  @apply cursor-not-allowed text-gray-500;
 }
 
 .alert {
-  @include alert(red-500);
+  @apply text-white rounded-md py-3 px-4 flex justify-between items-center gap-3 bg-red-500;
 }
 
 .notice {
-  @include alert(yellow-600);
+  @apply text-white rounded-md py-3 px-4 flex justify-between items-center gap-3 bg-yellow-600;
 }
 
 .reminder--highlighted {

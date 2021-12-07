@@ -69,3 +69,7 @@ end
 gem "browser", "~> 5.3"
 
 gem "tzinfo-data", "~> 1.2021"
+
+gem "jsbundling-rails", "~> 0.2.2"
+
+gem "cssbundling-rails", "~> 0.2.7"

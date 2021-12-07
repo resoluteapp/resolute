@@ -40,3 +40,6 @@ yarn-debug.log*
 .yarn-integrity
 
 /config/credentials/development.key
+
+/app/assets/builds/*
+!/app/assets/builds/.keep

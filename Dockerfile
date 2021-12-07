@@ -10,10 +10,8 @@ RUN curl -fsSL https://deb.nodesource.com/setup_16.x | bash - && \
     npm install -g yarn
 
 COPY Gemfile Gemfile.lock ./
-COPY package.json yarn.lock ./
 
-RUN bundle install && \
-    yarn install
+RUN bundle install
 
 COPY . .
 
