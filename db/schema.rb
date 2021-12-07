@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_12_02_225129) do
+ActiveRecord::Schema.define(version: 2021_12_07_152821) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -36,6 +36,7 @@ ActiveRecord::Schema.define(version: 2021_12_02_225129) do
     t.datetime "updated_at", precision: 6, null: false
     t.string "name"
     t.boolean "official"
+    t.boolean "public"
     t.index ["client_id"], name: "index_oauth_apps_on_client_id", unique: true
     t.index ["client_secret"], name: "index_oauth_apps_on_client_secret", unique: true
     t.index ["user_id"], name: "index_oauth_apps_on_user_id"

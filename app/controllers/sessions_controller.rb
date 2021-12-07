@@ -15,8 +15,6 @@ class SessionsController < ApplicationController
 
 			redirect_to '/login'
 		else
-			flash.notice = 'Session has been logged out.'
-
 			redirect_back fallback_location: '/settings/security'
 		end
 	end

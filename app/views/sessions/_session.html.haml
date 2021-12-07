@@ -1,7 +1,7 @@
 %li.bg-black.p-5.rounded-md.flex.justify-between.items-center.gap-1
 	.flex.flex-col.gap-1
 		%div
-			%i.block.text-gray-500.mr-1.fab{class: ["fa-#{browser_to_icon(session.browser)}", session == @current_session && "text-green-500"]}
+			%i.inline-block.text-gray-500.mr-1.fab{class: ["fa-#{browser_to_icon(session.browser)}", session == @current_session && "text-green-500"]}
 			%span #{session.browser.name} on #{session.browser.platform.name}
 			%span.font-mono.text-gray-400.inline-block.ml-2 #{session.ip}
 		.text-sm.text-gray-400
