@@ -19,7 +19,7 @@ class OauthAppsController < ApplicationController
 
 		flash.notice = 'App has been updated.'
 
-		redirect_to edit_oauth_app_path(@app)
+		redirect_back fallback_location: edit_oauth_app_path(@app)
 	end
 
 	def destroy

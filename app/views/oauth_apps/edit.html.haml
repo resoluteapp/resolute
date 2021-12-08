@@ -1,9 +1,6 @@
 = render "layout", selected: "settings" do
 	= form_with model: @app do |form|
-		%label.block.mb-1.text-sm(for="oauth_app_name") App name
+		%label.block.mb-2.text-sm.text-gray-400(for="oauth_app_name") App name
 		= form.text_field :name, class: "input mb-4", required: true, placeholder: "My Cool App", autofocus: true
-
-		%label.block.mb-1.text-sm(for="oauth_app_redirect_uri") OAuth redirect URI
-		= form.url_field :redirect_uri, class: "input mb-6", placeholder: "https://my-cool-app.com/oauth/callback"
 
 		= form.submit "Save", class: "btn"

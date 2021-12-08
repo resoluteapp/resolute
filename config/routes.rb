@@ -20,7 +20,7 @@ Rails.application.routes.draw do
 	get 'logout', to: 'auth#logout'
 
 	get 'home', to: 'reminders#index'
-	resources :reminders, except: [:show]
+	resources :reminders, only: %i[create destroy]
 
 	get 'settings', to: 'settings#index'
 	get 'settings/security', to: 'settings#security'
@@ -40,7 +40,7 @@ Rails.application.routes.draw do
 			end
 		end
 
-		resources :personal_tokens, except: [:show]
+		resources :personal_tokens, path: 'tokens', except: [:show]
 	end
 
 	# load routes/api.rb
