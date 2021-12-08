@@ -12,7 +12,7 @@
 			- if @app.user == @current_user
 				.mt-4.p-5.border-2.border-green-500.rounded-md
 					.text-gray-400.text-xs.mb-1 <i class="fas fa-eye"></i> Only you can see this
-					Fix this by adding a valid redirect URI in <a href="#{edit_oauth_app_path(@app)}" target="_blank">your app's settings</a>.
+					Fix this by adding a valid redirect URI in <a href="#{oauth_app_path(@app)}" target="_blank">your app's settings</a>.
 		- else
 			%h2.text-2xl.mb-6.ml-1.font-normal.font-heading Connect <strong>#{@app.name}</strong> to your account?
 
