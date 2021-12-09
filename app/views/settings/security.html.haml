@@ -2,13 +2,13 @@
 	.mb-5.flex.justify-between.items-center
 		%h2.text-lg.text-gray-400 Sessions
 		= form_with url: destroy_all_sessions_path do
-			%button.btn.clr-btn.bg-red-500(type="submit") Log out everywhere
+			%button.btn.clr-btn.bg-red-500(type="submit") Log out everywhere else
 
 	%ul.flex.flex-col.gap-3.mb-10{"x-data" => "{ unfurled: false }"}
 		- @sessions[0, 2].each do |session|
 			= render session
 		- if @sessions.length > 2
-			%div{"x-show" => "unfurled"}
+			%div.flex.flex-col.gap-3{"x-show" => "unfurled"}
 				- @sessions[2..].each do |session|
 					= render session
 			%div
@@ -23,7 +23,7 @@
 			- @authorizations[0, 2].each do |authorization|
 				= render "authorizations/authorization", authorization: authorization
 			- if @authorizations.length > 2
-				%div{"x-show" => "unfurled"}
+				%div.flex.flex-col.gap-3{"x-show" => "unfurled"}
 					- @authorizations[2..].each do |authorization|
 						= render "authorizations/authorization", authorization: authorization
 				%div
