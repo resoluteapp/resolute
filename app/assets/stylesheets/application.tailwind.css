@@ -12,8 +12,9 @@ body {
   @apply bg-black text-white;
 }
 
-a {
-  @apply text-green-500 hover:underline;
+a,
+.link {
+  @apply text-green-500 hover:underline cursor-pointer;
 }
 
 .turbo-progress-bar {

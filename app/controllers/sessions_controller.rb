@@ -15,12 +15,8 @@ class SessionsController < ApplicationController
 
 			redirect_to '/login'
 		else
-			redirect_back fallback_location: '/settings/security'
+			redirect_to '/settings/security'
 		end
-	end
-
-	def index
-		@sessions = @current_user.sessions.order(created_at: :desc)
 	end
 
 	def destroy_all
@@ -28,6 +24,6 @@ class SessionsController < ApplicationController
 
 		flash.notice = 'Successfully logged out everywhere.'
 
-		redirect_back fallback_location: '/settings/security'
+		redirect_to '/settings/security'
 	end
 end

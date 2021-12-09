@@ -1,4 +1,5 @@
 import "@hotwired/turbo";
+import Alpine from "alpinejs";
 import { Application } from "@hotwired/stimulus";
 import controllers from "controllers";
 
@@ -11,6 +12,8 @@ declare global {
 }
 
 window.Stimulus = application;
+
+Alpine.start();
 
 // Init Stimulus controllers
 controllers(application);

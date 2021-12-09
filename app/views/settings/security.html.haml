@@ -4,22 +4,27 @@
 		= form_with url: destroy_all_sessions_path do
 			%button.btn.clr-btn.bg-red-500(type="submit") Log out everywhere
 
-	%ul.flex.flex-col.gap-3.mb-10
-		- @sessions.each do |session|
+	%ul.flex.flex-col.gap-3.mb-10{"x-data" => "{ unfurled: false }"}
+		- @sessions[0, 2].each do |session|
 			= render session
-		%div
-			%a(href="/settings/security/sessions") See all
+		- if @sessions.length > 2
+			%div{"x-show" => "unfurled"}
+				- @sessions[2..].each do |session|
+					= render session
+			%div
+				.inline-block.link{"@click" => "unfurled = !unfurled", "x-text" => "unfurled ? 'See fewer' : 'See all'"} See all
 
 	%h2.text-lg.text-gray-400.mb-5 Authorized apps
 
-	- if @apps.length == 0
+	- if @authorizations.length == 0
 		%h2.text-center.mb-8.text-gray-500 You haven't connected any apps to your account.
 	- else
-		%ul.flex.flex-col.gap-3
-			- @apps.each do |authorization|
-				%li.bg-black.p-5.rounded-md.flex.justify-between.items-center.gap-1
-					.flex.flex-col.gap-1
-						%div= authorization.oauth_app.name
-						.text-sm.text-gray-400 Last authorized #{time_ago_in_words authorization.last_authorized_at} ago
-					-# %button.btn.clr-btn.bg-gray-700.flex-shrink-0.hover:bg-red-500 Revoke
-			-# %a(href="#") See all
+		%ul.flex.flex-col.gap-3{"x-data" => "{ unfurled: false }"}
+			- @authorizations[0, 2].each do |authorization|
+				= render "authorizations/authorization", authorization: authorization
+			- if @authorizations.length > 2
+				%div{"x-show" => "unfurled"}
+					- @authorizations[2..].each do |authorization|
+						= render "authorizations/authorization", authorization: authorization
+				%div
+					.inline-block.link{"@click" => "unfurled = !unfurled", "x-text" => "unfurled ? 'See fewer' : 'See all'"} See all

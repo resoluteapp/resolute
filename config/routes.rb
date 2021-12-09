@@ -22,13 +22,17 @@ Rails.application.routes.draw do
 	get 'home', to: 'reminders#index'
 	resources :reminders, only: %i[create destroy]
 
-	get 'settings', to: 'settings#index'
-	get 'settings/security', to: 'settings#security'
+	scope '/settings' do
+		get '/', to: 'settings#index'
+		get 'security', to: 'settings#security'
 
-	resources :sessions, path: 'settings/security/sessions', only: %i[destroy index] do
-		collection do
-			post 'destroy_all'
+		resources :sessions, path: 'security/sessions', only: %i[destroy] do
+			collection do
+				post 'destroy_all'
+			end
 		end
+
+		resources :authorizations, path: 'security/authorizations', only: %i[destroy]
 	end
 
 	scope '/developer' do

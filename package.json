@@ -9,6 +9,7 @@
     "@rails/actioncable": "^6.0.0",
     "@rails/activestorage": "^6.0.0",
     "@rails/ujs": "^6.0.0",
+    "alpinejs": "^3.7.0",
     "esbuild": "^0.14.2",
     "postcss-cli": "^9.0.2",
     "postcss-nesting": "^10.0.2",
