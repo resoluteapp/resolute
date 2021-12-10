@@ -8,7 +8,7 @@ WORKDIR /usr/src/app
 
 RUN curl -fsSL https://deb.nodesource.com/setup_16.x | bash - && \
     apt-get install -y nodejs && \
-    npm install -g yarn
+    corepack enable
 
 COPY Gemfile Gemfile.lock ./
 
