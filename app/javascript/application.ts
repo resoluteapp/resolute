@@ -1,7 +1,7 @@
 import "@hotwired/turbo";
 import Alpine from "alpinejs";
 import { Application } from "@hotwired/stimulus";
-import controllers from "controllers";
+import controllers from "./controllers";
 
 const application = Application.start();
 
