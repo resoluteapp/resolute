@@ -42,7 +42,7 @@
 					= form.hidden_field :scope, value: @scopes.to_json
 					= form.hidden_field :state, value: @state unless @state.blank?
 					= form.submit "Connect", class: "btn"
-					= form.submit "Cancel", class: "btn clr-btn bg-gray-700"
+					= form.submit "Cancel", class: "btn bg-gray-700"
 
 	- if @app.nil? || @app.redirect_uri.blank?
 		.w-96.text-left.text-gray-500

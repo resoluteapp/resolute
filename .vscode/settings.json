@@ -7,5 +7,6 @@
     "editor.detectIndentation": false,
     "editor.insertSpaces": false
   },
-  "scss.lint.unknownAtRules": "ignore"
+  "scss.lint.unknownAtRules": "ignore",
+  "css.validate": false
 }

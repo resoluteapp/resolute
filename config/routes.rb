@@ -38,7 +38,7 @@ Rails.application.routes.draw do
 	scope '/developer' do
 		get '/', to: 'settings#developer'
 
-		resources :oauth_apps, path: 'apps' do
+		resources :oauth_apps, path: 'apps', path_names: { edit: 'settings' } do
 			member do
 				get 'advanced'
 			end

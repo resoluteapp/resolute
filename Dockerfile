@@ -2,6 +2,7 @@ FROM ruby:3.0.3
 
 ARG RAILS_MASTER_KEY=${RAILS_MASTER_KEY}
 ENV RAILS_ENV production
+ENV NODE_ENV production
 
 WORKDIR /usr/src/app
 

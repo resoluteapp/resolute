@@ -19,7 +19,7 @@
 				%strong Please save it someplace safe, because you won't see it again.
 			.flex.items-center.gap-3
 				.font-mono.text-lg.select-all= flash[:personal_token]["token"]
-				%button.btn.text-sm.clr-btn.bg-gray-700(data-action="copy#copy" data-copy-target="button") Copy
+				%button.btn.text-sm.bg-gray-700(data-action="copy#copy" data-copy-target="button") Copy
 
 	- if @tokens.length == 0
 		%h2.text-center.mb-10.mt-15.text-gray-500 Nothing here, yet...
@@ -32,4 +32,4 @@
 						.text-sm.text-gray-400 Created #{time_ago_in_words token.created_at} ago
 
 					= form_with url: personal_token_path(token), method: :delete do
-						%button.btn.clr-btn.bg-gray-700.flex-shrink-0.hover:bg-red-500.transition-colors(type="submit") Revoke
+						%button.btn.bg-gray-700.shrink-0.hover:bg-red-500.transition-colors(type="submit") Revoke

@@ -8,34 +8,36 @@
 @tailwind components;
 @tailwind utilities;
 
-body {
-  @apply bg-black text-white;
+@layer base {
+  body,
+  html {
+    @apply bg-black text-white;
+  }
+
+  .turbo-progress-bar {
+    @apply bg-green-700;
+  }
 }
 
-a,
-.link {
-  @apply text-green-500 hover:underline cursor-pointer;
-}
+@layer components {
+  .btn {
+    @apply cursor-pointer text-white rounded-md py-2 px-4 shadow-md hover:shadow-lg hover:no-underline bg-green-600;
+  }
 
-.turbo-progress-bar {
-  @apply bg-green-700;
-}
+  a,
+  .link {
+    @apply text-green-500 hover:underline cursor-pointer;
+  }
 
-.btn {
-  @apply cursor-pointer text-white rounded-md py-2 px-4 shadow-md hover:shadow-lg hover:no-underline;
-}
-.btn:not(.clr-btn) {
-  @apply bg-green-600;
-}
-
-.input {
-  @apply bg-black block w-full py-3 px-4 rounded-md placeholder-gray-500 border-2 border-gray-700 focus:outline-none focus:border-green-500;
-}
-.input.unobtrusive {
-  @apply border-transparent focus:border-green-500;
-}
-.input:disabled {
-  @apply cursor-not-allowed text-gray-500;
+  .input {
+    @apply bg-black block w-full py-3 px-4 rounded-md placeholder-gray-500 border-2 border-gray-700 focus:outline-none focus:border-green-500;
+  }
+  .input.unobtrusive {
+    @apply border-transparent focus:border-green-500;
+  }
+  .input:disabled {
+    @apply cursor-not-allowed text-gray-500;
+  }
 }
 
 .alert {

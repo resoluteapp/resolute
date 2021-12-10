@@ -7,6 +7,6 @@ module.exports = {
     }),
     require("tailwindcss"),
     require("autoprefixer"),
-    require("cssnano"),
+    ...(process.env.NODE_ENV === "production" ? [require("cssnano")] : []),
   ],
 };

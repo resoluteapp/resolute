@@ -3,4 +3,4 @@
 		%div= authorization.oauth_app.name
 		.text-sm.text-gray-400 Last authorized #{time_ago_in_words authorization.last_authorized_at} ago
 	= form_with url: authorization_path(authorization.oauth_app.id), method: :delete do
-		%button.btn.clr-btn.bg-gray-700.flex-shrink-0.hover:bg-red-500.transition-colors(type="submit") Revoke
+		%button.btn.bg-gray-700.shrink-0.hover:bg-red-500.transition-colors(type="submit") Revoke

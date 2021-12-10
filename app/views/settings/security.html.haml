@@ -2,7 +2,7 @@
 	.mb-5.flex.justify-between.items-center
 		%h2.text-lg.text-gray-400 Sessions
 		= form_with url: destroy_all_sessions_path do
-			%button.btn.clr-btn.bg-red-500(type="submit") Log out everywhere else
+			%button.btn.bg-red-500(type="submit") Log out everywhere else
 
 	%ul.flex.flex-col.gap-3.mb-10{"x-data" => "{ unfurled: false }"}
 		- @sessions[0, 2].each do |session|

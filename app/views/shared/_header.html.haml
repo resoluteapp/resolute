@@ -7,6 +7,6 @@
 		%a{href: "/settings", class: [selected != "settings" && "text-gray-500"]} Settings
 
 	.flex.items-center.gap-5
-		%a.btn.clr-btn.bg-gray-700(href="/logout") Log out
+		%a.btn.bg-gray-700(href="/logout") Log out
 		%a(href="/settings")
 			= gravatar @current_user.email
