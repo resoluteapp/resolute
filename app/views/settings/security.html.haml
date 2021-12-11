@@ -8,7 +8,7 @@
 		- @sessions[0, 2].each do |session|
 			= render session
 		- if @sessions.length > 2
-			%div.flex.flex-col.gap-3{"x-show" => "unfurled"}
+			%div.flex.flex-col.gap-3{"x-show" => "unfurled", "x-cloak" => true}
 				- @sessions[2..].each do |session|
 					= render session
 			%div
@@ -23,7 +23,7 @@
 			- @authorizations[0, 2].each do |authorization|
 				= render "authorizations/authorization", authorization: authorization
 			- if @authorizations.length > 2
-				%div.flex.flex-col.gap-3{"x-show" => "unfurled"}
+				%div.flex.flex-col.gap-3{"x-show" => "unfurled", "x-cloak" => true}
 					- @authorizations[2..].each do |authorization|
 						= render "authorizations/authorization", authorization: authorization
 				%div
