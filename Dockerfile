@@ -16,6 +16,8 @@ RUN bundle install
 
 COPY . .
 
+RUN yarn install
+
 RUN bin/rails assets:precompile
 
 CMD ["bin/rails", "server"]
