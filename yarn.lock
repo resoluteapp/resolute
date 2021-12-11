@@ -130,13 +130,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@rails/ujs@npm:^6.0.0":
-  version: 6.1.4
-  resolution: "@rails/ujs@npm:6.1.4"
-  checksum: e6e7fc15a0cc96ac8a134330eac15270956b8ed13c1b5048d0b17020f33af9de91b76fbaef5f90cb95af9c207fb27477a0c97bb8b691ac9a075ce93e43b404af
-  languageName: node
-  linkType: hard
-
 "@tootallnate/once@npm:1":
   version: 1.1.2
   resolution: "@tootallnate/once@npm:1.1.2"
@@ -2547,7 +2540,6 @@ __metadata:
     "@hotwired/turbo": ^7.0.1
     "@rails/actioncable": ^6.0.0
     "@rails/activestorage": ^6.0.0
-    "@rails/ujs": ^6.0.0
     alpinejs: ^3.7.0
     autoprefixer: ^10.4.0
     cssnano: ^5.0.12
