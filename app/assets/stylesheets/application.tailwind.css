@@ -13,10 +13,6 @@
   html {
     @apply bg-black text-white;
   }
-
-  .turbo-progress-bar {
-    @apply bg-green-700;
-  }
 }
 
 @layer components {
@@ -46,6 +42,10 @@
 
 .notice {
   @apply text-white rounded-md py-3 px-4 flex justify-between items-center gap-3 bg-yellow-600;
+}
+
+.turbo-progress-bar {
+  @apply bg-green-700;
 }
 
 [x-cloak] {
