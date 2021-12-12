@@ -5,10 +5,12 @@
 
 	.flex.gap-7
 		.w-64
+			%ul.flex.flex-col.mb-5
+				= sidebar_link(title: "General", href: "/settings", selected: selected == "general")
+				= sidebar_link(title: "Security", href: "/settings/security", selected: selected == "security")
+
 			%ul.flex.flex-col
-				%a.px-4.py-2.border-gray-700.border-2.border-b-0.rounded-t-md.cursor-pointer.hover:bg-gray-700{href: "/settings", class: selected != "general" && "text-white"} General
-				%a.px-4.py-2.border-gray-700.border-2.rounded-b-md.cursor-pointer.hover:bg-gray-700{href: "/settings/security", class: selected != "security" && "text-white"} Security
-				%a.px-4.py-2.border-gray-700.border-2.rounded-md.cursor-pointer.hover:bg-gray-700.mt-5.inline-block{href: "/developer", class: selected != "developer" && "text-white"} Developer
+				= sidebar_link(title: "Developer", href: "/developer", selected: selected == "developer")
 		.grow
 			= render "shared/alert"
 			= render "shared/notice"

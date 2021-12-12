@@ -6,7 +6,9 @@ export default class extends Controller {
   };
   static targets = ["button"];
 
-  timeout: NodeJS.Timeout | null;
+  timeout: number | null;
+  textValue: string;
+  buttonTarget: HTMLElement;
 
   initialize() {
     this.timeout = null;
