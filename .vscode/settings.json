@@ -1,12 +1,12 @@
 {
-  "[haml]": {
-    "editor.detectIndentation": false,
-    "editor.insertSpaces": false
-  },
-  "[ruby]": {
-    "editor.detectIndentation": false,
-    "editor.insertSpaces": false
-  },
-  "scss.lint.unknownAtRules": "ignore",
-  "css.validate": false
+	"[haml]": {
+		"editor.detectIndentation": false,
+		"editor.insertSpaces": false
+	},
+	"[ruby]": {
+		"editor.detectIndentation": false,
+		"editor.insertSpaces": false
+	},
+	"scss.lint.unknownAtRules": "ignore",
+	"css.validate": false
 }

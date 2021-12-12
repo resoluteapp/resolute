@@ -9,62 +9,62 @@
 @tailwind utilities;
 
 @layer base {
-  body,
-  html {
-    @apply bg-black text-white;
-  }
+	body,
+	html {
+		@apply bg-black text-white;
+	}
 }
 
 @layer components {
-  .btn {
-    @apply cursor-pointer text-white rounded-md py-2 px-4 shadow-md hover:shadow-lg hover:no-underline bg-green-600;
-  }
+	.btn {
+		@apply cursor-pointer text-white rounded-md py-2 px-4 shadow-md hover:shadow-lg hover:no-underline bg-green-600;
+	}
 
-  a,
-  .link {
-    @apply text-green-500 hover:underline cursor-pointer;
-  }
+	a,
+	.link {
+		@apply text-green-500 hover:underline cursor-pointer;
+	}
 
-  .input {
-    @apply bg-black block w-full py-3 px-4 rounded-md placeholder-gray-500 border-2 border-gray-700 focus:outline-none focus:border-green-500;
-  }
-  .input.unobtrusive {
-    @apply border-transparent focus:border-green-500;
-  }
-  .input:disabled {
-    @apply cursor-not-allowed text-gray-500;
-  }
+	.input {
+		@apply bg-black block w-full py-3 px-4 rounded-md placeholder-gray-500 border-2 border-gray-700 focus:outline-none focus:border-green-500;
+	}
+	.input.unobtrusive {
+		@apply border-transparent focus:border-green-500;
+	}
+	.input:disabled {
+		@apply cursor-not-allowed text-gray-500;
+	}
 }
 
 .alert {
-  @apply text-white rounded-md py-3 px-4 flex justify-between items-center gap-3 bg-red-500;
+	@apply text-white rounded-md py-3 px-4 flex justify-between items-center gap-3 bg-red-500;
 }
 
 .notice {
-  @apply text-white rounded-md py-3 px-4 flex justify-between items-center gap-3 bg-yellow-600;
+	@apply text-white rounded-md py-3 px-4 flex justify-between items-center gap-3 bg-yellow-600;
 }
 
 .turbo-progress-bar {
-  @apply bg-green-700;
+	@apply bg-green-700;
 }
 
 [x-cloak] {
-  display: none !important;
+	display: none !important;
 }
 
 .reminder--highlighted {
-  animation: reminder-highlight 1s;
-  animation-delay: 500ms;
-  animation-fill-mode: backwards;
-  animation-timing-function: ease-out;
+	animation: reminder-highlight 1s;
+	animation-delay: 500ms;
+	animation-fill-mode: backwards;
+	animation-timing-function: ease-out;
 }
 
 @keyframes reminder-highlight {
-  from {
-    @apply border-yellow-600;
-  }
+	from {
+		@apply border-yellow-600;
+	}
 
-  to {
-    @apply border-transparent;
-  }
+	to {
+		@apply border-transparent;
+	}
 }

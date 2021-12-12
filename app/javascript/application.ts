@@ -6,9 +6,9 @@ import controllers from "./controllers";
 const application = Application.start();
 
 declare global {
-  interface Window {
-    Stimulus: Application;
-  }
+	interface Window {
+		Stimulus: Application;
+	}
 }
 
 window.Stimulus = application;
