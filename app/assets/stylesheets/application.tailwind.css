@@ -20,6 +20,10 @@
 		@apply cursor-pointer text-white rounded-md py-2 px-4 shadow-md hover:shadow-lg hover:no-underline bg-green-600;
 	}
 
+	.btn:disabled {
+		@apply opacity-50 cursor-not-allowed;
+	}
+
 	a,
 	.link {
 		@apply text-green-500 hover:underline cursor-pointer;

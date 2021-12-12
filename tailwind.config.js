@@ -1,7 +1,11 @@
 const colors = require("tailwindcss/colors");
 
 module.exports = {
-	content: ["./app/views/**/*.html.{haml,erb}", "./app/helpers/**/*.rb"],
+	content: [
+		"./app/views/**/*.html.{haml,erb}",
+		"./app/helpers/**/*.rb",
+		"./app/javascript/controllers/*.tsx",
+	],
 	theme: {
 		extend: {
 			fontFamily: {

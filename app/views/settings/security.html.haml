@@ -3,8 +3,8 @@
 		%h2.text-lg.text-gray-400
 			Sessions
 			.inline-block.text-sm.bg-gray-700.font-normal.font-sans.px-2.rounded-md(class="py-0.5")= @sessions.length
-		= form_with url: destroy_all_sessions_path do
-			%button.btn.bg-red-500(type="submit") Log out everywhere else
+		= form_with url: destroy_all_sessions_path, data: {controller: "form-confirm", action: "form-confirm#submit", "form-confirm-title-value" => "Log out everywhere?", "form-confirm-text-value" => "This will log you out of every device except this one.", "form-confirm-action-text-value" => "Log out"} do
+			%button.btn.bg-red-500{type: "submit", disabled: @sessions.length <= 1} Log out everywhere else
 
 	.flex.flex-col.gap-3.mb-10{"x-data" => "{ unfurled: false }"}
 		- @sessions[0, 2].each do |session|

@@ -12,7 +12,9 @@
 		},
 		"sourceMap": true,
 		"target": "es6",
-		"noEmit": true
+		"noEmit": true,
+		"jsx": "react",
+		"jsxFactory": "jsxCreateElement"
 	},
 	"exclude": ["**/*.spec.ts", "node_modules", "vendor", "public"],
 	"compileOnSave": false
