@@ -8,6 +8,10 @@ class OauthAppsController < ApplicationController
 		@apps = OauthApp.where(user: current_user)
 	end
 
+	def show
+		@authorization_count = ApiToken.where(oauth_app: @app).count('DISTINCT user_id')
+	end
+
 	def create
 		app = OauthApp.create!(params.require(:oauth_app).permit(:name).merge(user: current_user))
 

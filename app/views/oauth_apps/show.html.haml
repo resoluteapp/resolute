@@ -11,9 +11,12 @@
 			.text-lg.font-mono.select-all= @app.client_secret
 			%button.btn.text-sm.bg-gray-700(data-action="copy#copy" data-copy-target="button") Copy
 
-	= form_with model: @app do |form|
+	= form_with model: @app, class: "mb-8" do |form|
 		%label.block.mb-2.text-sm.text-gray-400(for="oauth_app_redirect_uri") Redirect URI
 		.flex.gap-3.items-center
 			= form.url_field :redirect_uri, class: "input", placeholder: "https://my-cool-app.com/oauth/callback", autofocus: true
 
 			= form.submit "Save", class: "btn"
+
+	.text-sm.text-gray-400.mb-1 <i class="fas fa-fw fa-calculator text-green-500 mr-1"></i> Installed by #{pluralize(@authorization_count, 'user')}.
+	.text-sm.text-gray-400 <i class="fas fa-fw fa-flag text-green-500 mr-1"></i> Created #{time_ago_in_words @app.created_at} ago.

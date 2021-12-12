@@ -1,10 +1,12 @@
 = render "layout", selected: "security" do
 	.mb-5.flex.justify-between.items-center
-		%h2.text-lg.text-gray-400 Sessions
+		%h2.text-lg.text-gray-400
+			Sessions
+			.inline-block.text-sm.bg-gray-700.font-normal.font-sans.px-2.rounded-md(class="py-0.5")= @sessions.length
 		= form_with url: destroy_all_sessions_path do
 			%button.btn.bg-red-500(type="submit") Log out everywhere else
 
-	%ul.flex.flex-col.gap-3.mb-10{"x-data" => "{ unfurled: false }"}
+	.flex.flex-col.gap-3.mb-10{"x-data" => "{ unfurled: false }"}
 		- @sessions[0, 2].each do |session|
 			= render session
 		- if @sessions.length > 2
@@ -14,12 +16,15 @@
 			%div
 				.inline-block.link{"@click" => "unfurled = !unfurled", "x-text" => "unfurled ? 'See fewer' : 'See all'"} See all
 
-	%h2.text-lg.text-gray-400.mb-5 Authorized apps
+	%h2.text-lg.text-gray-400.mb-5
+		Authorized apps
+		- if @authorizations.length > 0
+			.inline-block.text-sm.bg-gray-700.font-normal.font-sans.px-2.rounded-md(class="py-0.5")= @authorizations.length
 
 	- if @authorizations.length == 0
 		%h2.text-center.mb-8.text-gray-500 You haven't connected any apps to your account.
 	- else
-		%ul.flex.flex-col.gap-3{"x-data" => "{ unfurled: false }"}
+		.flex.flex-col.gap-3{"x-data" => "{ unfurled: false }"}
 			- @authorizations[0, 2].each do |authorization|
 				= render "authorizations/authorization", authorization: authorization
 			- if @authorizations.length > 2
