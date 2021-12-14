@@ -1,4 +1,5 @@
 - if notice
 	%div.notice.mb-6(data-controller="alert")
 		= notice
-		%button.bg-transparent.text-xl.-mt-1(data-action="alert#dismiss") ×
+		%button.bg-transparent(data-action="alert#dismiss")
+			%i.fas.fa-times

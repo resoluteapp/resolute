@@ -20,8 +20,6 @@ class PersonalTokensController < ApplicationController
 
 		token.destroy
 
-		flash.notice = "Token \"#{token.description}\" has been revoked."
-
 		redirect_to personal_tokens_path
 	end
 end

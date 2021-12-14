@@ -4,10 +4,10 @@
 		= render "shared/notice"
 
 		- if @app.nil?
-			%h2.text-2xl.mb-5.ml-1.font-normal <i class="fas fa-exclamation-triangle text-red-500 mr-2"></i> Something went wrong:
+			%h2.text-2xl.mb-5.ml-1.font-normal.font-heading <i class="fas fa-exclamation-triangle text-red-500 mr-2"></i> Something went wrong:
 			.border-2.border-red-500.rounded-md.p-5 App not found.
 		- elsif @app.redirect_uri.blank?
-			%h2.text-2xl.mb-5.ml-1.font-normal <i class="fas fa-exclamation-triangle text-red-500 mr-2"></i> Something went wrong:
+			%h2.text-2xl.mb-5.ml-1.font-normal.font-heading <i class="fas fa-exclamation-triangle text-red-500 mr-2"></i> Something went wrong:
 			.border-2.border-red-500.rounded-md.p-5 App "#{@app.name}" has no OAuth redirect URI configured.
 			- if @app.user == @current_user
 				.mt-4.p-5.border-2.border-green-500.rounded-md

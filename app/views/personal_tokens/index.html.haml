@@ -13,13 +13,16 @@
 	= render "shared/notice"
 	
 	- if flash[:personal_token]
-		.border-2.border-green-500.p-5.rounded-md.mb-10{"data-controller" => "copy", "data-copy-text-value" => flash[:personal_token]["token"]}
-			.mb-1 Token "#{flash[:personal_token]["description"]}" has been created.
-			.mb-3
-				%strong Please save it someplace safe, because you won't see it again.
-			.flex.items-center.gap-3
-				.font-mono.text-lg.select-all= flash[:personal_token]["token"]
-				%button.btn.text-sm.bg-gray-700(data-action="copy#copy" data-copy-target="button") Copy
+		.border-2.border-green-500.p-5.rounded-md.mb-10.flex.items-start{"data-controller" => "copy alert", "data-copy-text-value" => flash[:personal_token]["token"]}
+			.flex-grow
+				.mb-1 Token "#{flash[:personal_token]["description"]}" has been created.
+				.mb-3
+					%strong Please save it someplace safe, because you won't see it again.
+				.flex.items-center.gap-3
+					.font-mono.text-lg.select-all= flash[:personal_token]["token"]
+					%button.btn.text-sm.bg-gray-700(data-action="copy#copy" data-copy-target="button") Copy
+			%button{"data-action" => "alert#dismiss"}
+				%i.fas.fa-times
 
 	- if @tokens.length == 0
 		%h2.text-center.mb-10.mt-15.text-gray-500 Nothing here, yet...
@@ -31,5 +34,5 @@
 						.font-heading.text-xl.font-semibold= token.description
 						.text-sm.text-gray-400 Created #{time_ago_in_words token.created_at} ago
 
-					= form_with url: personal_token_path(token), method: :delete do
+					= form_with url: personal_token_path(token), method: :delete, data: { controller: "form-confirm", action: "form-confirm#submit", "form-confirm-title-value" => "Revoke this token?", "form-confirm-text-value" => "Any scripts or applications using this token will stop working.", "form-confirm-action-text-value" => "Revoke" } do
 						%button.btn.bg-gray-700.shrink-0.hover:bg-red-500.transition-colors(type="submit") Revoke

@@ -22,8 +22,6 @@ class SessionsController < ApplicationController
 	def destroy_all
 		Session.destroy_by('user_id = ? AND id != ?', @current_user.id, @current_session.id)
 
-		flash.notice = 'Successfully logged out everywhere.'
-
 		redirect_to '/settings/security'
 	end
 end

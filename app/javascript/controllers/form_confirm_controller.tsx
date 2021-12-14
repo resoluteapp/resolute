@@ -41,20 +41,16 @@ export default class extends Controller {
 
 		const modal: Element = (
 			<div
-				class="bg-black/50 fixed top-0 left-0 w-screen h-screen z-50 flex items-center justify-center"
+				class="bg-black/50 fixed top-0 left-0 w-screen h-screen z-50 flex items-center justify-center opacity-0 transition-opacity"
 				onClick={(e: Event) => {
 					if (e.target === e.currentTarget) {
 						this.hideModal();
 					}
 				}}
 			>
-				<div class="bg-gray-800 rounded-md p-5 w-96">
+				<div class="bg-gray-800 rounded-md p-7 w-96">
 					<div class="mb-5 flex justify-between items-center">
 						<div class="text-xl">{this.titleValue}</div>
-						<i
-							class="fas fa-times fa-fw cursor-pointer"
-							onClick={() => this.hideModal()}
-						></i>
 					</div>
 
 					<div class="mb-5">{this.textValue}</div>
@@ -78,6 +74,8 @@ export default class extends Controller {
 		);
 
 		document.body.appendChild(modal);
+
+		setTimeout(() => modal.classList.remove("opacity-0"), 10);
 
 		this.modal = modal;
 	}
