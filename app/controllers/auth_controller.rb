@@ -37,6 +37,48 @@ class AuthController < ApplicationController
 		redirect_to '/login'
 	end
 
+	def forgot_password_submit
+		user = User.find_by(email: params[:email])
+
+		if user.nil?
+			flash.now[:alert] = 'User not found.'
+			render 'forgot_password', status: :unprocessable_entity
+		else
+			request = PasswordResetRequest.create(user: user)
+
+			UserMailer.with(email: user.email, code: request.code).password_reset.deliver_later
+
+			@email = user.email
+
+			# Hack to get Turbo Drive to work properly
+			render status: :unprocessable_entity
+		end
+	end
+
+	def forgot_password_verify
+		request = PasswordResetRequest.find_by(code: params[:code], fulfilled: false)
+
+		return flash_alert_and_redirect 'Invalid reset link.', '/login' if request.nil?
+		return flash_alert_and_redirect 'Reset link expired.', '/login' if request.expired?
+
+		@code = request.code
+		@email = request.user.email
+	end
+
+	def forgot_password_finalize
+		request = PasswordResetRequest.find_by(code: params[:code], fulfilled: false)
+
+		return flash_alert_and_redirect 'Invalid reset link.', '/login' if request.nil?
+		return flash_alert_and_redirect 'Reset link expired.', '/login' if request.expired?
+
+		request.fulfilled = true
+		request.save
+
+		request.user.update!(password: params[:password])
+
+		log_in user: request.user
+	end
+
 	private
 
 	def fail_auth(message)

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_12_07_152821) do
+ActiveRecord::Schema.define(version: 2021_12_14_205049) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -54,6 +54,16 @@ ActiveRecord::Schema.define(version: 2021_12_07_152821) do
     t.index ["code"], name: "index_oauth_grants_on_code", unique: true
     t.index ["oauth_app_id"], name: "index_oauth_grants_on_oauth_app_id"
     t.index ["user_id"], name: "index_oauth_grants_on_user_id"
+  end
+
+  create_table "password_reset_requests", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.string "code"
+    t.boolean "fulfilled", default: false
+    t.datetime "expires_at"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_password_reset_requests_on_user_id"
   end
 
   create_table "reminders", force: :cascade do |t|
@@ -101,6 +111,7 @@ ActiveRecord::Schema.define(version: 2021_12_07_152821) do
   add_foreign_key "oauth_apps", "users"
   add_foreign_key "oauth_grants", "oauth_apps"
   add_foreign_key "oauth_grants", "users"
+  add_foreign_key "password_reset_requests", "users"
   add_foreign_key "reminders", "oauth_apps"
   add_foreign_key "reminders", "users"
   add_foreign_key "sessions", "users"

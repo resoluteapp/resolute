@@ -9,4 +9,11 @@ class UserMailer < ApplicationMailer
 
 		mail(to: @email, subject: 'Verify your email address')
 	end
+
+	def password_reset
+		@email = params[:email]
+		@code = params[:code]
+
+		mail(to: @email, subject: 'Reset your password')
+	end
 end

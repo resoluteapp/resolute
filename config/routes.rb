@@ -8,6 +8,9 @@ Rails.application.routes.draw do
 	post 'verify', to: 'signup#finalize'
 
 	get 'forgot-password', to: 'auth#forgot_password'
+	post 'forgot-password', to: 'auth#forgot_password_submit'
+	get 'forgot-password/verify', to: 'auth#forgot_password_verify'
+	post 'forgot-password/verify', to: 'auth#forgot_password_finalize'
 
 	scope '/callback' do
 		get 'github', to: 'oauth_callback#github'
