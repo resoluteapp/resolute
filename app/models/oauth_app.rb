@@ -5,6 +5,8 @@ class OauthApp < ApplicationRecord
 	has_many :oauth_grants, dependent: :destroy
 	has_many :api_tokens, dependent: :destroy
 
+	has_one_attached :icon
+
 	after_initialize :set_defaults
 
 	private

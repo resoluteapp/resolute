@@ -2,5 +2,13 @@
 	= form_with model: @app do |form|
 		%label.block.mb-2.text-sm.text-gray-400(for="oauth_app_name") App name
 		= form.text_field :name, class: "input mb-4", required: true, placeholder: "My Cool App", autofocus: true
+		%label.block.mb-2.text-sm.text-gray-400(for="oauth_app_icon") Icon
+		= form.file_field :icon, accept: "image/*", class: "block mb-4 text-gray-400 file:cursor-pointer file:text-white file:rounded-md file:py-2 file:px-4 file:shadow-md file:bg-green-600 file:border-0 file:mr-4"
+		- if @app.icon.attached?
+			%div
+				.relative.group.inline-block
+					-# %button.absolute.top-1.right-1.py-1.rounded-md.cursor-pointer.transition-opacity.opacity-0.group-hover:opacity-100(class="bg-black/40 px-1.5")
+					-# 	%i.fas.fa-times.fa-fw
+					= image_tag @app.icon, class: "h-40 w-auto mb-6 rounded-lg"
 
 		= form.submit "Save", class: "btn"
