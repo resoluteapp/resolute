@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 json.id reminder.id
 json.description reminder.description
 json.title reminder.title
