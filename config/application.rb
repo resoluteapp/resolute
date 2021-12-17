@@ -18,5 +18,7 @@ module Resolute
 		#
 		# config.time_zone = "Central Time (US & Canada)"
 		# config.eager_load_paths << Rails.root.join("extras")
+
+		config.session_store :cookie_store, key: '_resolute_session', expire_after: 30.days
 	end
 end
