@@ -8,7 +8,7 @@ class RemindersController < ApplicationController
 	end
 
 	def create
-		reminder = Reminder.create!(user: @current_user, title: params[:title])
+		reminder = Reminder.create!(user: @current_user, description: params[:description])
 
 		flash[:highlighted_reminder] = reminder.id
 
