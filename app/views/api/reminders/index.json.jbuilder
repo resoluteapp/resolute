@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 json.ignore_nil!
+
 json.array! @reminders do |reminder|
 	json.id reminder.id
 	json.description reminder.description

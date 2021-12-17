@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+json.ignore_nil!
+
 json.id @reminder.id
 json.description @reminder.description
 json.title @reminder.title
