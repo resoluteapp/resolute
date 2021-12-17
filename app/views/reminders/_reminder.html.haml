@@ -3,7 +3,7 @@
 		.flex.flex-col.gap-3.min-w-0.grow
 			- if reminder.title.present? && reminder.url.present?
 				%div
-					%a.font-semibold.font-heading.break-words.min-w-0.text-xl{href: reminder.url}= reminder.title
+					%a.font-semibold.font-heading.break-words.min-w-0.text-xl{href: reminder.url, target: "_blank"}= reminder.title
 			- elsif reminder.title.present?
 				.font-semibold.font-heading.break-words.min-w-0.text-xl= reminder.title
 
@@ -13,11 +13,12 @@
 						%img.w-5.rounded-full{src: reminder.author_avatar}
 					%span= reminder.author
 
-			.break-words.min-w-0.text-white.hover:no-underline
-				= reminder.description
-				- if reminder.url.present? && reminder.title.blank?
-					%a.ml-2.transition-opacity.opacity-0.group-hover:opacity-100{href: reminder.url, target: "_blank"}
-						%i.fas.fa-link
+			- if reminder.description.present?
+				.break-words.min-w-0.text-white.hover:no-underline
+					= reminder.description
+					- if reminder.url.present? && reminder.title.blank?
+						%a.ml-2.transition-opacity.opacity-0.group-hover:opacity-100{href: reminder.url, target: "_blank"}
+							%i.fas.fa-link
 
 			- if reminder.oauth_app.present?
 				.text-xs.text-gray-400 from #{reminder.oauth_app.name}
