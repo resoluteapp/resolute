@@ -20,5 +20,6 @@ module Resolute
 		# config.eager_load_paths << Rails.root.join("extras")
 
 		config.session_store :cookie_store, key: '_resolute_session', expire_after: 30.days
+		config.exceptions_app = routes
 	end
 end
