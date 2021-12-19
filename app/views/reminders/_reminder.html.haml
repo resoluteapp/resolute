@@ -13,9 +13,9 @@
 						%img.w-5.rounded-full{src: reminder.author_avatar}
 					%span= reminder.author
 
-			- if reminder.description.present?
+			- if reminder.text.present?
 				.break-words.min-w-0.text-white.hover:no-underline
-					= reminder.description
+					= reminder.text
 					- if reminder.url.present? && reminder.title.blank?
 						%a.ml-2.transition-opacity.opacity-0.group-hover:opacity-100{href: reminder.url, target: "_blank"}
 							%i.fas.fa-link

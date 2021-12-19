@@ -5,7 +5,7 @@
 		= form_with url: "/reminders" do |form|
 			.flex.flex-col.mb-10.items-stretch.gap-2 
 				.flex.gap-4.items-stretch
-					%input.input.block(type="text" placeholder="Remind me to..." name="description" autofocus required)
+					%input.input.block(type="text" placeholder="Remind me to..." name="text" autofocus required)
 					%button.btn(type="submit") Add
 
 				.text-sm.text-gray-400.pl-1

@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 json.id reminder.id
-json.description reminder.description
+json.text reminder.text
 json.title reminder.title
 json.url reminder.url
 json.author reminder.author
