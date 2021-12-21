@@ -1,5 +1,5 @@
-%div
-	.group.bg-black.p-5.rounded-md.flex.justify-between.items-center.gap-5.border-2.border-transparent.relative.break-words.cursor-default{class: [flash[:highlighted_reminder] == reminder.id && "reminder--highlighted"]}
+%div{id: dom_id(reminder)}
+	.group.bg-black.p-5.rounded-md.flex.justify-between.items-center.gap-5.border-2.border-transparent.relative.break-words.cursor-default
 		.flex.flex-col.gap-3.min-w-0.grow
 			- if reminder.title.present? && reminder.url.present?
 				%div

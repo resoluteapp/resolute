@@ -1,9 +1,7 @@
-import "@hotwired/turbo";
+import "@hotwired/turbo-rails";
 import Alpine from "alpinejs";
 import { Application } from "@hotwired/stimulus";
 import controllers from "./controllers";
-
-const application = Application.start();
 
 declare global {
 	interface Window {
@@ -11,6 +9,7 @@ declare global {
 	}
 }
 
+const application = Application.start();
 window.Stimulus = application;
 
 Alpine.start();

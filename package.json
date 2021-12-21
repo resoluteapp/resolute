@@ -7,6 +7,7 @@
 		"@fortawesome/fontawesome-free": "^5.15.4",
 		"@hotwired/stimulus": "^3.0.1",
 		"@hotwired/turbo": "^7.0.1",
+		"@hotwired/turbo-rails": "^7.1.0",
 		"@rails/actioncable": "^6.0.0",
 		"@rails/activestorage": "^6.0.0",
 		"alpinejs": "^3.7.0",
@@ -30,6 +31,7 @@
 		"lint": "eslint app/javascript/"
 	},
 	"devDependencies": {
+		"@types/rails__actioncable": "^6.1.6",
 		"@typescript-eslint/eslint-plugin": "^5.6.0",
 		"@typescript-eslint/parser": "^5.6.0",
 		"eslint": "^8.4.1",

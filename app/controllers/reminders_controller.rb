@@ -8,19 +8,23 @@ class RemindersController < ApplicationController
 	end
 
 	def create
-		reminder = Reminder.create!(user: @current_user, text: params[:text])
+		@reminder = Reminder.create!(user: @current_user, text: params[:text])
 
-		flash[:highlighted_reminder] = reminder.id
-
-		redirect_to '/home'
+		respond_to do |format|
+			format.html { redirect_to '/home' }
+			format.turbo_stream
+		end
 	end
 
 	def destroy
-		reminder = Reminder.find(params[:id])
+		@reminder = Reminder.find(params[:id])
 
-		authorize reminder
-		reminder.destroy
+		authorize @reminder
+		@reminder.destroy
 
-		redirect_to '/home'
+		respond_to do |format|
+			format.html { redirect_to '/home' }
+			format.turbo_stream
+		end
 	end
 end

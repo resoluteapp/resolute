@@ -1,20 +1,21 @@
 = render "shared/header", selected: "reminders"
 
-%turbo-frame#reminders
-	.w-full.max-w-4xl.block.mx-auto.bg-gray-800.p-7.rounded-md
-		= form_with url: "/reminders" do |form|
-			.flex.flex-col.mb-10.items-stretch.gap-2 
-				.flex.gap-4.items-stretch
-					%input.input.block(type="text" placeholder="Remind me to..." name="text" autofocus required)
-					%button.btn(type="submit") Add
+= turbo_stream_from @current_user, :reminders
 
-				.text-sm.text-gray-400.pl-1
-					Or,
-					%a(href="/integrations" data-turbo-frame="_top") find an integration
+.w-full.max-w-4xl.block.mx-auto.bg-gray-800.p-7.rounded-md
+	= form_with url: "/reminders", data: { controller: "reset-form", action: "turbo:submit-end->reset-form#reset" } do |form|
+		.flex.flex-col.mb-10.items-stretch.gap-2 
+			.flex.gap-4.items-stretch
+				%input.input.block(type="text" placeholder="Remind me to..." name="text" autofocus required)
+				%button.btn(type="submit") Add
 
-		- if @reminders.length == 0
-			%h2.text-center.mb-10.mt-15.text-gray-500 Nothing here, yet...
-		- else
-			.grid.grid-cols-2.gap-5
-				- @reminders.each do |reminder|
-					= render reminder
+			.text-sm.text-gray-400.pl-1
+				Or,
+				%a(href="/integrations" data-turbo-frame="_top") find an integration
+
+	-# - if @reminders.length == 0
+	-# 	%h2.text-center.mb-10.mt-15.text-gray-500 Nothing here, yet...
+	-# - else
+	.grid.grid-cols-2.gap-5#reminders
+		- @reminders.each do |reminder|
+			= render reminder
