@@ -47,7 +47,7 @@ Rails.application.routes.draw do
 			end
 		end
 
-		resources :personal_tokens, path: 'tokens', except: [:show]
+		resources :personal_tokens, path: 'tokens', only: %i[index new create destroy]
 	end
 
 	match '/404', to: 'errors#not_found', via: :all
