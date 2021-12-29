@@ -1,0 +1,15 @@
+= render "shared/header", selected: "integrations"
+
+.w-full.max-w-4xl.mx-auto
+	.text-4xl.font-heading.mb-10.bg-green-600.rounded-md.text-center.py-20 Resolute works with the <strong>apps you already use</strong>.
+
+	.grid.grid-cols-2.gap-5
+		- @apps.each do |app|
+			%a.text-white.p-5.bg-gray-800.rounded-md.flex.items-center.justify-between.transition-transform.hover:no-underline{href: app.installation_url, class: "hover:-translate-y-0.5", target: "_blank"}
+				.flex.gap-4.items-center
+					- if app.icon.attached?
+						= image_tag app.icon, class: "h-10 w-auto rounded-md"
+
+					.font-heading.font-heading.font-semibold.text-2xl
+						= app.name
+				%button.btn{href: app.installation_url} Install

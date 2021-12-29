@@ -19,7 +19,7 @@ class OauthAppsController < ApplicationController
 	end
 
 	def update
-		@app.update(params.require(:oauth_app).permit(:name, :redirect_uri, :icon))
+		@app.update(params.require(:oauth_app).permit(:name, :redirect_uri, :icon, :installation_url))
 
 		flash.notice = 'App has been updated.'
 

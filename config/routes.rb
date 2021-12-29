@@ -25,6 +25,8 @@ Rails.application.routes.draw do
 	get 'home', to: 'reminders#index'
 	resources :reminders, only: %i[create destroy]
 
+	resources :integrations, only: %i[index]
+
 	scope '/settings' do
 		get '/', to: 'settings#index'
 		get 'security', to: 'settings#security'
