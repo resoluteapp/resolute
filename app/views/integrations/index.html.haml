@@ -13,6 +13,6 @@
 					.font-heading.font-heading.font-semibold.text-2xl
 						= app.name
 				- if @current_user.api_tokens.where(oauth_app: app).count > 0
-					%button.btn.bg-transparent.border-2.border-green-600.text-green-500 Installed
+					%button.btn.bg-transparent.ring-2.ring-green-600.ring-inset.text-green-500 Installed
 				- else
 					%button.btn Install
