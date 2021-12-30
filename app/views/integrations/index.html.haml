@@ -12,4 +12,7 @@
 
 					.font-heading.font-heading.font-semibold.text-2xl
 						= app.name
-				%button.btn{href: app.installation_url} Install
+				- if @current_user.api_tokens.where(oauth_app: app).count > 0
+					%button.btn.bg-transparent.border-2.border-green-600.text-green-500 Installed
+				- else
+					%button.btn Install
