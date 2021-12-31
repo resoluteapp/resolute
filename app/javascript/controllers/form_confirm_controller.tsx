@@ -35,7 +35,7 @@ export default class extends Controller {
 				this.modal.remove();
 				this.modal = null;
 			});
-			this.modal.classList.add("opacity-0");
+			this.modal.classList.remove("modal--visible");
 		}
 	}
 
@@ -44,14 +44,14 @@ export default class extends Controller {
 
 		const modal: Element = (
 			<div
-				class="bg-black/50 fixed top-0 left-0 w-screen h-screen z-50 flex items-center justify-center opacity-0 transition-opacity"
+				class="modal bg-black/60 fixed top-0 left-0 w-screen h-screen z-50 flex items-center justify-center transition-opacity duration-200"
 				onClick={(e: Event) => {
 					if (e.target === e.currentTarget) {
 						this.hideModal();
 					}
 				}}
 			>
-				<div class="bg-gray-800 rounded-md p-7 w-96">
+				<div class="bg-gray-800 rounded-md p-7 w-96 transition-transform duration-200 modal__content">
 					<div class="mb-5 flex justify-between items-center">
 						<div class="text-xl">{this.titleValue}</div>
 					</div>
@@ -78,7 +78,7 @@ export default class extends Controller {
 
 		document.body.appendChild(modal);
 
-		setTimeout(() => modal.classList.remove("opacity-0"), 10);
+		setTimeout(() => modal.classList.add("modal--visible"), 10);
 
 		this.modal = modal;
 	}

@@ -38,6 +38,14 @@
 	.input:disabled {
 		@apply cursor-not-allowed text-gray-500;
 	}
+
+	.modal:not(.modal--visible) .modal__content {
+		@apply scale-95;
+	}
+
+	.modal:not(.modal--visible) {
+		@apply opacity-0;
+	}
 }
 
 .alert {
