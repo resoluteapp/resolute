@@ -1,12 +1,24 @@
 .flex.py-5.px-10.justify-between.bg-black.mb-5.z-40
-	.flex.items-center.gap-5
-		%a.mr-5(href="/home" title="Resolute")
+	.hidden.sm:flex.items-center.gap-5
+		%a.mr-5.shrink-0(href="/home" title="Resolute")
 			= image_tag "icon.svg", size: "50x50", alt: "Resolute logo"
 		%a{href: "/home", class: [selected != "reminders" && "text-gray-500"]} Reminders
 		%a{href: "/integrations", class: [selected != "integrations" && "text-gray-500"]} Integrations
 		%a{href: "/settings", class: [selected != "settings" && "text-gray-500"]} Settings
 
+
+	.flex.sm:hidden.items-center.gap-5
+		%a.mr-5.sm:mr-5.shrink-0(href="/home" title="Resolute")
+			= image_tag "icon.svg", size: "50x50", alt: "Resolute logo"
+		%a.btn.px-3{href: "/home", class: [selected != "reminders" && "bg-gray-700"]}
+			%i.fas.fa-home.fa-fw
+		-# %a.btn.px-3{href: "/integrations", class: [selected != "integrations" && "bg-gray-700"]} I
+		%a.btn.px-3{href: "/settings", class: [selected != "settings" && "bg-gray-700"]}
+			%i.fas.fa-cog.fa-fw
+
 	.flex.items-center.gap-5
-		%a.btn.bg-gray-700(href="/logout") Log out
-		%a(href="/settings")
+		%a.btn.bg-gray-700(href="/logout")
+			%span.hidden.md:inline-block Log out
+			%i.fas.fa-sign-in-alt.inline-block.md:hidden
+		%a.hidden.xs:inline-block.shrink-0(href="/settings")
 			= gravatar @current_user.email
