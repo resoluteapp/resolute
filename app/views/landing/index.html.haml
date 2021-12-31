@@ -2,29 +2,21 @@
 	.flex.items-start.gap-1
 		.flex.gap-5.items-center
 			= image_tag "icon.svg", size: "50x50", alt: "Resolute logo"
-			%h1.font-heading.text-4xl.font-light resolute
+			%h1.font-heading.text-4xl.font-light.hidden.sm:block resolute
 		.bg-blue-600.rounded-md.text-xs.text-blue-100(class="py-0.5 px-1.5") Beta
 
 	- if @current_user.nil?
 		.flex.gap-5.items-center
-			%a.btn.bg-gray-700(href="/login") Log in
+			%a.btn.bg-gray-700(href="/login")
+				%span.hidden.xs:inline-block Log in
+				%i.fas.fa-sign-in-alt.inline-block.xs:hidden
 			%a.btn(href="/signup") Sign up
 	- else
 		.flex.gap-5.items-center
 			%a.btn(href="/home") Launch app
 			= gravatar @current_user.email
 
-.bg-gray-800.px-96.py-48.text-center
-	%h1.text-7xl.font-heading.font-bold
+.bg-gray-800.flex.items-center.justify-center.px-10(class="h-[50vh]")
+	%h1.lg:text-6xl.text-5xl.font-heading.font-bold.max-w-5xl.text-center
 		Personal task management that
 		%em works.
-.px-96.py-40.text-center.h-96
-	%h2.text-4xl.font-heading
-		%strong Hold on tight!
-		Resolute is still under development.
-	%h3.text-xl.mt-5
-		Why not check us out on
-		%a(href="https://github.com/resoluteapp/resolute" target="_blank")
-			%i.fab.fa-github
-			GitHub
-		while you wait?

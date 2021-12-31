@@ -1,4 +1,5 @@
 const colors = require("tailwindcss/colors");
+const defaultTheme = require("tailwindcss/defaultTheme");
 
 module.exports = {
 	content: [
@@ -7,6 +8,10 @@ module.exports = {
 		"./app/javascript/controllers/*.tsx",
 	],
 	theme: {
+		screens: {
+			xs: "475px",
+			...defaultTheme.screens,
+		},
 		extend: {
 			fontFamily: {
 				heading: ["Outfit", "sans-serif"],
