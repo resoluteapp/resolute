@@ -3,6 +3,7 @@
 	"private": true,
 	"version": "0.1.0",
 	"dependencies": {
+		"@alpinejs/persist": "^3.7.1",
 		"@fontsource/outfit": "^4.5.0",
 		"@fortawesome/fontawesome-free": "^5.15.4",
 		"@hotwired/stimulus": "^3.0.1",

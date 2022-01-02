@@ -8,7 +8,7 @@
 			= form_with url: "/reminders", data: { controller: "reset-form", action: "turbo:submit-end->reset-form#reset" } do |form|
 				.flex.flex-col.mb-10.items-stretch.gap-2
 					.flex.gap-4.items-stretch
-						%input.input.block(type="text" placeholder="Remind me to..." name="text" autofocus required)
+						%input.input.block(type="text" placeholder="Remind me about..." name="text" autofocus required)
 						%button.btn.hidden.xs:inline-block(type="submit") Add
 
 					.text-sm.text-gray-400.pl-1
