@@ -24,7 +24,7 @@
 		"typescript": "^4.4.4"
 	},
 	"scripts": {
-		"build": "esbuild app/javascript/*.* --bundle --minify --sourcemap --inject:app/javascript/shim/jsx-shim.ts --outdir=app/assets/builds/",
+		"build": "esbuild app/javascript/*.* --bundle --minify --inject:app/javascript/shim/jsx-shim.ts --outdir=app/assets/builds/",
 		"build:css": "postcss ./app/assets/stylesheets/application.tailwind.css -o ./app/assets/builds/application.css",
 		"ts-check": "tsc --noEmit",
 		"format:check": "prettier --check .",

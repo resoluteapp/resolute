@@ -12,7 +12,6 @@ gem 'pg', '~> 1.2', '>= 1.2.3'
 # Use Puma as the app server
 gem 'puma', '~> 5.0'
 
-gem 'stimulus-rails'
 gem 'turbo-rails'
 
 gem 'faraday'
