@@ -16,30 +16,49 @@
 			%a.btn(href="/home") Launch app
 			= gravatar @current_user.email
 
-.bg-gray-800.flex.items-center.justify-center.px-10.py-36.lg:py-40
+.bg-gray-800.flex.items-center.justify-center.px-10.py-28.sm:py-36.lg:py-40
 	%h1.lg:text-6xl.text-5xl.font-heading.max-w-xl.text-center
 		<strong>Forgetting to reply</strong> is a thing of the past.
 
-.px-10
-	.flex-col.md:flex-row.flex.gap-4.max-w-4xl.w-full.mx-auto.mt-10{"x-data" => "{ reminders: $persist([]) }"}
-		.flex-col.grow.basis-0
-			.bg-gray-800.rounded-t-md.px-2.py-1.text-sm.flex.items-center.gap-1
-				.h-3.w-3.bg-red-400.rounded-full
-				.h-3.w-3.bg-yellow-400.rounded-full
-				.h-3.w-3.bg-green-400.rounded-full
-				.ml-3 Messaging App 9000
-			.border-2.border-gray-800.p-7.rounded-b-md.flex.flex-col.gap-4
-				= render "message", selected: false, text: "🏴‍☠️ Arghhhh, matey!", user: "buccaneer123"
-				.w-full.bg-red-500.rounded-full.h-px
-				= render "message", selected: true, text: "Mind helpin' me with a little computer trouble? The printer not be printin' me treasure map ☠️", user: "buccaneer123"
-		.flex-col.grow.basis-0
-			.bg-gray-800.rounded-t-md.px-2.py-1.text-sm.flex.items-center.gap-1
-				.h-3.w-3.bg-red-400.rounded-full
-				.h-3.w-3.bg-yellow-400.rounded-full
-				.h-3.w-3.bg-green-400.rounded-full
-				.ml-3 Resolute
-			.p-7.bg-gray-800.rounded-b-md.flex.flex-col.gap-5
-				%template{"x-if" => "reminders.length == 0"}
-					.text-gray-500.text-center.mb-4.mt-1 Nothing here, yet...
-				%template{"x-for" => "reminder in reminders"}
-					= render "reminder", author: "buccaneer123", author_avatar: "https://cloud-5txrrpkms-hack-club-bot.vercel.app/0avataaars.png", app_name: "Messaging App 9000"
+.px-10.mt-10
+	.mx-auto.w-full.max-w-5xl
+		.text-3xl.lg:text-4xl.font-heading.mb-10.text-center.border-2.border-gray-800.py-5.px-5.rounded-md
+			.mb-2 Hey, look! <strong>You've just received a message.</strong>
+			.text-xl.lg:text-2xl Can't reply right now? Add it to <span class="text-green-400 font-bold">Resolute</span>.
+		.flex-col.md:flex-row.flex.gap-4{"x-data" => "{ reminders: $persist([]) }"}
+			.flex-col.grow.basis-0
+				.bg-gray-800.rounded-t-md.px-2.py-1.text-sm.flex.items-center.gap-1
+					.h-3.w-3.bg-red-400.rounded-full
+					.h-3.w-3.bg-yellow-400.rounded-full
+					.h-3.w-3.bg-green-400.rounded-full
+					.ml-3 Messaging App 9000
+				.border-2.border-gray-800.p-7.rounded-b-md.flex.flex-col.gap-4
+					= render "message", selected: false, text: "🏴‍☠️ Ahoy, matey!", user: "buccaneer123"
+					.w-full.bg-red-500.rounded-full.h-px
+					= render "message", selected: true, text: "Mind helpin' me with a little computer trouble? The printer not be printin' me treasure map ☠️", user: "buccaneer123"
+			.flex-col.grow.basis-0
+				.bg-gray-800.rounded-t-md.px-2.py-1.text-sm.flex.items-center.gap-1
+					.h-3.w-3.bg-red-400.rounded-full
+					.h-3.w-3.bg-yellow-400.rounded-full
+					.h-3.w-3.bg-green-400.rounded-full
+					.ml-3 Resolute
+				.p-7.bg-gray-800.rounded-b-md.flex.flex-col.gap-5
+					%template{"x-if" => "reminders.length == 0"}
+						.text-gray-500.text-center.mb-4.mt-1 Nothing here, yet...
+					%template{"x-for" => "reminder in reminders"}
+						= render "reminder", author: "buccaneer123", author_avatar: "https://cloud-5txrrpkms-hack-club-bot.vercel.app/0avataaars.png", app_name: "Messaging App 9000"
+
+.px-10.py-12.mt-10.bg-gray-800
+	.w-full.max-w-4xl.mx-auto.flex.justify-between.items-center.flex-col.md:flex-row.gap-5
+		%h1.font-heading.font-bold.text-3xl.xs:text-4xl.text-center.md:text-left
+			Available now for Slack.
+			%br/
+			.text-gray-500.text-2xl.xs:text-3xl More apps coming soon!
+		%a.btn.text-lg.xs:text-xl.py-3.px-6{href: "/signup"} Sign up
+
+.px-10.py-5.text-gray-300.flex.gap-2
+	.mr-3 Copyright &copy; #{Time.now.year} Resolute.
+	%a{href: "https://twitter.com/useresolute", target: "_blank"}
+		%i.fab.fa-twitter.fa-fw
+	%a{href: "https://github.com/resoluteapp", target: "_blank"}
+		%i.fab.fa-github.fa-fw
