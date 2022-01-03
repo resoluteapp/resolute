@@ -6,7 +6,7 @@
 				.font-bold.text-sm= user
 				.text-gray-500.text-xs= Time.now.strftime "%l:%M %p"
 			%div= text
-		.absolute.top-0.right-1{"class" => "-mt-3", "x-data" => "{ open: false }"}
+		.absolute.top-0.right-1{"class" => "-mt-5", "x-data" => "{ open: false }"}
 			.absolute{class: "-top-1 -left-1"}
 				.w-3.h-3.bg-blue-500.absolute.top-0.left-0.rounded-full
 				.w-3.h-3.bg-blue-500.absolute.top-0.left-0.rounded-full.animate-ping
@@ -14,8 +14,10 @@
 				%i.fas.fa-ellipsis-v.fa-fw
 			%ul.absolute.top-full.right-0.bg-gray-800.rounded-md.p-2.w-52.mt-2.border.border-gray-700.z-10{"x-show" => "open", "x-cloak" => true, "@click.outside" => "open = false"}
 				%li.py-2.px-3.hover:bg-gray-700.rounded-md.cursor-not-allowed.text-gray-500 Mark unread
-				%li.py-2.px-3.hover:bg-gray-700.rounded-md.cursor-not-allowed.text-gray-500 Pin to channel
-				%li.py-2.px-3.hover:bg-gray-700.rounded-md.cursor-pointer{"@click" => "reminders.push({text: \"#{text}\", id: Math.random()}); open = false"} Add to Resolute
+				%li.py-2.px-3.hover:bg-gray-700.rounded-md.cursor-not-allowed.text-gray-500 Copy link
+				%li.py-2.px-3.hover:bg-gray-700.rounded-md.cursor-pointer.flex.items-center.gap-2{"@click" => "reminders.push({text: \"#{text}\", id: Math.random()}); open = false"}
+					= image_tag "icon-square-128.png", size: "25x25", alt: "Resolute logo", class: "rounded-md"
+					%span Add to Resolute
 - else
 	.flex.gap-3.items-start.relative.rounded-md.group{"x-data" => "{ open: false }"}
 		%img.h-11.rounded-md.group-hover:opacity-100.transition-opacity{"src" => "https://cloud-5txrrpkms-hack-club-bot.vercel.app/0avataaars.png", ":class" => "open ? 'opacity-100' : 'opacity-50'"}
@@ -24,10 +26,12 @@
 				.font-bold.text-sm= user
 				.text-gray-500.text-xs= Time.now.strftime "%l:%M %p"
 			%div= text
-		.absolute.top-0.right-1.group-hover:opacity-100.transition-opacity{"class" => "-mt-3", ":class" => "open ? 'opacity-100' : 'opacity-0'"}
+		.absolute.top-0.right-1.group-hover:opacity-100.transition-opacity{"class" => "-mt-5", ":class" => "open ? 'opacity-100' : 'opacity-0'", "x-cloak" => true}
 			.bg-gray-800.px-2.rounded-md.border.border-gray-700.cursor-pointer.hover:bg-gray-700{"class" => "py-1.5", "@click" => "open = true"}
 				%i.fas.fa-ellipsis-v.fa-fw
 			%ul.absolute.top-full.right-0.bg-gray-800.rounded-md.p-2.w-52.mt-2.border.border-gray-700.z-10{"x-show" => "open", "x-cloak" => true, "@click.outside" => "open = false"}
 				%li.py-2.px-3.hover:bg-gray-700.rounded-md.cursor-not-allowed.text-gray-500 Mark unread
-				%li.py-2.px-3.hover:bg-gray-700.rounded-md.cursor-not-allowed.text-gray-500 Pin to channel
-				%li.py-2.px-3.hover:bg-gray-700.rounded-md.cursor-pointer{"@click" => "reminders.push({text: \"#{text}\", id: Math.random()}); open = false"} Add to Resolute
+				%li.py-2.px-3.hover:bg-gray-700.rounded-md.cursor-not-allowed.text-gray-500 Copy link
+				%li.py-2.px-3.hover:bg-gray-700.rounded-md.cursor-pointer.flex.items-center.gap-2{"@click" => "reminders.push({text: \"#{text}\", id: Math.random()}); open = false"}
+					= image_tag "icon-square-128.png", size: "25x25", alt: "Resolute logo", class: "rounded-md"
+					%span Add to Resolute
