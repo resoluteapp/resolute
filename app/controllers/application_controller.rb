@@ -5,6 +5,10 @@ class ApplicationController < ActionController::Base
 
 	before_action :authenticate
 
+	rescue_from Pundit::NotAuthorizedError do
+		render 'errors/not_found', status: :not_found
+	end
+
 	attr_reader :current_user
 
 	private
