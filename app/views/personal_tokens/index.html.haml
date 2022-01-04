@@ -31,7 +31,7 @@
 			- @tokens.each do |token|
 				%li.bg-black.p-5.rounded-md.flex.justify-between.items-center.gap-1
 					.flex.flex-col.gap-1
-						.font-heading.text-xl.font-semibold= token.description
+						= token.description
 						.text-sm.text-gray-400 Created #{time_ago_in_words token.created_at} ago
 
 					= form_with url: personal_token_path(token), method: :delete, data: { controller: "form-confirm", action: "form-confirm#submit", "form-confirm-title-value" => "Revoke this token?", "form-confirm-text-value" => "Any scripts or applications using this token will stop working.", "form-confirm-action-text-value" => "Revoke" } do

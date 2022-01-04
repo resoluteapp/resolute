@@ -13,10 +13,10 @@ module ApplicationHelper
 										class: [
 											'px-4',
 											'py-2',
-											'border-gray-700',
-											'border-2',
+											'border-gray-600',
+											'border',
 											'border-b-0',
-											'last:border-b-2',
+											'last:border-b',
 											'first:rounded-t-md',
 											'last:rounded-b-md',
 											'cursor-pointer',
