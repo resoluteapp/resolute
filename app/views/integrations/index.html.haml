@@ -8,7 +8,11 @@
 			%a.text-white.p-5.bg-gray-800.rounded-md.flex.items-center.justify-between.transition-transform.hover:no-underline{href: app.installation_url, class: "hover:-translate-y-0.5", target: "_blank"}
 				.flex.gap-4.items-center
 					- if app.icon.attached?
-						= image_tag app.icon, class: "h-10 w-auto rounded-md"
+						.relative
+							= image_tag app.icon, class: "h-10 w-auto rounded-md"
+							- if app.official
+								.absolute.-bottom-2.-right-2.z-50.shadow-md.rounded-md.text-sm{class: "py-0.5 px-1 bg-gray-700/75", title: "This is a trusted integration created by Resolute."}
+									%i.fas.fa-shield-alt.fa-fw
 
 					.font-heading.font-heading.font-semibold.text-2xl
 						= app.name
