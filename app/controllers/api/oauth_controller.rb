@@ -18,6 +18,7 @@ module Api
 			@invalid_response_type = true unless %w[token code].include? @response_type
 		end
 
+		# rubocop:disable Metrics/MethodLength
 		def authorize_submit
 			@app = OauthApp.find_by!(client_id: params[:client_id])
 
@@ -27,10 +28,11 @@ module Api
 			when 'Cancel'
 				uri.query = URI.encode_www_form(error: 'access_denied')
 			when 'Connect'
-				if params[:response_type] == 'code'
+				case params[:response_type]
+				when 'code'
 					grant = OauthGrant.create!(oauth_app: @app, user: @current_user, scope: JSON.parse(params[:scope]))
 					uri.query = URI.encode_www_form({ code: grant.code, state: params[:state] }.compact)
-				elsif params[:response_type] == 'token'
+				when 'token'
 					scope = JSON.parse params[:scope]
 
 					app = OauthApp.find_by!(client_id: params[:client_id])
@@ -47,6 +49,7 @@ module Api
 
 			redirect_to uri.to_s
 		end
+		# rubocop:enable Metrics/MethodLength
 
 		def token
 			grant_type, code, client_id, client_secret = params.require(%i[grant_type code client_id client_secret])
