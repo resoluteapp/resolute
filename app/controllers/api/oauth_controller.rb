@@ -26,14 +26,19 @@ module Api
 
 			case params[:commit]
 			when 'Cancel'
-				uri.query = URI.encode_www_form(error: 'access_denied')
+				case params[:response_type]
+				when 'code'
+					uri.query = URI.encode_www_form(error: 'access_denied')
+				when 'token'
+					uri.fragment = URI.encode_www_form(error: 'access_denied')
+				end
 			when 'Connect'
 				case params[:response_type]
 				when 'code'
 					grant = OauthGrant.create!(oauth_app: @app, user: @current_user, scope: JSON.parse(params[:scope]))
 					uri.query = URI.encode_www_form({ code: grant.code, state: params[:state] }.compact)
 				when 'token'
-					scope = JSON.parse params[:scope]
+					scope = JSON.parse(params[:scope])
 
 					app = OauthApp.find_by!(client_id: params[:client_id])
 					token = ApiToken.create(scope: scope, oauth_app: app, user: @current_user)
