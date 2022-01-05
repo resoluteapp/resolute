@@ -13,6 +13,9 @@
 				.mt-4.p-5.border-2.border-green-500.rounded-md
 					.text-gray-400.text-xs.mb-1 <i class="fas fa-eye"></i> Only you can see this
 					Fix this by adding a valid redirect URI in <a href="#{oauth_app_path(@app)}" target="_blank">your app's settings</a>.
+		- elsif @invalid_response_type
+			%h2.text-2xl.mb-5.ml-1.font-normal.font-heading <i class="fas fa-exclamation-triangle text-red-500 mr-2"></i> Something went wrong:
+			.border-2.border-red-500.rounded-md.p-5 Invalid <code class="bg-gray-900 p-1 rounded-md">response_type</code>.
 		- else
 			.flex.align-center.gap-5.items-center.mb-6
 				- if @app.icon.attached?
@@ -43,6 +46,7 @@
 				= form.hidden_field :client_id, value: @app.client_id
 				= form.hidden_field :scope, value: @scopes.to_json
 				= form.hidden_field :state, value: @state unless @state.blank?
+				= form.hidden_field :response_type, value: @response_type
 				.flex.gap-3.mt-6
 					= form.submit "Connect", class: "btn"
 					= form.submit "Cancel", class: "btn bg-gray-700"

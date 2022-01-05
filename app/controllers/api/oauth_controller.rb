@@ -13,6 +13,9 @@ module Api
 			end
 
 			@state = params[:state]
+			@response_type = params[:response_type] || 'code'
+
+			@invalid_response_type = true unless %w[token code].include? @response_type
 		end
 
 		def authorize_submit
@@ -24,8 +27,22 @@ module Api
 			when 'Cancel'
 				uri.query = URI.encode_www_form(error: 'access_denied')
 			when 'Connect'
-				grant = OauthGrant.create!(oauth_app: @app, user: @current_user, scope: JSON.parse(params[:scope]))
-				uri.query = URI.encode_www_form({ code: grant.code, state: params[:state] }.compact)
+				if params[:response_type] == 'code'
+					grant = OauthGrant.create!(oauth_app: @app, user: @current_user, scope: JSON.parse(params[:scope]))
+					uri.query = URI.encode_www_form({ code: grant.code, state: params[:state] }.compact)
+				elsif params[:response_type] == 'token'
+					scope = JSON.parse params[:scope]
+
+					app = OauthApp.find_by!(client_id: params[:client_id])
+					token = ApiToken.create(scope: scope, oauth_app: app, user: @current_user)
+
+					uri.fragment = URI.encode_www_form({
+						access_token: token.token,
+						token_type: 'bearer',
+						scope: scope.join(', '),
+						state: params[:state]
+					}.compact)
+				end
 			end
 
 			redirect_to uri.to_s
