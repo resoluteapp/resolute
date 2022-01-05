@@ -16,6 +16,7 @@ export default class extends Controller {
 
 	disconnect() {
 		clearTimeout(this.timeout);
+		this.timeout = null;
 	}
 
 	copy() {
@@ -23,8 +24,11 @@ export default class extends Controller {
 
 		this.buttonTarget.innerText = "Copied!";
 
-		this.timeout = setTimeout(() => {
-			this.buttonTarget.innerText = "Copy";
-		}, 2000);
+		if (this.timeout === null) {
+			this.timeout = setTimeout(() => {
+				this.buttonTarget.innerText = "Copy";
+				this.timeout = null;
+			}, 2000);
+		}
 	}
 }
