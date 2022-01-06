@@ -20,7 +20,7 @@ Rails.application.routes.draw do
 	get 'login', to: 'auth#login'
 	post 'login', to: 'auth#auth'
 
-	get 'logout', to: 'auth#logout'
+	post 'logout', to: 'auth#logout'
 
 	get 'home', to: 'reminders#index'
 	resources :reminders, only: %i[create destroy]
