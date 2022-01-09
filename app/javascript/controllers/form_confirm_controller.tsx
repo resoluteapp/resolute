@@ -30,10 +30,12 @@ export default class extends Controller {
 	}
 
 	private hideModal() {
-		if (this.modal !== null) {
+		if (this.modal !== null && this.modal !== undefined) {
 			this.modal.addEventListener("transitionend", () => {
-				this.modal.remove();
-				this.modal = null;
+				if (this.modal !== null && this.modal !== undefined) {
+					this.modal.remove();
+					this.modal = null;
+				}
 			});
 			this.modal.classList.remove("modal--visible");
 		}
