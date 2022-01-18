@@ -1,9 +1,3 @@
-@import "@fontsource/outfit/300.css";
-@import "@fontsource/outfit/600.css";
-@import "@fontsource/outfit/700.css";
-
-@import "@fortawesome/fontawesome-free/css/all.css";
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -17,11 +11,7 @@
 
 @layer components {
 	.btn {
-		@apply cursor-pointer text-white rounded-md py-2 px-4 shadow-md hover:shadow-lg hover:no-underline bg-green-600 transition;
-	}
-
-	.btn:disabled {
-		@apply opacity-50 cursor-default;
+		@apply cursor-pointer disabled:cursor-default text-white rounded-md py-2 px-4 shadow-md hover:shadow-lg hover:no-underline disabled:opacity-50 bg-green-600 transition;
 	}
 
 	a,
@@ -30,21 +20,19 @@
 	}
 
 	.input {
-		@apply bg-black block w-full py-3 px-4 rounded-md placeholder-gray-500 border-2 border-gray-700 focus:outline-none focus:border-green-500;
-	}
-	.input.unobtrusive {
-		@apply border-transparent focus:border-green-500;
-	}
-	.input:disabled {
-		@apply cursor-not-allowed text-gray-500;
-	}
+		@apply bg-black block w-full py-3 px-4 rounded-md placeholder-gray-500 border-2 border-gray-700 focus:outline-none focus:border-green-500 disabled:cursor-not-allowed disabled:text-gray-500;
 
-	.modal:not(.modal--visible) .modal__content {
-		@apply scale-95;
+		&.unobtrusive {
+			@apply border-transparent focus:border-green-500;
+		}
 	}
 
 	.modal:not(.modal--visible) {
 		@apply opacity-0;
+
+		& .modal__content {
+			@apply scale-95;
+		}
 	}
 }
 

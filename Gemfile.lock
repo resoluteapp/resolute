@@ -107,6 +107,9 @@ GEM
     faraday_middleware (1.2.0)
       faraday (~> 1.0)
     ffi (1.15.4)
+    font_awesome5_rails (1.5.0)
+      nokogiri (>= 1.11.3)
+      railties (>= 4.2)
     globalid (1.0.0)
       activesupport (>= 5.0)
     haml (5.2.2)
@@ -174,6 +177,8 @@ GEM
       nokogiri (>= 1.6)
     rails-html-sanitizer (1.4.2)
       loofah (~> 2.3)
+    rails_feather (0.1.0)
+      rails
     railties (6.1.4.4)
       actionpack (= 6.1.4.4)
       activesupport (= 6.1.4.4)
@@ -259,6 +264,7 @@ DEPENDENCIES
   cssbundling-rails (~> 0.2.7)
   faraday
   faraday_middleware
+  font_awesome5_rails (~> 1.5)
   haml (~> 5.2)
   jbuilder (~> 2.7)
   jsbundling-rails (~> 0.2.2)
@@ -268,6 +274,7 @@ DEPENDENCIES
   pundit
   rack-mini-profiler (~> 2.0)
   rails (~> 6.1.4, >= 6.1.4.1)
+  rails_feather (~> 0.1.0)
   redis (~> 4.0)
   rubocop (~> 1.23)
   rubocop-rails (~> 2.12)

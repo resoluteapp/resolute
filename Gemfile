@@ -70,3 +70,5 @@ gem "tzinfo-data", "~> 1.2021"
 gem "jsbundling-rails", "~> 0.2.2"
 
 gem "cssbundling-rails", "~> 0.2.7"
+
+gem "rails_feather", "~> 0.1.0"

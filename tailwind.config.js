@@ -1,5 +1,4 @@
 const colors = require("tailwindcss/colors");
-const defaultTheme = require("tailwindcss/defaultTheme");
 
 module.exports = {
 	content: [
@@ -7,11 +6,8 @@ module.exports = {
 		"./app/helpers/**/*.rb",
 		"./app/javascript/controllers/*.tsx",
 	],
+	important: true,
 	theme: {
-		screens: {
-			xs: "475px",
-			...defaultTheme.screens,
-		},
 		extend: {
 			fontFamily: {
 				heading: ["Outfit", "sans-serif"],
@@ -21,6 +17,9 @@ module.exports = {
 				green: colors.emerald,
 				yellow: colors.amber,
 				purple: colors.violet,
+			},
+			screens: {
+				xs: "475px",
 			},
 		},
 	},

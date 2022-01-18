@@ -1,0 +1,71 @@
+@font-face {
+	font-family: "Outfit";
+	font-style: normal;
+	font-weight: 100;
+	font-display: swap;
+	src: url("Outfit-Thin.woff2") format("woff");
+}
+
+@font-face {
+	font-family: "Outfit";
+	font-style: normal;
+	font-weight: 200;
+	font-display: swap;
+	src: url("Outfit-ExtraLight.woff2") format("woff");
+}
+
+@font-face {
+	font-family: "Outfit";
+	font-style: normal;
+	font-weight: 300;
+	font-display: swap;
+	src: url("Outfit-Light.woff2") format("woff");
+}
+
+@font-face {
+	font-family: "Outfit";
+	font-style: normal;
+	font-weight: 400;
+	font-display: swap;
+	src: url("Outfit-Regular.woff2") format("woff");
+}
+
+@font-face {
+	font-family: "Outfit";
+	font-style: normal;
+	font-weight: 500;
+	font-display: swap;
+	src: url("Outfit-Medium.woff2") format("woff");
+}
+
+@font-face {
+	font-family: "Outfit";
+	font-style: normal;
+	font-weight: 600;
+	font-display: swap;
+	src: url("Outfit-SemiBold.woff2") format("woff");
+}
+
+@font-face {
+	font-family: "Outfit";
+	font-style: normal;
+	font-weight: 700;
+	font-display: swap;
+	src: url("Outfit-Bold.woff2") format("woff");
+}
+
+@font-face {
+	font-family: "Outfit";
+	font-style: normal;
+	font-weight: 800;
+	font-display: swap;
+	src: url("Outfit-ExtraBold.woff2") format("woff");
+}
+
+@font-face {
+	font-family: "Outfit";
+	font-style: normal;
+	font-weight: 900;
+	font-display: swap;
+	src: url("Outfit-Black.woff2") format("woff");
+}

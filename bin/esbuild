@@ -1,0 +1,36 @@
+#!/usr/bin/env node
+
+const esbuild = require("esbuild");
+const { pnpPlugin } = require("@yarnpkg/esbuild-plugin-pnp");
+
+const watch = process.argv.includes("--watch");
+
+esbuild
+	.build({
+		entryPoints: ["app/javascript/application.ts"],
+		bundle: true,
+		minify: process.env.NODE_ENV === "production",
+		watch: watch
+			? {
+					onRebuild(error, result) {
+						if (!error) {
+							console.log("Rebuilt successfully.");
+						}
+					},
+			  }
+			: undefined,
+		inject: ["app/javascript/shim/jsx-shim.ts"],
+		outdir: "app/assets/builds",
+		jsxFactory: "jsxCreateElement",
+		plugins: [pnpPlugin()],
+	})
+	.then((result) => {
+		if (watch) {
+			console.log("Watching for changes...\n");
+		} else {
+			console.log("Done!");
+		}
+	})
+	.catch((e) => {
+		console.log("An error occurred.");
+	});
