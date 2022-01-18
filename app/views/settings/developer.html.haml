@@ -1,16 +1,19 @@
 = render "layout", selected: "developer" do
 	.grid.grid-cols-2.gap-5
 		%a.bg-blue-600.text-xl.p-5.font-semibold.font-heading.rounded-md.text-white.transition-transform.hover:no-underline{class: "hover:-translate-y-0.5", href: oauth_apps_path}
-			%i.fas.fa-code.mr-2
+			%i.fas.fa-code.mr-2.fa-fw
 			Your apps
-			%span.text-sm.bg-blue-500.font-normal.font-sans.px-2.rounded-md(class="py-0.5")= @app_count
+			%span.text-sm.bg-blue-500.font-normal.font-sans.px-2.rounded-md.ml-1(class="py-0.5")= @app_count
 		%a.bg-green-600.text-xl.p-5.font-semibold.font-heading.rounded-md.text-white.transition-transform.hover:no-underline{class: "hover:-translate-y-0.5", href: personal_tokens_path}
-			%i.fas.fa-key.mr-2
+			%i.fas.fa-key.mr-2.fa-fw
 			Personal tokens
-			%span.text-sm.bg-green-500.font-normal.font-sans.px-2.rounded-md(class="py-0.5")= @personal_token_count
+			%span.text-sm.bg-green-500.font-normal.font-sans.px-2.rounded-md.ml-1(class="py-0.5")= @personal_token_count
 		%a.bg-yellow-600.text-xl.p-5.font-semibold.font-heading.rounded-md.text-white.transition-transform.hover:no-underline(class="hover:-translate-y-0.5" href="https://api.useresolute.com" target="_blank" data-turbo="false")
-			%i.fas.fa-book.mr-2
+			%i.fas.fa-book.mr-2.fa-fw
 			Documentation
+		%a.bg-rose-500.text-xl.p-5.font-semibold.font-heading.rounded-md.text-white.transition-transform.hover:no-underline(class="hover:-translate-y-0.5" href="https://github.com/resoluteapp/resolute/discussions" target="_blank" data-turbo="false")
+			%i.fas.fa-users.mr-2.fa-fw
+			Community
 	
 	.text-gray-400.mt-5.text-sm
 		<strong>Psssst...</strong> did you know that Resolute is <a href="https://github.com/resoluteapp/resolute" target="_blank">open-source</a>?

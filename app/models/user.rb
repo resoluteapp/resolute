@@ -8,6 +8,7 @@ class User < ApplicationRecord
 
 	has_many :sessions, dependent: :destroy
 	has_many :reminders, dependent: :destroy
-	has_many :oauth_apps, dependent: :destroy
+	has_many :oauth_apps
 	has_many :api_tokens, dependent: :destroy
+	has_many :password_reset_requests, dependent: :destroy
 end

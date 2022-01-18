@@ -13,14 +13,13 @@
 	= render "shared/notice"
 	
 	- if flash[:personal_token]
-		.border-2.border-green-500.p-5.rounded-md.mb-10.flex.items-start{"data-controller" => "copy alert", "data-copy-text-value" => flash[:personal_token]["token"]}
-			.flex-grow
-				.mb-1 Token "#{flash[:personal_token]["description"]}" has been created.
-				.mb-3
-					%strong Please save it someplace safe, because you won't see it again.
+		.border.border-green-500.bg-green-800.p-5.rounded-md.mb-10.flex.items-start{"data-controller" => "copy alert", "data-copy-text-value" => flash[:personal_token]["token"]}
+			.flex-grow.flex.flex-col.items-start
+				.bg-green-600.rounded-md.py-1.px-2= flash[:personal_token]["description"]
 				.flex.items-center.gap-3
 					.font-mono.text-lg.select-all= flash[:personal_token]["token"]
-					%button.btn.text-sm.bg-gray-700(data-action="copy#copy" data-copy-target="button") Copy
+					%button.btn(data-action="copy#copy" data-copy-target="button") Copy
+				.opacity-50.mt-2.text-sm <i class="far fa-lightbulb mr-1"></i> Remember to save this token, because you won't see it again.
 			%button{"data-action" => "alert#dismiss"}
 				%i.fas.fa-times
 
