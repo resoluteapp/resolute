@@ -11,9 +11,9 @@ class SessionsController < ApplicationController
 		session.destroy
 
 		if session == @current_session
-			flash.notice = "You've been logged out!"
+			# flash.notice = "You've been logged out!"
 
-			redirect_to '/login'
+			redirect_to '/'
 		else
 			redirect_to '/settings/security'
 		end
