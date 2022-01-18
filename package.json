@@ -24,8 +24,8 @@
 		"build": "bin/esbuild",
 		"build:css": "postcss ./app/assets/stylesheets/application.css -o ./app/assets/builds/application.css",
 		"ts-check": "tsc --noEmit",
-		"format:check": "prettier --check .",
-		"format:fix": "prettier --write .",
+		"format:check": "prettier --check app/javascript/ app/assets/stylesheets/",
+		"format:fix": "prettier --write app/javascript/ app/assets/stylesheets/",
 		"lint": "eslint app/javascript/"
 	},
 	"devDependencies": {
