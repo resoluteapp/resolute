@@ -34,7 +34,7 @@ class AuthController < ApplicationController
 
 		flash.notice = "You've been logged out!"
 
-		redirect_to '/login'
+		redirect_to '/'
 	end
 
 	def forgot_password_submit
