@@ -20,7 +20,7 @@ jobs:
           host: "159.223.133.179"
           username: dokku
           key: ${{ secrets.SSH_PRIVATE_KEY }}
-          script: dokku git:from-image resolute ghcr.io/resoluteapp/resolute:main
+          script: git:from-image resolute ghcr.io/resoluteapp/resolute:main
   docker:
     name: Docker
     runs-on: ubuntu-latest
