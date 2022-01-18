@@ -2,8 +2,10 @@
 
 class OauthApp < ApplicationRecord
 	belongs_to :user
+
 	has_many :oauth_grants, dependent: :destroy
 	has_many :api_tokens, dependent: :destroy
+	has_many :reminders, dependent: :restrict_with_exception
 
 	has_one_attached :icon
 

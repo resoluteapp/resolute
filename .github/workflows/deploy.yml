@@ -20,13 +20,15 @@ jobs:
           host: "159.223.133.179"
           username: dokku
           key: ${{ secrets.SSH_PRIVATE_KEY }}
-          script: git:from-image resolute ghcr.io/resoluteapp/resolute:main
+          script: git:from-image resolute ghcr.io/resoluteapp/resolute:main@${{ needs.docker.outputs.digest }}
   docker:
     name: Docker
     runs-on: ubuntu-latest
     permissions:
       contents: read
       packages: write
+    outputs:
+      digest: ${{ steps.push.outputs.digest }}
 
     steps:
       - name: Checkout repository
@@ -46,6 +48,7 @@ jobs:
           images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
 
       - name: Build and push Docker image
+        id: push
         uses: docker/build-push-action@ad44023a93711e3deb337508980b4b5e9bcdc5dc
         with:
           context: .
