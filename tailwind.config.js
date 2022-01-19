@@ -6,7 +6,6 @@ module.exports = {
 		"./app/helpers/**/*.rb",
 		"./app/javascript/controllers/*.tsx",
 	],
-	important: true,
 	theme: {
 		extend: {
 			fontFamily: {
