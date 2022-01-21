@@ -1,4 +1,5 @@
 const colors = require("tailwindcss/colors");
+const plugin = require("tailwindcss/plugin");
 
 module.exports = {
 	content: [
@@ -22,5 +23,10 @@ module.exports = {
 			},
 		},
 	},
-	plugins: [],
+	plugins: [
+		// janky code alert !!!!
+		plugin(function ({ addVariant }) {
+			addVariant("group-2-hover", ".group-2:hover &");
+		}),
+	],
 };

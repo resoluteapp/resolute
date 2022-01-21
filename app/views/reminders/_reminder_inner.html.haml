@@ -1,0 +1,15 @@
+- if reminder.title.present?
+	%h2.font-semibold.font-heading.break-words.min-w-0.text-xl.text-green-500.group-2-hover:underline= reminder.title
+
+- if reminder.author.present?
+	.flex.gap-3.items-center.text-sm.text-gray-300
+		- if reminder.author_avatar.present?
+			%img.w-5.rounded-full{src: reminder.author_avatar}
+		%span= reminder.author
+
+- if reminder.text.present?
+	.break-words.min-w-0.text-white.hover:no-underline
+		= reminder.text
+
+- if reminder.oauth_app.present?
+	.text-xs.text-gray-400 from #{reminder.oauth_app.name}

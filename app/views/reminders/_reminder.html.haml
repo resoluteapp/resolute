@@ -1,27 +1,11 @@
 %div{id: dom_id(reminder)}
-	.group.bg-black.p-5.rounded-md.flex.justify-between.items-center.gap-5.border-2.border-transparent.relative.break-words.cursor-default
-		.flex.flex-col.gap-3.min-w-0.grow
-			- if reminder.title.present? && reminder.url.present?
-				%div
-					%a.font-semibold.font-heading.break-words.min-w-0.text-xl{href: reminder.url, target: "_blank"}= reminder.title
-			- elsif reminder.title.present?
-				.font-semibold.font-heading.break-words.min-w-0.text-xl= reminder.title
-
-			- if reminder.author.present?
-				.flex.gap-3.items-center.text-sm.text-gray-300
-					- if reminder.author_avatar.present?
-						%img.w-5.rounded-full{src: reminder.author_avatar}
-					%span= reminder.author
-
-			- if reminder.text.present?
-				.break-words.min-w-0.text-white.hover:no-underline
-					= reminder.text
-					-# - if reminder.url.present? && reminder.title.blank?
-					-# 	%a.ml-2.transition-opacity.opacity-0.group-hover:opacity-100{href: reminder.url, target: "_blank"}
-					-# 		%i.fas.fa-link
-
-			- if reminder.oauth_app.present?
-				.text-xs.text-gray-400 from #{reminder.oauth_app.name}
+	.group.bg-black.p-5.rounded-md.flex.justify-between.items-center.gap-5.border-2.border-transparent.relative.break-words.cursor-default{class: [reminder.url.present? && "hover:shadow-lg hover:-translate-y-0.5 transition"]}
+		- if reminder.url.present?
+			%a.hover:no-underline.flex.flex-col.gap-3.min-w-0.grow.group-2{href: reminder.url, target: "_blank"}
+				= render "reminders/reminder_inner", reminder: reminder
+		- else
+			.flex.flex-col.gap-3.min-w-0.grow
+				= render "reminders/reminder_inner", reminder: reminder
 
 		= form_with url: reminder_path(reminder), method: :delete do |form|
 			%button.text-gray-500.hover:text-red-500.cursor-pointer.opacity-100.sm:opacity-0.group-hover:opacity-100.transition(type="submit" title="Delete")
