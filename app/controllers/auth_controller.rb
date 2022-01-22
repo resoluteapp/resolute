@@ -29,10 +29,9 @@ class AuthController < ApplicationController
 	end
 
 	def logout
-		Session.destroy_by(token: session[:token])
-		session.delete :token
+		log_out
 
-		# flash.notice = "You've been logged out!"
+		flash.notice = "You've been logged out!"
 
 		redirect_to '/'
 	end

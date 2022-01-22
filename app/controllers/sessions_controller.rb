@@ -6,12 +6,10 @@ class SessionsController < ApplicationController
 	def destroy
 		session = Session.find_by!(id: params[:id], user: @current_user)
 
-		authorize session
-
 		session.destroy
 
 		if session == @current_session
-			# flash.notice = "You've been logged out!"
+			flash.notice = "You've been logged out!"
 
 			redirect_to '/'
 		else

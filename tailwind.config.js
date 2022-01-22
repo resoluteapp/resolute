@@ -22,6 +22,17 @@ module.exports = {
 			screens: {
 				xs: "475px",
 			},
+			animation: {
+				toast: "5600ms forwards toast",
+			},
+			keyframes: {
+				toast: {
+					"0%": { opacity: "0", visibility: "visible" },
+					"7%": { opacity: "100", visibility: "visible" },
+					"93%": { opacity: "100", visibility: "visible" },
+					"100%": { opacity: "0", visibility: "hidden" },
+				},
+			},
 		},
 	},
 	plugins: [

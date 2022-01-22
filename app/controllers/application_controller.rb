@@ -45,6 +45,11 @@ class ApplicationController < ActionController::Base
 		redirect_to(options[:redirect_to] || '/home')
 	end
 
+	def log_out
+		Session.destroy_by(token: session[:token])
+		session.delete :token
+	end
+
 	def flash_notice_and_redirect(message, url)
 		flash.notice = message
 		redirect_to url
