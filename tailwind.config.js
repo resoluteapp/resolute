@@ -1,6 +1,7 @@
 const colors = require("tailwindcss/colors");
 const plugin = require("tailwindcss/plugin");
 
+/** @type {import("tailwindcss/tailwind-config").TailwindConfig} */
 module.exports = {
 	content: [
 		"./app/views/**/*.html.{haml,erb}",
