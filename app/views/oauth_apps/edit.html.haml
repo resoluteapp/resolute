@@ -1,11 +1,11 @@
 = render "layout", selected: "settings" do
 	= form_with model: @app do |form|
-		%label.block.mb-2.text-sm.text-gray-400(for="oauth_app_name") App name
+		= form.label :name, "App name", class: "block mb-2 text-sm text-gray-400"
 		= form.text_field :name, class: "input mb-4", required: true, placeholder: "My Cool App", autofocus: true
 		- if @app.public
 			%label.block.mb-2.text-sm.text-gray-400(for="oauth_app_installation_url") Installation URL
 			= form.text_field :installation_url, class: "input mb-4", placeholder: "https://my-cool-app.com/install"
-		%label.block.mb-2.text-sm.text-gray-400(for="oauth_app_icon") Icon
+		= form.label :icon, "Icon", class: "block mb-2 text-sm text-gray-400"
 		= form.file_field :icon, accept: "image/*", class: "block mb-4 text-gray-400 file:cursor-pointer file:text-white file:rounded-md file:py-2 file:px-4 file:shadow-md file:bg-green-600 file:border-0 file:mr-4"
 		- if @app.icon.attached?
 			%div

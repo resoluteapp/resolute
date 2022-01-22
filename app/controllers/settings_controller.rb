@@ -3,6 +3,21 @@
 class SettingsController < ApplicationController
 	before_action :require_auth
 
+	def update
+		if current_user.authenticate(params[:current_password])
+			current_user.update!(password: params[:new_password])
+
+			UserMailer.with(email: current_user.email).password_changed.deliver_later
+			flash.notice = 'Your password has been changed.'
+		else
+			flash.alert = 'Incorrect password.'
+
+			flash[:change_password_open] = true
+		end
+
+		redirect_back fallback_location: '/settings'
+	end
+
 	def developer
 		@app_count = current_user.oauth_apps.length
 		@personal_token_count = ApiToken.where(oauth_app: nil, user: @current_user).count

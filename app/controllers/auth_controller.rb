@@ -75,6 +75,8 @@ class AuthController < ApplicationController
 
 		request.user.update!(password: params[:password])
 
+		UserMailer.with(email: current_user.email).password_changed.deliver_later
+
 		log_in user: request.user
 	end
 

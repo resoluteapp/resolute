@@ -1,6 +1,20 @@
 = render "layout", selected: "general" do
-	.flex.items-center.gap-5
+	.flex.items-center.gap-5.mb-10
 		= gravatar @current_user.email, 100
 		%div
 			.text-xl= @current_user.email
 			%em.text-sm Manage your avatar at <a href="https://gravatar.com" target="_blank">Gravatar</a>.
+	
+	%div{"x-data" => "{ open: #{flash[:change_password_open] ? 'true' : 'false'} }", "x-effect" => "open && setTimeout(() => $refs.currentPassword.focus(), 250)"}
+		%button.btn.bg-gray-700{"@click" => "open = !open"}
+			%i.fas.mr-1.fa-fw{":class" => "open ? 'fa-lock-open' : 'fa-lock'"}
+			Change your password
+
+		%div{"x-show" => "open", "x-collapse" => true, "x-cloak" => true}
+			= form_with url: "/settings", class: "mt-5" do |form|
+				= form.password_field :current_password, required: true, class: "input mb-4", placeholder: "Current password", "x-ref" => "currentPassword", autofocus: flash[:change_password_open]
+				= form.password_field :new_password, required: true, class: "input mb-4", placeholder: "New password"
+
+				.flex.items-center
+					= form.submit "Save", class: "btn mr-5"
+					.text-gray-400.text-sm <i class="far fa-lightbulb mr-1"></i> This won't log anyone out; visit the <a href="/settings/security">Security</a> page to do that.

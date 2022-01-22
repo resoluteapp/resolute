@@ -18,7 +18,7 @@
 				.bg-green-600.rounded-md.py-1.px-2= flash[:personal_token]["description"]
 				.flex.items-center.gap-3
 					.font-mono.text-lg.select-all= flash[:personal_token]["token"]
-					%button.btn(data-action="copy#copy" data-copy-target="button") Copy
+					%button.btn.text-sm(data-action="copy#copy" data-copy-target="button") Copy
 				.opacity-50.mt-2.text-sm <i class="far fa-lightbulb mr-1"></i> Remember to save this token, because you won't see it again.
 			%button{"data-action" => "alert#dismiss"}
 				%i.fas.fa-times

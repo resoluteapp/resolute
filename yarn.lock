@@ -5,6 +5,13 @@ __metadata:
   version: 5
   cacheKey: 8
 
+"@alpinejs/collapse@npm:^3.8.1":
+  version: 3.8.1
+  resolution: "@alpinejs/collapse@npm:3.8.1"
+  checksum: a55a9c5e0bb53d8beac29dac8fc50e6c9d18a4923cb68032a7227b36865252671380fa1f60ed8fa70b71c26bdebc5ae3a74d6fb92c0a42e946262f52d1de3621
+  languageName: node
+  linkType: hard
+
 "@alpinejs/persist@npm:^3.7.1":
   version: 3.7.1
   resolution: "@alpinejs/persist@npm:3.7.1"
@@ -3076,6 +3083,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "resolute@workspace:."
   dependencies:
+    "@alpinejs/collapse": ^3.8.1
     "@alpinejs/persist": ^3.7.1
     "@hotwired/stimulus": ^3.0.1
     "@hotwired/turbo": ^7.0.1

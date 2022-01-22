@@ -29,6 +29,7 @@ Rails.application.routes.draw do
 
 	scope '/settings' do
 		get '/', to: 'settings#index'
+		post '/', to: 'settings#update'
 		get 'security', to: 'settings#security'
 
 		resources :sessions, path: 'security/sessions', only: %i[destroy] do

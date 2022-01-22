@@ -3,6 +3,7 @@
 	"private": true,
 	"version": "0.1.0",
 	"dependencies": {
+		"@alpinejs/collapse": "^3.8.1",
 		"@alpinejs/persist": "^3.7.1",
 		"@hotwired/stimulus": "^3.0.1",
 		"@hotwired/turbo": "^7.0.1",

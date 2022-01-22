@@ -4,6 +4,7 @@ import controllers from "./controllers";
 
 import Alpine from "alpinejs";
 import persist from "@alpinejs/persist";
+import collapse from "@alpinejs/collapse";
 
 declare global {
 	interface Window {
@@ -15,6 +16,7 @@ const application = Application.start();
 window.Stimulus = application;
 
 Alpine.plugin(persist);
+Alpine.plugin(collapse);
 Alpine.start();
 
 // Init Stimulus controllers
