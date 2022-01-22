@@ -12,7 +12,7 @@
 				.w-3.h-3.bg-blue-500.absolute.top-0.left-0.rounded-full.animate-ping
 			.bg-gray-800.px-2.rounded-md.border.border-gray-700.cursor-pointer.hover:bg-gray-700{"class" => "py-1.5", "@click" => "open = true"}
 				%i.fas.fa-ellipsis-v.fa-fw
-			%ul.absolute.top-full.right-0.bg-gray-800.rounded-md.p-2.w-52.mt-2.border.border-gray-700.z-10{"x-show" => "open", "x-cloak" => true, "@click.outside" => "open = false"}
+			%ul.absolute.top-full.right-0.bg-gray-800.rounded-md.p-2.w-52.mt-2.border.border-gray-700.z-10.shadow-lg{"x-show" => "open", "x-cloak" => true, "@click.outside" => "open = false"}
 				%li.py-2.px-3.hover:bg-gray-700.rounded-md.cursor-not-allowed.text-gray-500 Mark unread
 				%li.py-2.px-3.hover:bg-gray-700.rounded-md.cursor-not-allowed.text-gray-500 Copy link
 				%li.py-2.px-3.hover:bg-gray-700.rounded-md.cursor-pointer.flex.items-center.gap-2{"@click" => "reminders.push({text: \"#{text}\", id: Math.random()}); open = false"}
@@ -29,7 +29,7 @@
 		.absolute.top-0.right-1.group-hover:opacity-100.transition-opacity{"class" => "-mt-5", ":class" => "open ? 'opacity-100' : 'opacity-0'", "x-cloak" => true}
 			.bg-gray-800.px-2.rounded-md.border.border-gray-700.cursor-pointer.hover:bg-gray-700{"class" => "py-1.5", "@click" => "open = true"}
 				%i.fas.fa-ellipsis-v.fa-fw
-			%ul.absolute.top-full.right-0.bg-gray-800.rounded-md.p-2.w-52.mt-2.border.border-gray-700.z-10{"x-show" => "open", "x-cloak" => true, "@click.outside" => "open = false"}
+			%ul.absolute.top-full.right-0.bg-gray-800.rounded-md.p-2.w-52.mt-2.border.border-gray-700.z-10.shadow-lg{"x-show" => "open", "x-cloak" => true, "@click.outside" => "open = false"}
 				%li.py-2.px-3.hover:bg-gray-700.rounded-md.cursor-not-allowed.text-gray-500 Mark unread
 				%li.py-2.px-3.hover:bg-gray-700.rounded-md.cursor-not-allowed.text-gray-500 Copy link
 				%li.py-2.px-3.hover:bg-gray-700.rounded-md.cursor-pointer.flex.items-center.gap-2{"@click" => "reminders.push({text: \"#{text}\", id: Math.random()}); open = false"}
