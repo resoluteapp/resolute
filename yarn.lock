@@ -159,12 +159,19 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@rails/activestorage@npm:^6.0.0":
-  version: 6.1.4
-  resolution: "@rails/activestorage@npm:6.1.4"
+"@rails/actioncable@npm:^7.0.1":
+  version: 7.0.1
+  resolution: "@rails/actioncable@npm:7.0.1"
+  checksum: b4190c2297f973a5d844d8a3ddb1ac907cc96f3a94e42c6c474175059b03854e32985750de378d28c80f38fbe0a64376b27e9c9115faa636e1413f0570a2956b
+  languageName: node
+  linkType: hard
+
+"@rails/activestorage@npm:^7.0.1":
+  version: 7.0.1
+  resolution: "@rails/activestorage@npm:7.0.1"
   dependencies:
-    spark-md5: ^3.0.0
-  checksum: fdfacbe5249c1ed5c2aa09fe593bf1689840ef4b590766a5638b81b57c3c6307daaf636974a7d0b0a03ced602313440dc161a209e23f73d018fb530489ba3509
+    spark-md5: ^3.0.1
+  checksum: 3e386e668bc87b9f1b36fc744801aee13c91e7fe59989124d45013110b70c6f898f14fb329387425b4795c2d9ea590f4388e9429e2a472b33a2b6ba2e510acdf
   languageName: node
   linkType: hard
 
@@ -3073,8 +3080,8 @@ __metadata:
     "@hotwired/stimulus": ^3.0.1
     "@hotwired/turbo": ^7.0.1
     "@hotwired/turbo-rails": ^7.1.0
-    "@rails/actioncable": ^6.0.0
-    "@rails/activestorage": ^6.0.0
+    "@rails/actioncable": ^7.0.1
+    "@rails/activestorage": ^7.0.1
     "@types/rails__actioncable": ^6.1.6
     "@types/tailwindcss": ^3.0.3
     "@typescript-eslint/eslint-plugin": ^5.6.0
@@ -3299,7 +3306,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"spark-md5@npm:^3.0.0":
+"spark-md5@npm:^3.0.1":
   version: 3.0.2
   resolution: "spark-md5@npm:3.0.2"
   checksum: 5feebff0bfabcecf56ba03af3e38fdb068272ed41fbf0a94ff9ef65b9bb9cb1dd69be3684db6542e62497b1eac3ae324c07ac4dcb606465dc36ca048177077bf
