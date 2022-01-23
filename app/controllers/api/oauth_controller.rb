@@ -52,7 +52,7 @@ module Api
 				end
 			end
 
-			redirect_to uri.to_s
+			redirect_to uri.to_s, allow_other_host: true
 		end
 		# rubocop:enable Metrics/MethodLength
 
