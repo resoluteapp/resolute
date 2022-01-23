@@ -1,5 +1,5 @@
 - if reminder.title.present?
-	%h2.font-semibold.font-heading.break-words.min-w-0.text-xl.text-green-500.group-2-hover:underline= reminder.title
+	%h2.font-semibold.font-heading.break-words.min-w-0.text-xl.text-green-500.group-2-hover:underline{class: "-mb-0.5"}= reminder.title
 
 - if reminder.author.present?
 	.flex.gap-3.items-center.text-sm.text-gray-300
@@ -12,4 +12,7 @@
 		= reminder.text
 
 - if reminder.oauth_app.present?
-	.text-xs.text-gray-400 from #{reminder.oauth_app.name}
+	.text-xs.text-gray-400
+		from #{reminder.oauth_app.name}
+		- if reminder.source.present?
+			&middot; #{reminder.source}
