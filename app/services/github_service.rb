@@ -6,7 +6,7 @@ class GithubService
 	end
 
 	def emails
-		get 'https://api.github.com/user/emails'
+		get '/user/emails'
 	end
 
 	def primary_email
@@ -20,7 +20,7 @@ class GithubService
 	private
 
 	def get(url)
-		conn = Faraday.new do |f|
+		conn = Faraday.new('https://api.github.com') do |f|
 			f.response :json
 		end
 
