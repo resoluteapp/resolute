@@ -11,6 +11,10 @@ class OauthApp < ApplicationRecord
 
 	after_initialize :set_defaults
 
+	def pretty_name
+		"From #{name}"
+	end
+
 	private
 
 	def set_defaults
