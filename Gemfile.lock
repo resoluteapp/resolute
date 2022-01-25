@@ -292,6 +292,7 @@ DEPENDENCIES
   jbuilder (~> 2.7)
   jsbundling-rails (~> 0.2.2)
   listen (~> 3.3)
+  nokogiri (~> 1.13)
   pg (~> 1.2, >= 1.2.3)
   puma (~> 5.0)
   pundit

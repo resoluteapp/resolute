@@ -71,3 +71,5 @@ gem "jsbundling-rails", "~> 0.2.2"
 gem "cssbundling-rails", "~> 0.2.7"
 
 gem "sprockets-rails", "~> 3.4"
+
+gem "nokogiri", "~> 1.13"
