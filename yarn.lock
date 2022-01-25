@@ -196,6 +196,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/alpinejs@npm:^3.7.0":
+  version: 3.7.0
+  resolution: "@types/alpinejs@npm:3.7.0"
+  dependencies:
+    "@vue/reactivity": ^3.2.26
+  checksum: 6e13b5f00345fbf450d954a4404cbdfc277aa0148e042673c9f6cc8fef5e50869af09ff03dfcbe8690d2685f486ef4bb83d25fb972d9517bd8a1bc2be756f7ab
+  languageName: node
+  linkType: hard
+
 "@types/json-schema@npm:^7.0.9":
   version: 7.0.9
   resolution: "@types/json-schema@npm:7.0.9"
@@ -341,6 +350,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@vue/reactivity@npm:^3.2.26":
+  version: 3.2.29
+  resolution: "@vue/reactivity@npm:3.2.29"
+  dependencies:
+    "@vue/shared": 3.2.29
+  checksum: 07bfca8d6075a984676d8e103584e8447eaf7f60bb777dce652c452507225d077807b79365b8dcfded33a2424ba32f2518efb9ab313d4d59e69ccccf6ea56a5a
+  languageName: node
+  linkType: hard
+
 "@vue/reactivity@npm:~3.1.1":
   version: 3.1.5
   resolution: "@vue/reactivity@npm:3.1.5"
@@ -354,6 +372,13 @@ __metadata:
   version: 3.1.5
   resolution: "@vue/shared@npm:3.1.5"
   checksum: a34b942e1aeed5d2b0fe887d0804061d2e799ef9a0d641aaae368c6fa9e2bf311e415f02883f26963bd35d90cac165433cfe74360f7ee88304fccaa144422d83
+  languageName: node
+  linkType: hard
+
+"@vue/shared@npm:3.2.29":
+  version: 3.2.29
+  resolution: "@vue/shared@npm:3.2.29"
+  checksum: 0ee2ae764afe438fa378a8bfd751b56d2cd7c2ca225139d7a4ef75848145a3d811edd2a0a16a9392e3f75e5607d6d7392663a27d701eb48fc7abdcbcb33bc7cf
   languageName: node
   linkType: hard
 
@@ -3090,6 +3115,7 @@ __metadata:
     "@hotwired/turbo-rails": ^7.1.0
     "@rails/actioncable": ^7.0.1
     "@rails/activestorage": ^7.0.1
+    "@types/alpinejs": ^3.7.0
     "@types/rails__actioncable": ^6.1.6
     "@types/tailwindcss": ^3.0.3
     "@typescript-eslint/eslint-plugin": ^5.6.0
