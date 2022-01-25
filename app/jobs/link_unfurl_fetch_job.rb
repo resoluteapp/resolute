@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class LinkUnfurlFetchJob < ApplicationJob
 	queue_as :default
 
