@@ -7,6 +7,6 @@ namespace :api do
 
 	defaults format: :json do
 		get 'me', to: 'users#me'
-		resources :reminders, only: %i[index create]
+		resources :reminders, only: %i[index create destroy]
 	end
 end
