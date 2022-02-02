@@ -73,3 +73,5 @@ gem "cssbundling-rails", "~> 0.2.7"
 gem "sprockets-rails", "~> 3.4"
 
 gem "nokogiri", "~> 1.13"
+
+gem "honeybadger", "~> 4.10"

@@ -5,6 +5,13 @@ class ApplicationController < ActionController::Base
 
 	before_action :authenticate
 
+	before_action do
+		Honeybadger.context(
+			user_id: @current_user.id,
+			user_email: @current_user.email
+		)
+	end
+
 	rescue_from Pundit::NotAuthorizedError do
 		render 'errors/not_found', status: :not_found
 	end

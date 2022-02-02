@@ -123,6 +123,7 @@ GEM
     haml (5.2.2)
       temple (>= 0.8.0)
       tilt
+    honeybadger (4.10.0)
     i18n (1.8.11)
       concurrent-ruby (~> 1.0)
     io-wait (0.2.1)
@@ -289,6 +290,7 @@ DEPENDENCIES
   faraday
   faraday_middleware
   haml (~> 5.2)
+  honeybadger (~> 4.10)
   jbuilder (~> 2.7)
   jsbundling-rails (~> 0.2.2)
   listen (~> 3.3)
