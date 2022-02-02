@@ -1,0 +1,13 @@
+.px-5
+	.flex.flex-col.gap-5.items-stretch.justify-center.w-full.max-w-sm.mx-auto.mt-20.mb-10
+		.h-auto.bg-gray-800.border-t-4.rounded-md.p-7.text-white{class: alert.present? ? "border-red-500" : "border-green-400"}
+			= render "shared/alert"
+			= render "shared/notice"
+
+			%h2.text-2xl.mb-6.ml-1.font-heading= title
+
+			= yield
+
+		- if local_assigns[:back_href].present?
+			.text-left.text-gray-500
+				%a.text-gray-500{href: back_href} ← #{local_assigns.fetch :back_text, "Back"}

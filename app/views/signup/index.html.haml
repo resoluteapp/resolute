@@ -1,17 +1,10 @@
 - content_for :page_title, "Sign up"
 
-.flex.items-center.justify-center.h-screen.w-screen.px-5
-	.flex.flex-col.gap-5.items-stretch.justify-center.w-full.max-w-sm
-		.h-auto.bg-gray-800.border-t-4.border-green-400.rounded-md.p-7.text-white
-			= render "shared/alert"
-			= render "shared/notice"
+= render "shared/landing_header"
 
-			%h2.text-2xl.mb-6.ml-1.font-heading Sign up
+= render "layouts/sm", title: "Sign up", back_href: "/", back_text: "Home" do
+	= form_with do |form|
+		= form.email_field :email, placeholder: "Email", class: "input mb-6", autofocus: true, required: true, value: @prefill_email
 
-			= form_with do |form|
-				= form.email_field :email, placeholder: "Email", class: "input mb-6", autofocus: true, required: true, value: @prefill_email
-
-				.flex.justify-between.items-center
-					= form.submit "Continue", class: "btn"
-		.text-left.text-gray-500
-			%a.text-gray-500(href="/") ← Home
+		.flex.justify-between.items-center
+			= form.submit "Continue", class: "btn"

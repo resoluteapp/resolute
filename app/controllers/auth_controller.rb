@@ -75,7 +75,9 @@ class AuthController < ApplicationController
 
 		request.user.update!(password: params[:password])
 
-		UserMailer.with(email: current_user.email).password_changed.deliver_later
+		UserMailer.with(email: request.user.email).password_changed.deliver_later
+
+		flash.notice = 'Your password has been reset.'
 
 		log_in user: request.user
 	end
