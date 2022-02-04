@@ -7,10 +7,9 @@
 		"esbenp.prettier-vscode",
 		"rebornix.ruby",
 		"castwide.solargraph",
-		"vayan.haml",
+		"karunamurti.haml",
 		"bradlc.vscode-tailwindcss",
 		"wingrunr21.vscode-ruby",
-		"syler.sass-indented",
 		"arcanis.vscode-zipfs",
 		"dbaeumer.vscode-eslint"
 	],
