@@ -1,12 +1,31 @@
 %div{id: dom_id(reminder)}
-	.group.bg-black.p-5.rounded-md.flex.justify-between.items-center.gap-5.border-2.border-transparent.relative.break-words.cursor-default{class: [reminder.url.present? && "hover:shadow-lg hover:-translate-y-0.5 transition"]}
-		- if reminder.url.present?
-			%a.hover:no-underline.flex.flex-col.gap-3.min-w-0.grow.group-2{href: reminder.url, target: "_blank"}
-				= render "reminders/reminder_inner", reminder: reminder
-		- else
-			.flex.flex-col.gap-3.min-w-0.grow
-				= render "reminders/reminder_inner", reminder: reminder
+	.group.bg-black.p-5.rounded-md.flex.justify-between.items-center.gap-5.border-2.border-transparent.relative.break-words.cursor-default
+		.flex.flex-col.gap-3.min-w-0.grow
+			- if reminder.title.present?
+				%h2.font-semibold.font-heading.break-words.min-w-0.text-xl.text-green-500.group-2-hover:underline{class: "-mb-0.5"}= reminder.title
 
-		= form_with url: reminder_path(reminder), method: :delete, class: "shrink-0" do |form|
-			%button.text-gray-500.hover:text-red-500.cursor-pointer.opacity-100.sm:opacity-0.group-hover:opacity-100.translate-x-0.sm:translate-x-2.group-hover:translate-x-0.transition(type="submit" title="Delete")
-				%i.fas.fa-fw.fa-trash.text-xl
+			- if reminder.author.present?
+				.flex.gap-3.items-center.text-sm.text-gray-300
+					- if reminder.author_avatar.present?
+						%img.w-5.rounded-full{src: reminder.author_avatar}
+					%span= reminder.author
+
+			- if reminder.text.present?
+				- if reminder.title.present?
+					-# Add a li'l left border if there's a title
+					.break-words.min-w-0.text-white.hover:no-underline.border-l-2.border-gray-500.pl-3= reminder.text
+				- else
+					.break-words.min-w-0.text-white.hover:no-underline= reminder.to_html
+
+			- if reminder.oauth_app.present? || reminder.source.present?
+				.text-xs.text-gray-400= [reminder.oauth_app&.pretty_name, reminder.source].compact.join(" · ")
+
+
+		.flex.gap-3.shrink-0
+			= form_with url: reminder_path(reminder), method: :delete, class: "shrink-0" do |form|
+				%button.text-gray-500.hover:text-red-500.cursor-pointer.opacity-100.sm:opacity-0.group-hover:opacity-100.translate-x-0.group-hover:translate-x-0.transition{type: "submit", title: "Delete", class: reminder.url.blank? ? "sm:translate-x-2" : "sm:translate-x-4"}
+					%i.fas.fa-fw.fa-trash.text-xl
+
+			- if reminder.url.present?
+				%a.text-gray-500.hover:text-green-500.cursor-pointer.opacity-100.sm:opacity-0.group-hover:opacity-100.translate-x-0.sm:translate-x-2.group-hover:translate-x-0.transition{title: "Open", href: reminder.url, target: "_blank"}
+					%i.fas.fa-fw.fa-external-link-alt.text-xl
