@@ -63,6 +63,22 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@floating-ui/core@npm:^0.4.0":
+  version: 0.4.0
+  resolution: "@floating-ui/core@npm:0.4.0"
+  checksum: 655e7a79be50bb1cccac45979e51e5963fd9bd2fc1a68ed38e15fa98bf8d17a91f6a982214918f4f4ff1c8e586b0bb517e5dc41056f18e16db315abf8fc2c66b
+  languageName: node
+  linkType: hard
+
+"@floating-ui/dom@npm:^0.2.0":
+  version: 0.2.0
+  resolution: "@floating-ui/dom@npm:0.2.0"
+  dependencies:
+    "@floating-ui/core": ^0.4.0
+  checksum: 445cfd0b7e05b37e41ed147d792c654798c5b385481e9cf2afd2e4389544b07bbe300881000fe5f7b901de5579a9e5991daded57c82bbbd8c94db9637a24d4d0
+  languageName: node
+  linkType: hard
+
 "@gar/promisify@npm:^1.0.1":
   version: 1.1.2
   resolution: "@gar/promisify@npm:1.1.2"
@@ -87,7 +103,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@hotwired/turbo@npm:^7.0.1, @hotwired/turbo@npm:^7.1.0":
+"@hotwired/turbo@npm:^7.1.0":
   version: 7.1.0
   resolution: "@hotwired/turbo@npm:7.1.0"
   checksum: 4f71ebf2ff6a396d4031d048fa4d4dba6039aed9ad68436e6df4527e975acd8427c7d2f9b3e7f61f3e9c1af987193adf4e2b640c4033d4afd3e1f914ed05ba9f
@@ -3110,8 +3126,8 @@ __metadata:
   dependencies:
     "@alpinejs/collapse": ^3.8.1
     "@alpinejs/persist": ^3.7.1
+    "@floating-ui/dom": ^0.2.0
     "@hotwired/stimulus": ^3.0.1
-    "@hotwired/turbo": ^7.0.1
     "@hotwired/turbo-rails": ^7.1.0
     "@rails/actioncable": ^7.0.1
     "@rails/activestorage": ^7.0.1

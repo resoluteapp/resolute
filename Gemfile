@@ -26,6 +26,8 @@ gem 'jbuilder', '~> 2.7'
 
 # Use Redis adapter to run Action Cable in production
 gem 'redis', '~> 4.0'
+gem "redis-namespace", "~> 1.8"
+
 # Use Active Model has_secure_password
 gem 'bcrypt', '~> 3.1.7'
 
@@ -75,3 +77,5 @@ gem "sprockets-rails", "~> 3.4"
 gem "nokogiri", "~> 1.13"
 
 gem "honeybadger", "~> 4.10"
+
+gem "rinku", "~> 2.0"

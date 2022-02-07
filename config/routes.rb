@@ -53,6 +53,10 @@ Rails.application.routes.draw do
 		resources :personal_tokens, path: 'tokens', only: %i[index new create destroy]
 	end
 
+	scope '/hovercard' do
+		get 'unfurl', to: 'hovercard#unfurl'
+	end
+
 	match '/404', to: 'errors#not_found', via: :all
 	match '/500', to: 'errors#internal_server_error', via: :all
 

@@ -12,7 +12,7 @@
 		-# Add a li'l left border if there's a title
 		.break-words.min-w-0.text-white.hover:no-underline.border-l-2.border-gray-500.pl-3= reminder.text
 	- else
-		.break-words.min-w-0.text-white.hover:no-underline= reminder.text
+		.break-words.min-w-0.text-white.hover:no-underline= reminder.to_html
 
 - if reminder.oauth_app.present? || reminder.source.present?
 	.text-xs.text-gray-400= [reminder.oauth_app&.pretty_name, reminder.source].compact.join(" · ")

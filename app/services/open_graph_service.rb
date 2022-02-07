@@ -1,18 +1,49 @@
 # frozen_string_literal: true
 
-require 'open-uri'
+# This class acts as an Open Graph (https://ogp.me) client.
+class OpenGraphService
+	class Result
+		attr_reader :title, :description, :favicon
 
-module OpenGraphService
+		def initialize(title:, description:, favicon:)
+			@title = title
+			@description = description
+			@favicon = favicon
+		end
+
+		def blank?
+			@title.blank? && @description.blank? && @favicon.blank?
+		end
+
+		def to_hash
+			{
+				title: @title,
+				description: @description,
+				favicon: @favicon
+			}
+		end
+
+		def self.from_hash(data)
+			Result.new(
+				title: data['title'],
+				description: data['description'],
+				favicon: data['favicon']
+			)
+		end
+
+		def self.from_json(data)
+			from_hash(JSON.parse(data))
+		end
+	end
+
 	# rubocop:disable Metrics/MethodLength
-	# rubocop:disable Metrics/CyclomaticComplexity
-	# rubocop:disable Metrics/PerceivedComplexity
 	def self.run(url)
 		conn = Faraday.new request: { timeout: 10 } do |f|
 			f.use FaradayMiddleware::FollowRedirects
 		end
 
 		response = conn.get(url)
-		return nil if response.status < 200 || response.status >= 299
+		return Result.new if response.status < 200 || response.status >= 299
 
 		doc = Nokogiri::HTML(response.body)
 
@@ -22,14 +53,20 @@ module OpenGraphService
 
 		description = doc.xpath("//meta[@property='og:description']").first&.attributes&.[]('content')&.value&.to_s
 
-		{
+		favicon = doc.css('link[rel~="icon"]').first&.attributes&.[]('href')&.value&.to_s
+		favicon = normalize_favicon(favicon, url) unless favicon.nil?
+
+		Result.new(
 			title: title,
-			description: description
-		}
+			description: description,
+			favicon: favicon
+		)
 	rescue StandardError
-		nil
+		Result.new
 	end
 	# rubocop:enable Metrics/MethodLength
-	# rubocop:enable Metrics/CyclomaticComplexity
-	# rubocop:enable Metrics/PerceivedComplexity
+
+	def self.normalize_favicon(favicon, url)
+		URI.join(url, favicon)
+	end
 end

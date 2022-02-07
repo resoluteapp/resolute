@@ -2,8 +2,19 @@ require: rubocop-rails
 
 Style/Documentation:
   Enabled: false
+Style/GlobalVars:
+  Enabled: false
 Metrics/AbcSize:
   Severity: info
+  Enabled: false
+Metrics/CyclomaticComplexity:
+  Severity: info
+  Enabled: false
+Metrics/PerceivedComplexity:
+  Severity: info
+  Enabled: false
+Rails/TimeZone:
+  Enabled: false
 Layout/IndentationStyle:
   EnforcedStyle: tabs
   IndentationWidth: 1
@@ -152,4 +163,21 @@ Rails/WhereEquals: # new in 2.9
 Rails/WhereExists: # new in 2.7
   Enabled: true
 Rails/WhereNot: # new in 2.8
+  Enabled: true
+
+Naming/BlockForwarding: # new in 1.24
+  Enabled: true
+Style/FileRead: # new in 1.24
+  Enabled: true
+Style/FileWrite: # new in 1.24
+  Enabled: true
+Style/MapToHash: # new in 1.24
+  Enabled: true
+Rails/CompactBlank: # new in 2.13
+  Enabled: true
+Rails/DurationArithmetic: # new in 2.13
+  Enabled: true
+Rails/RedundantPresenceValidationOnBelongsTo: # new in 2.13
+  Enabled: true
+Rails/RootJoinChain: # new in 2.13
   Enabled: true

@@ -12,9 +12,6 @@ class RemindersController < ApplicationController
 
 		@reminder = Reminder.create!(user: @current_user, text: text)
 
-		# Check if the reminder's text is a link
-		LinkUnfurlFetchJob.perform_later(text, @reminder) if text =~ /\A#{URI::DEFAULT_PARSER.make_regexp(%w[http https])}\z/
-
 		respond_to do |format|
 			format.html { redirect_to '/home' }
 			format.turbo_stream

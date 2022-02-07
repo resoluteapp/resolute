@@ -5,8 +5,8 @@
 	"dependencies": {
 		"@alpinejs/collapse": "^3.8.1",
 		"@alpinejs/persist": "^3.7.1",
+		"@floating-ui/dom": "^0.2.0",
 		"@hotwired/stimulus": "^3.0.1",
-		"@hotwired/turbo": "^7.0.1",
 		"@hotwired/turbo-rails": "^7.1.0",
 		"@rails/actioncable": "^7.0.1",
 		"@rails/activestorage": "^7.0.1",
