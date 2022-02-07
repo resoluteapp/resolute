@@ -13,7 +13,7 @@
 			- if reminder.text.present?
 				- if reminder.title.present?
 					-# Add a li'l left border if there's a title
-					.break-words.min-w-0.text-white.hover:no-underline.border-l-2.border-gray-500.pl-3= reminder.text
+					.break-words.min-w-0.text-white.hover:no-underline.border-l-2.border-gray-500.pl-3= reminder.to_html
 				- else
 					.break-words.min-w-0.text-white.hover:no-underline= reminder.to_html
 
