@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 Honeybadger.configure do |config|
 	config.before_notify do |notice|
 		# Change "errors" to match your custom controller name.
