@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 namespace :api do
 	scope '/oauth' do
 		get 'authorize', to: 'oauth#authorize'

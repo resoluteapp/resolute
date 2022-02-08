@@ -21,6 +21,10 @@ Layout/IndentationStyle:
 Layout/IndentationWidth:
   Width: 1
 
+Metrics/BlockLength:
+  Exclude:
+    - "config/**/*"
+
 # Some defaults
 Gemspec/DateAssignment: # new in 1.10
   Enabled: true
