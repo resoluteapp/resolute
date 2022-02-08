@@ -5,7 +5,7 @@ class OpenGraphService
 	class Result
 		attr_reader :title, :description, :favicon
 
-		def initialize(title:, description:, favicon:)
+		def initialize(title: nil, description: nil, favicon: nil)
 			@title = title
 			@description = description
 			@favicon = favicon
