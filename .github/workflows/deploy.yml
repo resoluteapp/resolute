@@ -15,12 +15,26 @@ jobs:
     needs:
       - docker
     steps:
+      - uses: actions/checkout@v2
       - uses: appleboy/ssh-action@v0.1.4
         with:
           host: "159.223.133.179"
           username: dokku
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           script: git:from-image resolute ghcr.io/resoluteapp/resolute@${{ needs.docker.outputs.digest }}
+      - run: |
+          curl https://api.honeybadger.io/v1/deploys \
+           -H 'X-API-Key: ${{ secrets.HONEYBADGER_API_KEY }}' \
+           -H 'Content-Type: application/json' \
+           -H 'Accept: application/json' \
+           -d '{
+             "deploy": {
+               "environment": "production",
+               "revision": "${{ github.sha }}",
+               "repository": "https://github.com/${{ github.repository }}"
+             }
+           }'
+
   docker:
     name: Docker
     runs-on: ubuntu-latest
