@@ -22,7 +22,8 @@ jobs:
           username: dokku
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           script: git:from-image resolute ghcr.io/resoluteapp/resolute@${{ needs.docker.outputs.digest }}
-      - run: |
+      - name: "Report to Honeybadger"
+        run: |
           curl https://api.honeybadger.io/v1/deploys \
            -H 'X-API-Key: ${{ secrets.HONEYBADGER_API_KEY }}' \
            -H 'Content-Type: application/json' \
@@ -31,7 +32,8 @@ jobs:
              "deploy": {
                "environment": "production",
                "revision": "${{ github.sha }}",
-               "repository": "https://github.com/${{ github.repository }}"
+               "repository": "https://github.com/${{ github.repository }}",
+               "local_username": "${{ github.actor }}"
              }
            }'
 
