@@ -54,6 +54,5 @@
 
 .has-overlay-link a:not(.overlay-link),
 .has-overlay-link button {
-	z-index: 10;
-	position: relative;
+	@apply z-10 relative;
 }

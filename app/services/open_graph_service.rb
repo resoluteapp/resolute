@@ -12,7 +12,7 @@ class OpenGraphService
 		end
 
 		def blank?
-			@title.blank? && @description.blank? && @favicon.blank?
+			@title.blank? && @description.blank?
 		end
 
 		def to_hash
