@@ -7,7 +7,7 @@
 	
 	%div{"x-data" => "{ open: #{flash[:change_password_open] ? 'true' : 'false'} }", "x-effect" => "open && setTimeout(() => $refs.currentPassword.focus(), 250)"}
 		%button.btn.bg-gray-700{"@click" => "open = !open"}
-			%i.fas.mr-1.fa-fw{":class" => "open ? 'fa-lock-open' : 'fa-lock'"}
+			%i.fa-solid.mr-1.fa-fw{":class" => "open ? 'fa-lock-open' : 'fa-lock'"}
 			Change your password
 
 		%div{"x-show" => "open", "x-collapse" => true, "x-cloak" => true}

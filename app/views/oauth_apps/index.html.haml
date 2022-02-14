@@ -19,7 +19,7 @@
 			- @apps.each do |app|
 				%a.text-white.text-xl.p-5.bg-black.font-heading.font-semibold.rounded-md.text-white.transition-transform.hover:no-underline{class: "hover:-translate-y-0.5", href: oauth_app_path(app)}
 					- if app.public
-						%i.fas.fa-globe.text-green-500.inline-block.mr-1(title="This app is listed publicly.")
+						%i.fa-solid.fa-globe.text-green-500.inline-block.mr-1(title="This app is listed publicly.")
 					- if app.official
-						%i.fas.fa-shield-alt.text-green-500.inline-block.mr-1(title="Wahoo! This is an officially developed integration.")
+						%i.fa-solid.fa-shield.text-green-500.inline-block.mr-1(title="Wahoo! This is an officially developed integration.")
 					= app.name

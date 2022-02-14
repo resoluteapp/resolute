@@ -13,14 +13,14 @@
 		%a.mr-5.sm:mr-5.shrink-0(href="/home" title="Resolute")
 			= image_tag "icon.svg", size: "50x50", alt: "Resolute logo"
 		%a.btn.px-3{href: "/home", class: [selected != "reminders" && "bg-gray-700"]}
-			%i.fas.fa-home.fa-fw
+			%i.fa-solid.fa-home.fa-fw
 		%a.btn.px-3{href: "/integrations", class: [selected != "integrations" && "bg-gray-700"]}
-			%i.fas.fa-plug.fa-fw
+			%i.fa-solid.fa-plug.fa-fw
 
 	.flex.items-center.gap-5.relative{"x-data" => "{ open: false }"}
 		.flex.items-center.gap-4.cursor-pointer.px-3{"@click" => "open = !open"}
 			= gravatar @current_user.email, 40
-			%i.fas.fa-chevron-down
+			%i.fa-solid.fa-chevron-down
 		%ul.absolute.top-full.right-0.bg-gray-800.rounded-md.p-2.w-52.mt-2.border.border-gray-700.z-10.shadow-lg{"x-show" => "open", "x-cloak" => true, "x-transition" => true, "@click.outside" => "open = false"}
 			%a.hover:no-underline{href: "/settings"}
 				%li.py-2.px-3.hover:bg-gray-700.rounded-md.text-white.flex.items-center.gap-2
