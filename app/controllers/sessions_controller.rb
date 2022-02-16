@@ -18,7 +18,7 @@ class SessionsController < ApplicationController
 	end
 
 	def destroy_all
-		Session.destroy_by('user_id = ? AND id != ?', @current_user.id, @current_session.id)
+		@current_user.sessions.where.not(id: @current_session.id).destroy_all
 
 		redirect_to '/settings/security'
 	end

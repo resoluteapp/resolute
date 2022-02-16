@@ -49,7 +49,11 @@ class ApplicationController < ActionController::Base
 
 		session[:token] = token
 
-		redirect_to(options[:redirect_to] || '/home')
+		begin
+			redirect_to(options[:redirect_to] || '/home')
+		rescue ActionController::Redirecting::UnsafeRedirectError
+			redirect_to '/'
+		end
 	end
 
 	def log_out
