@@ -1,6 +1,6 @@
 require "test_helper"
 
-class LinkUnfurlFetchJobTest < ActiveJob::TestCase
+class CacheLinkUnfurlJobTest < ActiveJob::TestCase
   # test "the truth" do
   #   assert true
   # end

@@ -79,3 +79,5 @@ gem "nokogiri", "~> 1.13"
 gem "honeybadger", "~> 4.10"
 
 gem "rinku", "~> 2.0"
+
+gem "sidekiq", "~> 6.4"
