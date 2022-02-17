@@ -15,7 +15,7 @@
 		"noEmit": true,
 		"jsx": "react",
 		"jsxFactory": "jsxCreateElement",
-		"strictPropertyInitialization": true,
+		"strictPropertyInitialization": false,
 		"strictNullChecks": true
 	},
 	"exclude": ["**/*.spec.ts", "node_modules", "vendor", "public"],

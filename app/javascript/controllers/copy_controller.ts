@@ -6,17 +6,15 @@ export default class extends Controller {
 	};
 	static targets = ["button"];
 
-	timeout: number | null;
+	timeout: number | undefined;
 	textValue: string;
 	buttonTarget: HTMLElement;
 
-	initialize() {
-		this.timeout = null;
-	}
-
 	disconnect() {
-		clearTimeout(this.timeout);
-		this.timeout = null;
+		if (this.timeout !== undefined) {
+			clearTimeout(this.timeout);
+			this.timeout = undefined;
+		}
 	}
 
 	copy() {
@@ -27,7 +25,7 @@ export default class extends Controller {
 		if (this.timeout === null) {
 			this.timeout = setTimeout(() => {
 				this.buttonTarget.innerText = "Copy";
-				this.timeout = null;
+				this.timeout = undefined;
 			}, 2000);
 		}
 	}
