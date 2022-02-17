@@ -1,6 +1,6 @@
 .flex.items-center.gap-3.mb-3
 	.bg-white.rounded-md.p-1.shrink-0
 		%img.h-5.w-auto{src: @favicon}
-	%h1.text-xl.text-bold.text-green-500.whitespace-nowrap.overflow-hidden.text-ellipsis= @title
-%p.mb-2.flex.align-stretch.before:bg-gray-600.before:block.before:mr-3.before:rounded-full.before:shrink-0{class: "before:content-[''] before:w-1"}= @description
-%p.text-sm.text-gray-400.text-ellipsis.whitespace-nowrap.overflow-hidden= @url
+	%a.text-xl.text-bold.text-green-500.whitespace-nowrap.overflow-hidden.text-ellipsis{href: @url, target: "_blank"}= @title
+%p.mb-2.flex.align-stretch.before:bg-gray-600.before:block.before:mr-3.before:rounded-full.before:shrink-0.cursor-default{class: "before:content-[''] before:w-1"}= @description
+%a.text-sm.text-gray-400.text-ellipsis.whitespace-nowrap.overflow-hidden{href: @url, target: "_blank"}= @url

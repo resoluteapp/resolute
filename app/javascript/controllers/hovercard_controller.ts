@@ -1,63 +1,87 @@
-import { Controller } from "@hotwired/stimulus";
+import { Context, Controller } from "@hotwired/stimulus";
 import { computePosition, flip, offset } from "@floating-ui/dom";
 
 const cache: Record<string, string | null> = {};
 
 export default class extends Controller {
-	card: HTMLElement | null = null;
-	hovered = false;
+	card: HTMLElement | undefined;
 
-	async hover() {
-		this.hovered = true;
+	delayController: DelayController;
 
-		// Don't do anything if the current card is still visible
-		if (this.card !== null) return;
+	// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+	private url = this.element.getAttribute("href")!;
 
-		const url = this.element.attributes.getNamedItem("href").value;
+	constructor(ctx: Context) {
+		super(ctx);
 
-		let content: string;
+		this.delayController = new DelayController(
+			200,
+			100,
+			async (on, content) => {
+				if (on) {
+					if (content !== null && content !== undefined) {
+						await this.show(content);
+					}
+				} else {
+					this.hide();
+				}
+			},
+			async () => {
+				let content: string | null;
 
-		if (cache[url]) {
-			content = cache[url];
-		} else if (cache[url] === null) {
-			return;
-		} else {
-			content = await this.getUnfurlContent(url);
-			cache[url] = content;
+				if (cache[this.url] !== undefined) {
+					content = cache[this.url];
+				} else {
+					content = await this.getUnfurlContent(this.url);
+					cache[this.url] = content;
+				}
 
-			if (content === null) {
-				return;
+				return content;
 			}
-		}
+		);
+	}
 
-		if (this.hovered && this.card === null) {
-			const card = document.createElement("div");
-			card.style.position = "absolute";
-			card.style.zIndex = "50";
-
-			card.innerHTML = content;
-
-			document.body.appendChild(card);
-
-			const { x, y } = await computePosition(this.element, card, {
-				placement: "top-start",
-				middleware: [offset(10), flip()],
-			});
-
-			card.style.left = `${x}px`;
-			card.style.top = `${y}px`;
-
-			this.card = card;
-		}
+	hover() {
+		this.delayController.on();
 	}
 
 	remove() {
-		this.hovered = false;
+		this.delayController.off();
+	}
 
-		if (this.card !== null) {
-			this.card.remove();
-			this.card = null;
-		}
+	private async show(content: string) {
+		if (this.card !== undefined) return;
+
+		const card = document.createElement("div");
+		card.style.position = "absolute";
+		card.style.zIndex = "50";
+
+		card.innerHTML = content;
+
+		card.addEventListener("mouseenter", () => {
+			this.delayController.on();
+		});
+
+		card.addEventListener("mouseleave", () => {
+			this.delayController.off();
+		});
+
+		document.body.appendChild(card);
+
+		const { x, y } = await computePosition(this.element, card, {
+			placement: "top-start",
+			middleware: [offset(10), flip()],
+		});
+
+		card.style.left = `${x}px`;
+		card.style.top = `${y}px`;
+
+		this.card = card;
+	}
+
+	private async hide() {
+		this.card?.remove();
+		this.card = undefined;
 	}
 
 	private async getUnfurlContent(url: string): Promise<string | null> {
@@ -69,6 +93,77 @@ export default class extends Controller {
 			return await response.text();
 		} else {
 			return null;
+		}
+	}
+}
+
+/**
+ * DelayController is a two-state controller ("on" and "off") that has a delay while switching between the two states.
+ */
+class DelayController<T = unknown> {
+	state: "on" | "transitioning-to-on" | "transitioning-to-off" | "off" = "off";
+	onTimeout: number | undefined;
+	offTimeout: number | undefined;
+
+	listener: (on: boolean, data?: T) => unknown;
+	dataFetcher: (() => Promise<T>) | undefined;
+
+	onDelay: number;
+	offDelay: number;
+
+	constructor(
+		onDelay: number,
+		offDelay: number,
+		listener: (on: boolean, data?: T) => Promise<unknown>,
+		dataFetcher?: () => Promise<T>
+	) {
+		this.onDelay = onDelay;
+		this.offDelay = offDelay;
+
+		this.listener = listener;
+		this.dataFetcher = dataFetcher;
+	}
+
+	on() {
+		switch (this.state) {
+			case "transitioning-to-off":
+				clearTimeout(this.offTimeout);
+				this.state = "on";
+				break;
+			case "off":
+				this.onTimeout = setTimeout(async () => {
+					this.state = "on";
+					this.onTimeout = undefined;
+
+					if (this.dataFetcher) {
+						const data = await this.dataFetcher();
+
+						if (this.state === "on") {
+							this.listener(true, data);
+						}
+					} else {
+						this.listener(true);
+					}
+				}, this.onDelay);
+				this.state = "transitioning-to-on";
+				break;
+		}
+	}
+
+	off() {
+		switch (this.state) {
+			case "transitioning-to-on":
+				clearTimeout(this.onTimeout);
+				this.state = "off";
+				break;
+			case "on":
+				this.offTimeout = setTimeout(() => {
+					this.state = "off";
+					this.listener(false);
+					this.offTimeout = undefined;
+				}, this.offDelay);
+				this.state = "transitioning-to-off";
+				break;
 		}
 	}
 }

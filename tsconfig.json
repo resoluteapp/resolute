@@ -14,7 +14,9 @@
 		"target": "es6",
 		"noEmit": true,
 		"jsx": "react",
-		"jsxFactory": "jsxCreateElement"
+		"jsxFactory": "jsxCreateElement",
+		"strictPropertyInitialization": true,
+		"strictNullChecks": true
 	},
 	"exclude": ["**/*.spec.ts", "node_modules", "vendor", "public"],
 	"compileOnSave": false
