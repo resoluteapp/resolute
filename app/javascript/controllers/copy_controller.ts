@@ -22,7 +22,7 @@ export default class extends Controller {
 
 		this.buttonTarget.innerText = "Copied!";
 
-		if (this.timeout === null) {
+		if (this.timeout === undefined) {
 			this.timeout = setTimeout(() => {
 				this.buttonTarget.innerText = "Copy";
 				this.timeout = undefined;
