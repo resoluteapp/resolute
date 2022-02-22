@@ -21,6 +21,6 @@
 			async: true,
 			defer: true,
 			"data-website-id" => "be12769c-47ed-4f1b-8c03-f20cc06e4ec2",
-			"data-domains" => "useresolute.com" if Rails.env == "production"
+			"data-domains" => "useresolute.com" if Rails.env.production?
 
 	%body= yield
