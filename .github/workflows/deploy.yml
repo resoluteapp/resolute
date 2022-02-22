@@ -8,6 +8,8 @@ env:
   REGISTRY: ghcr.io
   IMAGE_NAME: ${{ github.repository }}
 
+concurrency: deploy
+
 jobs:
   app:
     name: App
