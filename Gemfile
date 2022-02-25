@@ -81,3 +81,5 @@ gem "honeybadger", "~> 4.10"
 gem "rinku", "~> 2.0"
 
 gem "sidekiq", "~> 6.4"
+
+gem "discard", "~> 1.2"

@@ -5,7 +5,7 @@ class OauthAppsController < ApplicationController
 	before_action :find_app
 
 	def index
-		@apps = OauthApp.where(user: current_user)
+		@apps = @current_user.oauth_apps.kept
 	end
 
 	def show
@@ -27,7 +27,9 @@ class OauthAppsController < ApplicationController
 	end
 
 	def destroy
-		@app.destroy
+		@app.api_tokens.destroy_all
+		@app.oauth_grants.destroy_all
+		@app.discard!
 
 		flash_notice_and_redirect "App \"#{@app.name}\" has been deleted.", oauth_apps_path
 	end
@@ -37,7 +39,7 @@ class OauthAppsController < ApplicationController
 	def find_app
 		return unless params[:id]
 
-		@app = OauthApp.find(params[:id])
+		@app = OauthApp.kept.find(params[:id])
 
 		authorize @app, :show?
 	end

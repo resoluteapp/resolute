@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class OauthApp < ApplicationRecord
+	include Discard::Model
+
 	belongs_to :user
 
 	has_many :oauth_grants, dependent: :destroy

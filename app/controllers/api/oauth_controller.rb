@@ -6,7 +6,7 @@ module Api
 		skip_before_action :verify_authenticity_token, only: [:token]
 
 		def authorize
-			@app = OauthApp.find_by(client_id: params[:client_id])
+			@app = OauthApp.kept.find_by(client_id: params[:client_id])
 
 			@scopes = (params[:scope] || '').split(/(?:,\s*|\s)/).map(&:downcase).filter do |scope|
 				!Oauth.scopes[scope].nil?
@@ -20,7 +20,7 @@ module Api
 
 		# rubocop:disable Metrics/MethodLength
 		def authorize_submit
-			@app = OauthApp.find_by!(client_id: params[:client_id])
+			@app = OauthApp.kept.find_by!(client_id: params[:client_id])
 
 			uri = URI(@app.redirect_uri)
 
@@ -40,8 +40,7 @@ module Api
 				when 'token'
 					scope = JSON.parse(params[:scope])
 
-					app = OauthApp.find_by!(client_id: params[:client_id])
-					token = ApiToken.create(scope: scope, oauth_app: app, user: @current_user)
+					token = ApiToken.create(scope: scope, oauth_app: @app, user: @current_user)
 
 					uri.fragment = URI.encode_www_form({
 						access_token: token.token,
@@ -80,7 +79,7 @@ module Api
 		#   - the client ID belongs to an app
 		#   - the client secret is valid
 		def authenticate_oauth_app(client_id, client_secret)
-			@app = OauthApp.find_by(client_id: client_id)
+			@app = OauthApp.kept.find_by(client_id: client_id)
 
 			!(@app.nil? || @app.client_secret != client_secret)
 		end

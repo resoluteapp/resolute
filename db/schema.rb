@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_01_23_025226) do
+ActiveRecord::Schema.define(version: 2022_02_24_233219) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -66,8 +66,10 @@ ActiveRecord::Schema.define(version: 2022_01_23_025226) do
     t.boolean "official"
     t.boolean "public"
     t.string "installation_url"
+    t.datetime "discarded_at", precision: 6
     t.index ["client_id"], name: "index_oauth_apps_on_client_id", unique: true
     t.index ["client_secret"], name: "index_oauth_apps_on_client_secret", unique: true
+    t.index ["discarded_at"], name: "index_oauth_apps_on_discarded_at"
     t.index ["user_id"], name: "index_oauth_apps_on_user_id"
   end
 

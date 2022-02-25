@@ -92,6 +92,8 @@ GEM
     cssbundling-rails (0.2.8)
       railties (>= 6.0.0)
     digest (3.1.0)
+    discard (1.2.1)
+      activerecord (>= 4.2, < 8)
     erubi (1.10.0)
     faraday (1.9.3)
       faraday-em_http (~> 1.0)
@@ -295,6 +297,7 @@ DEPENDENCIES
   byebug
   capybara (>= 3.26)
   cssbundling-rails (~> 0.2.7)
+  discard (~> 1.2)
   faraday
   faraday_middleware
   haml (~> 5.2)
