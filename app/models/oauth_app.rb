@@ -13,6 +13,15 @@ class OauthApp < ApplicationRecord
 
 	after_initialize :set_defaults
 
+	before_discard do
+		self.public = false
+	end
+
+	after_discard do
+		api_tokens.destroy_all
+		oauth_grants.destroy_all
+	end
+
 	def pretty_name
 		"From #{name}"
 	end

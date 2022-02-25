@@ -27,8 +27,6 @@ class OauthAppsController < ApplicationController
 	end
 
 	def destroy
-		@app.api_tokens.destroy_all
-		@app.oauth_grants.destroy_all
 		@app.discard!
 
 		flash_notice_and_redirect "App \"#{@app.name}\" has been deleted.", oauth_apps_path
