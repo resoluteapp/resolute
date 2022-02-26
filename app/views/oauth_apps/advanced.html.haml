@@ -3,5 +3,5 @@
 		.flex.flex-col
 			.text-lg Delete this app
 			.text-sm.text-gray-400 This can't be undone.
-		= form_with url: oauth_app_path(@app), method: :delete, data: { controller: "form-confirm", action: "form-confirm#submit", "form-confirm-title-value" => "Delete this app?", "form-confirm-text-value" => "This will permanently uninstall this app for all users, and prevent them from installing it in the future." } do |form|
+		= form_with url: oauth_app_path(@app), method: :delete, data: { controller: "form-confirm", action: "form-confirm#submit", "form-confirm-title-value" => "Delete this app?", "form-confirm-text-value" => "This will permanently uninstall #{@app.name} for all users, and prevent them from installing it in the future." } do |form|
 			%button.btn.bg-red-500(type="submit") Delete app

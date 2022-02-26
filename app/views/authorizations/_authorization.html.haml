@@ -6,5 +6,5 @@
 
 			= authorization.oauth_app.name
 		.text-sm.text-gray-400 Last authorized #{time_ago_in_words authorization.last_authorized_at} ago
-	= form_with url: authorization_path(authorization.oauth_app.id), method: :delete do
+	= form_with url: authorization_path(authorization.oauth_app.id), method: :delete, data: { controller: "form-confirm", action: "form-confirm#submit", "form-confirm-title-value" => "Revoke #{authorization.oauth_app.name}'s access to your account?", "form-confirm-text-value" => "This can't be undone.", "form-confirm-action-text-value" => "Revoke" } do
 		%button.btn.bg-gray-700.shrink-0.hover:bg-red-500.transition-colors(type="submit") Revoke
