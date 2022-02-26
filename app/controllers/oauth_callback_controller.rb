@@ -15,10 +15,6 @@ class OauthCallbackController < ApplicationController
 		log_in user: user, redirect_to: state&.[]('r'), method: 'GitHub'
 	end
 
-	def twitter
-		render plain: 'twitter'
-	end
-
 	private
 
 	def redirect_to_signup(email)

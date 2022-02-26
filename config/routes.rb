@@ -16,7 +16,6 @@ Rails.application.routes.draw do
 
 	scope '/callback' do
 		get 'github', to: 'oauth_callback#github'
-		get 'twitter', to: 'oauth_callback#twitter'
 	end
 
 	get 'login', to: 'auth#login'
