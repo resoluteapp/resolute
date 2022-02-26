@@ -42,9 +42,12 @@
 			.text-gray-500.text-2xl.xs:text-3xl More apps coming soon!
 		%a.btn.text-lg.xs:text-xl.py-3.px-6{href: "/signup"} Sign up
 
-.px-10.py-5.text-gray-300.flex.gap-2
-	.mr-3 Copyright &copy; #{Time.now.year} Resolute.
-	%a{href: "https://twitter.com/useresolute", target: "_blank"}
+.px-10.py-5.text-gray-500.text-center
+	.border-r.border-r-gray-700.inline-block.pr-5.mr-3
+		%a.text-inherit{href: "https://status.useresolute.com", target: "_blank"} Status
+		&middot;
+		%a.text-inherit{href: "https://api.useresolute.com", target: "_blank"} API
+	%a.hover:no-underline{href: "https://twitter.com/useresolute", target: "_blank"}
 		%i.fab.fa-twitter.fa-fw
-	%a{href: "https://github.com/resoluteapp", target: "_blank"}
+	%a.hover:no-underline{href: "https://github.com/resoluteapp", target: "_blank"}
 		%i.fab.fa-github.fa-fw
