@@ -57,8 +57,8 @@ class AuthController < ApplicationController
 	def forgot_password_verify
 		request = PasswordResetRequest.find_by(code: params[:code], fulfilled: false)
 
-		return flash_alert_and_redirect 'Invalid reset link.', '/login' if request.nil?
-		return flash_alert_and_redirect 'Reset link expired.', '/login' if request.expired?
+		return redirect_to '/login', alert: 'Invalid reset link.' if request.nil?
+		return redirect_to '/login', alert: 'Reset link expired.' if request.expired?
 
 		@code = request.code
 		@email = request.user.email
@@ -67,8 +67,8 @@ class AuthController < ApplicationController
 	def forgot_password_finalize
 		request = PasswordResetRequest.find_by(code: params[:code], fulfilled: false)
 
-		return flash_alert_and_redirect 'Invalid reset link.', '/login' if request.nil?
-		return flash_alert_and_redirect 'Reset link expired.', '/login' if request.expired?
+		return redirect_to '/login', alert: 'Invalid reset link.' if request.nil?
+		return redirect_to '/login', alert: 'Reset link expired.' if request.expired?
 
 		request.fulfilled = true
 		request.save

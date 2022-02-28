@@ -60,14 +60,4 @@ class ApplicationController < ActionController::Base
 		Session.destroy_by(token: session[:token])
 		session.delete :token
 	end
-
-	def flash_notice_and_redirect(message, url)
-		flash.notice = message
-		redirect_to url
-	end
-
-	def flash_alert_and_redirect(message, url)
-		flash.alert = message
-		redirect_to url
-	end
 end

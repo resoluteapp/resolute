@@ -29,7 +29,7 @@ class OauthAppsController < ApplicationController
 	def destroy
 		@app.discard!
 
-		flash_notice_and_redirect "App \"#{@app.name}\" has been deleted.", oauth_apps_path
+		redirect_to oauth_apps_path, notice: "App \"#{@app.name}\" has been deleted."
 	end
 
 	private

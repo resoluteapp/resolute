@@ -27,8 +27,8 @@ class SignupController < ApplicationController
 	def verify
 		request = SignupRequest.find_by(code: params[:code], fulfilled: false)
 
-		return flash_alert_and_redirect 'Invalid verification link.', '/signup' if request.nil? || request.user_signed_up?
-		return flash_alert_and_redirect 'Verification link expired.', '/signup' if request.expired?
+		return redirect_to '/signup', alert: 'Invalid verification link.' if request.nil? || request.user_signed_up?
+		return redirect_to '/signup', alert: 'Verification link expired.' if request.expired?
 
 		@email = request.email
 		@verification_code = request.code
@@ -37,8 +37,8 @@ class SignupController < ApplicationController
 	def finalize
 		request = SignupRequest.find_by(code: params[:verification_code], fulfilled: false)
 
-		return flash_alert_and_redirect 'Invalid verification link.', '/signup' if request.nil? || request.user_signed_up?
-		return flash_alert_and_redirect 'Verification link expired.', '/signup' if request.expired?
+		return redirect_to '/signup', alert: 'Invalid verification link.' if request.nil? || request.user_signed_up?
+		return redirect_to '/signup', alert: 'Verification link expired.' if request.expired?
 
 		request.fulfilled = true
 		request.save
