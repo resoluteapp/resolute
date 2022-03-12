@@ -30,7 +30,7 @@ module Api
 
 		def require_scope(scope)
 			# Allow tokens that have the scope, or are personal tokens
-			return if @token.scope&.include?(scope) || @token.oauth_app.nil?
+			return if @token.scope&.include?(scope) || @token.personal?
 
 			render json: { error: 'missing_scope', description: "Missing scope: #{scope}" },
 										status: :forbidden

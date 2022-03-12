@@ -6,6 +6,12 @@ class ApiToken < ApplicationRecord
 
 	before_create :set_defaults
 
+	scope :personal, -> { where(oauth_app: nil) }
+
+	def personal?
+		oauth_app.nil?
+	end
+
 	private
 
 	def set_defaults

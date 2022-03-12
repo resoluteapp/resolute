@@ -4,7 +4,7 @@ class PersonalTokensController < ApplicationController
 	before_action :require_auth
 
 	def index
-		@tokens = @current_user.api_tokens.where(oauth_app: nil).order(created_at: :desc)
+		@tokens = @current_user.api_tokens.personal.order(created_at: :desc)
 	end
 
 	def create
