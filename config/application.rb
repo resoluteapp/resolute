@@ -23,7 +23,5 @@ module Resolute
 
 		config.session_store :cookie_store, key: '_resolute_session', expire_after: 30.days
 		config.exceptions_app = routes
-
-		config.active_job.queue_adapter = :sidekiq
 	end
 end
