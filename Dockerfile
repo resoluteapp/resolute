@@ -15,6 +15,6 @@ RUN bundle install
 
 COPY . .
 
-RUN bin/rails assets:precompile
+RUN SECRET_KEY_BASE=1 bin/rails assets:precompile
 
 CMD ["bin/rails", "server"]
