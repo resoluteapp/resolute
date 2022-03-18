@@ -3,10 +3,15 @@
 const esbuild = require("esbuild");
 const { pnpPlugin } = require("@yarnpkg/esbuild-plugin-pnp");
 
+const util = require("util");
+const exec = util.promisify(require("child_process").exec);
+
 const watch = process.argv.includes("--watch");
 
-esbuild
-	.build({
+(async () => {
+	const { stdout: revision } = await exec("git rev-parse HEAD 2> /dev/null");
+
+	await esbuild.build({
 		entryPoints: ["app/javascript/application.ts"],
 		bundle: true,
 		minify: process.env.NODE_ENV === "production",
@@ -23,14 +28,18 @@ esbuild
 		outdir: "app/assets/builds",
 		jsxFactory: "jsxCreateElement",
 		plugins: [pnpPlugin()],
-	})
-	.then((result) => {
-		if (watch) {
-			console.log("Watching for changes...\n");
-		} else {
-			console.log("Done!");
-		}
-	})
-	.catch((e) => {
-		console.log("An error occurred.");
+		define: {
+			HONEYBADGER_API_KEY: JSON.stringify(
+				process.env.HONEYBADGER_FRONTEND_API_KEY
+			),
+			NODE_ENV: JSON.stringify(process.env.NODE_ENV),
+			GIT_REVISION: JSON.stringify(revision.trim()),
+		},
 	});
+
+	if (watch) {
+		console.log("Watching for changes...\n");
+	} else {
+		console.log("Done!");
+	}
+})();

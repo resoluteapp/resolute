@@ -28,6 +28,10 @@ jobs:
         uses: honeybadger-io/github-notify-deploy-action@v1
         with:
           api_key: ${{ secrets.HONEYBADGER_API_KEY }}
+      - name: Report to Honeybadger (again)
+        uses: honeybadger-io/github-notify-deploy-action@v1
+        with:
+          api_key: ${{ secrets.HONEYBADGER_FRONTEND_API_KEY }}
 
   docker:
     name: Docker
@@ -66,3 +70,4 @@ jobs:
           push: true
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
+          build-args: HONEYBADGER_FRONTEND_API_KEY=${{ secrets.HONEYBADGER_FRONTEND_API_KEY }}
