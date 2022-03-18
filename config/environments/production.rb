@@ -72,9 +72,9 @@ Rails.application.configure do
 
 	config.action_mailer.delivery_method = :smtp
 	config.action_mailer.smtp_settings = {
-		address: Rails.application.credentials.mail[:address],
-		user_name: Rails.application.credentials.mail[:username],
-		password: Rails.application.credentials.mail[:password]
+		address: Rails.application.credentials.dig(:mail, :address),
+		user_name: Rails.application.credentials.dig(:mail, :username),
+		password: Rails.application.credentials.dig(:mail, :password)
 	}
 
 	config.action_mailer.default_url_options = { host: 'useresolute.com' }
