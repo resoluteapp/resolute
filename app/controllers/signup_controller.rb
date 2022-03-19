@@ -40,8 +40,7 @@ class SignupController < ApplicationController
 		return redirect_to '/signup', alert: 'Invalid verification link.' if request.nil? || request.user_signed_up?
 		return redirect_to '/signup', alert: 'Verification link expired.' if request.expired?
 
-		request.fulfilled = true
-		request.save
+		request.fulfill!
 
 		user = User.create(email: request.email, password: params[:password])
 		log_in user: user

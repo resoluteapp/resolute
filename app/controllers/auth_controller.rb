@@ -70,8 +70,7 @@ class AuthController < ApplicationController
 		return redirect_to '/login', alert: 'Invalid reset link.' if request.nil?
 		return redirect_to '/login', alert: 'Reset link expired.' if request.expired?
 
-		request.fulfilled = true
-		request.save
+		request.fulfill!
 
 		request.user.update!(password: params[:password])
 
