@@ -11,5 +11,5 @@
 			- if session == @current_session
 				&middot; <span class="text-green-500">current session</span>
 
-	= form_with url: session_path(session), method: :delete do
+	= form_with url: session_path(session), method: :delete, class: "shrink-0" do
 		%button.btn.bg-gray-700.shrink-0.hover:bg-red-500.transition-colors(type="submit") Log out

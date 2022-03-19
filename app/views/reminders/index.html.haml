@@ -1,8 +1,6 @@
 = render "shared/toast"
 
 .flex.flex-col.items-stretch.h-screen
-	= render "shared/header", selected: "reminders"
-
 	= turbo_stream_from @current_user, :reminders
 
 	.px-0.sm:px-10.grow.sm:grow-0

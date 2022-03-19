@@ -2,6 +2,9 @@
 
 class RemindersController < ApplicationController
 	before_action :require_auth
+	before_action do
+		@header_selected = :reminders
+	end
 
 	def index
 		@reminders = @current_user.reminders.order(created_at: :desc)

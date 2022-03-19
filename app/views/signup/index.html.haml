@@ -1,7 +1,5 @@
 - content_for :page_title, "Sign up"
 
-= render "shared/landing_header"
-
 = render "layouts/sm", title: "Sign up", back_href: "/", back_text: "Home" do
 	= form_with do |form|
 		= form.email_field :email, placeholder: "Email", class: "input mb-6", autofocus: true, required: true, value: @prefill_email

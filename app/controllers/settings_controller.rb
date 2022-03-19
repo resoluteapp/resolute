@@ -2,6 +2,9 @@
 
 class SettingsController < ApplicationController
 	before_action :require_auth
+	before_action do
+		@header_selected = :settings
+	end
 
 	def update
 		if current_user.authenticate(params[:current_password])

@@ -1,7 +1,5 @@
 - content_for :page_title, "Log in"
 
-= render "shared/landing_header"
-
 = render "layouts/sm", title: "Log in", back_href: "/", back_text: "Home" do
 	= form_with do |form|
 		= form.hidden_field(:redirect_to, value: @redirect_to) unless @redirect_to.blank?

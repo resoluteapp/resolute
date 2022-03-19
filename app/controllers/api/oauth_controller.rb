@@ -6,6 +6,8 @@ module Api
 		skip_before_action :verify_authenticity_token, only: [:token]
 
 		def authorize
+			@hide_header = true
+
 			@app = OauthApp.kept.find_by(client_id: params[:client_id])
 
 			@scopes = (params[:scope] || '').split(/(?:,\s*|\s)/).map(&:downcase).filter do |scope|

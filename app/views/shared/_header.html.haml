@@ -3,18 +3,18 @@
 	.hidden.sm:flex.items-center.gap-5
 		%a.mr-5.shrink-0(href="/home" title="Resolute")
 			= image_tag "icon.svg", size: "50x50", alt: "Resolute logo"
-		%a{href: "/home", class: [selected != "reminders" && "text-gray-500"]} Reminders
-		%a{href: "/integrations", class: [selected != "integrations" && "text-gray-500"]} Integrations
-		%a{href: "/settings", class: [selected != "settings" && "text-gray-500"]} Settings
+		%a{href: "/home", class: [selected != :reminders && "text-gray-500"]} Reminders
+		%a{href: "/integrations", class: [selected != :integrations && "text-gray-500"]} Integrations
+		%a{href: "/settings", class: [selected != :settings && "text-gray-500"]} Settings
 
 
 	-# Mobile navbar
 	.flex.sm:hidden.items-center.gap-5
 		%a.mr-5.sm:mr-5.shrink-0(href="/home" title="Resolute")
 			= image_tag "icon.svg", size: "50x50", alt: "Resolute logo"
-		%a.btn.px-3{href: "/home", class: [selected != "reminders" && "bg-gray-700"]}
+		%a.btn.px-3{href: "/home", class: [selected != :reminders && "bg-gray-700"]}
 			%i.fa-solid.fa-home.fa-fw
-		%a.btn.px-3{href: "/integrations", class: [selected != "integrations" && "bg-gray-700"]}
+		%a.btn.px-3{href: "/integrations", class: [selected != :integrations && "bg-gray-700"]}
 			%i.fa-solid.fa-plug.fa-fw
 
 	.flex.items-center.gap-5.relative{"x-data" => "{ open: false }"}

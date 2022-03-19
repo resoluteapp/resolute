@@ -1,7 +1,5 @@
 - content_for :page_title, "Sign up"
 
-= render "shared/landing_header"
-
 = render "layouts/sm", title: "Sign up" do
 	= form_with do |form|
 		= form.hidden_field :verification_code, value: @verification_code

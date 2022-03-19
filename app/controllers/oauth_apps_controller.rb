@@ -3,6 +3,9 @@
 class OauthAppsController < ApplicationController
 	before_action :require_auth
 	before_action :find_app
+	before_action do
+		@header_selected = :settings
+	end
 
 	def index
 		@apps = @current_user.oauth_apps.kept
