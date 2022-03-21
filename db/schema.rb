@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_02_24_233219) do
+ActiveRecord::Schema.define(version: 2022_03_20_193230) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -120,6 +120,7 @@ ActiveRecord::Schema.define(version: 2022_02_24_233219) do
     t.string "ip"
     t.string "user_agent"
     t.string "login_method"
+    t.datetime "last_active_at", precision: 6
     t.index ["token"], name: "index_sessions_on_token", unique: true
     t.index ["user_id"], name: "index_sessions_on_user_id"
   end

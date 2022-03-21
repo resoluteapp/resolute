@@ -27,7 +27,7 @@ class SettingsController < ApplicationController
 	end
 
 	def security
-		@sessions = @current_user.sessions.order(created_at: :desc)
+		@sessions = @current_user.sessions.order(Arel.sql('COALESCE(last_active_at, created_at) DESC'))
 		@authorizations = ApiToken.select('oauth_app_id, MAX(created_at) AS last_authorized_at')
 																												.where('user_id = ? AND oauth_app_id IS NOT NULL', @current_user.id)
 																												.group('oauth_app_id')

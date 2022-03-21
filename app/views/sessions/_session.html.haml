@@ -5,11 +5,13 @@
 			%span #{session.browser.name} on #{session.browser.platform.name}
 			%span.font-mono.text-gray-400.inline-block.ml-2 #{session.ip}
 		.text-sm.text-gray-400
-			#{time_ago_in_words session.created_at} ago
+			- if session == @current_session
+				Active now &middot; <span class="text-green-500">current session</span>
+			- else
+				Active #{time_ago_in_words(session.last_active_at || session.created_at)} ago
+
 			- unless session.login_method.blank?
 				&middot; via #{session.login_method}
-			- if session == @current_session
-				&middot; <span class="text-green-500">current session</span>
 
 	= form_with url: session_path(session), method: :delete, class: "shrink-0" do
 		%button.btn.bg-gray-700.shrink-0.hover:bg-red-500.transition-colors(type="submit") Log out

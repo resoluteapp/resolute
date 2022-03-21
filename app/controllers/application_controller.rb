@@ -4,6 +4,7 @@ class ApplicationController < ActionController::Base
 	include Pundit
 
 	before_action :authenticate
+	before_action :touch_current_session
 
 	before_action do
 		Honeybadger.context(
@@ -28,6 +29,10 @@ class ApplicationController < ActionController::Base
 		@current_user = @current_session.user unless @current_session.nil?
 	end
 
+	def touch_current_session
+		@current_session&.touch!
+	end
+
 	# Redirects to login if not logged in
 	def require_auth
 		return if @current_user
@@ -43,11 +48,10 @@ class ApplicationController < ActionController::Base
 	end
 
 	def log_in(options)
-		token = SecureRandom.urlsafe_base64
-		Session.create!(user: options[:user], token: token, ip: request.ip, user_agent: request.headers['User-Agent'],
-																		login_method: options[:method])
+		user_session = Session.create!(user: options[:user], ip: request.ip, user_agent: request.headers['User-Agent'],
+																																	login_method: options[:method])
 
-		session[:token] = token
+		session[:token] = user_session.token
 
 		begin
 			redirect_to(options[:redirect_to] || '/home')
