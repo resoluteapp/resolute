@@ -11,6 +11,8 @@ class OauthApp < ApplicationRecord
 
 	has_one_attached :icon
 
+	scope :published, -> { where(public: true) }
+
 	after_initialize :set_defaults
 
 	before_discard do

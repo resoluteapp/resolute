@@ -7,6 +7,6 @@ class IntegrationsController < ApplicationController
 	end
 
 	def index
-		@apps = OauthApp.where(public: true)
+		@apps = OauthApp.published
 	end
 end
