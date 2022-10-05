@@ -7,6 +7,7 @@ class ApiToken < ApplicationRecord
 	before_create :set_defaults
 
 	scope :personal, -> { where(oauth_app: nil) }
+	scope :not_personal, -> { where.not(oauth_app: nil) }
 
 	def personal?
 		oauth_app.nil?
