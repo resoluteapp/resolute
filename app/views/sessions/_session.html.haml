@@ -3,7 +3,7 @@
 		%div
 			%i.inline-block.text-gray-500.mr-1.fab{class: ["fa-#{browser_to_icon(session.browser)}", session == @current_session && "text-green-500"]}
 			%span #{session.browser.name} on #{session.browser.platform.name}
-			%span.font-mono.text-gray-400.inline-block.ml-2 #{session.ip}
+			%span.font-mono.text-gray-400.inline-block.ml-2= session.ip
 		.text-sm.text-gray-400
 			- if session == @current_session
 				Active now &middot; <span class="text-green-500">current session</span>
