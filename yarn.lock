@@ -96,27 +96,27 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@hotwired/stimulus@npm:^3.0.1":
-  version: 3.0.1
-  resolution: "@hotwired/stimulus@npm:3.0.1"
-  checksum: 5f2dbfeb3dfff8472e1d0ef7db59a18d71540651861c0c5839fa32c56fcd5cae3fc6183a94746303c5adfbd66a9b552a3167e7e193c04dfaa6f51a8e5bea8e5e
+"@hotwired/stimulus@npm:^3.1.0":
+  version: 3.1.0
+  resolution: "@hotwired/stimulus@npm:3.1.0"
+  checksum: 82d80b17aa8cd8b69e20da4cc86b768fd8c52d06b40c1606b92526fd405264a65c617d5c051445a5b91af05620ab4475b3c5adc2011ed8d787b4955f9e924845
   languageName: node
   linkType: hard
 
-"@hotwired/turbo-rails@npm:^7.1.0":
-  version: 7.1.0
-  resolution: "@hotwired/turbo-rails@npm:7.1.0"
+"@hotwired/turbo-rails@npm:^7.2.0":
+  version: 7.2.0
+  resolution: "@hotwired/turbo-rails@npm:7.2.0"
   dependencies:
-    "@hotwired/turbo": ^7.1.0
-    "@rails/actioncable": ^6.0.0
-  checksum: d9dfafd38d23b556cd9c5b5d41fe06c1fd24574333991eb0d71a9d894d5696fe9fe17c3f82c18337e459b7a7732ace7df99d45081cb7ba4fe361ad65642d12fb
+    "@hotwired/turbo": ^7.2.0
+    "@rails/actioncable": ^7.0
+  checksum: 8a40ba37c68d3ac45fdd810642820c80ff179568dc1e668b844fe1cdf2b4574d666496c9585af1c0c2863ece37a6c7e726024d6e0ad5de39ff6f15ae83d8bf74
   languageName: node
   linkType: hard
 
-"@hotwired/turbo@npm:^7.1.0":
-  version: 7.1.0
-  resolution: "@hotwired/turbo@npm:7.1.0"
-  checksum: 4f71ebf2ff6a396d4031d048fa4d4dba6039aed9ad68436e6df4527e975acd8427c7d2f9b3e7f61f3e9c1af987193adf4e2b640c4033d4afd3e1f914ed05ba9f
+"@hotwired/turbo@npm:^7.2.0":
+  version: 7.2.0
+  resolution: "@hotwired/turbo@npm:7.2.0"
+  checksum: cea846f44190e24897b5b142838ca6fef1dcab623832a4af35a3da9e094fb908f44c73c4abc7ba75ca80cac0358c2009fcb17659ae3c97dd955bfb5aa45d8b4b
   languageName: node
   linkType: hard
 
@@ -185,10 +185,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@rails/actioncable@npm:^6.0.0":
-  version: 6.1.4
-  resolution: "@rails/actioncable@npm:6.1.4"
-  checksum: 9682388672179979033d8594e3c440ab5c208b5c1c082dd8bdb72dbef7b578fdd848a8aae47f3099af2680d4f0921cd11af194fca79a09441e81b6189dea8591
+"@rails/actioncable@npm:^7.0":
+  version: 7.0.4
+  resolution: "@rails/actioncable@npm:7.0.4"
+  checksum: b31cae40511a3df4d3048779255219b92f7dd89514f3c9f2da2b219b9b0635261b17b05031c7070756d319bf9165d4d6c021a820b110d53a3e6c441a062accdd
   languageName: node
   linkType: hard
 
@@ -822,9 +822,9 @@ __metadata:
   linkType: hard
 
 "caniuse-lite@npm:^1.0.0, caniuse-lite@npm:^1.0.30001286, caniuse-lite@npm:^1.0.30001294":
-  version: 1.0.30001296
-  resolution: "caniuse-lite@npm:1.0.30001296"
-  checksum: b3fd113ef0d75a282b4271636267680d155ad7faaefb56313f7883881b48828a75663c5c65b27fb7ae30877710e1a662c8c567a9054297d34b2292db33b72db0
+  version: 1.0.30001416
+  resolution: "caniuse-lite@npm:1.0.30001416"
+  checksum: 4d93f449aeb3527877892647beb53a01b71eef6d63907b65ed2f6d07b2fb2a9b739ebbb60adc02baa16df26fba81be9f207312159a1cf864251ad79b884db0a3
   languageName: node
   linkType: hard
 
@@ -3218,8 +3218,8 @@ __metadata:
     "@alpinejs/persist": ^3.7.1
     "@floating-ui/dom": ^0.2.0
     "@honeybadger-io/js": ^3.2.8
-    "@hotwired/stimulus": ^3.0.1
-    "@hotwired/turbo-rails": ^7.1.0
+    "@hotwired/stimulus": ^3.1.0
+    "@hotwired/turbo-rails": ^7.2.0
     "@rails/actioncable": ^7.0.1
     "@rails/activestorage": ^7.0.1
     "@types/alpinejs": ^3.7.0
