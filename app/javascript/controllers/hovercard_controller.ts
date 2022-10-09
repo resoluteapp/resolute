@@ -131,7 +131,7 @@ class DelayController<T = unknown> {
 				this.state = "on";
 				break;
 			case "off":
-				this.onTimeout = setTimeout(async () => {
+				this.onTimeout = window.setTimeout(async () => {
 					this.state = "on";
 					this.onTimeout = undefined;
 
@@ -157,7 +157,7 @@ class DelayController<T = unknown> {
 				this.state = "off";
 				break;
 			case "on":
-				this.offTimeout = setTimeout(() => {
+				this.offTimeout = window.setTimeout(() => {
 					this.state = "off";
 					this.listener(false);
 					this.offTimeout = undefined;
