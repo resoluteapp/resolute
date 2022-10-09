@@ -27,7 +27,7 @@ const watch = process.argv.includes("--watch");
 		inject: ["app/javascript/shim/jsx-shim.ts"],
 		outdir: "app/assets/builds",
 		jsxFactory: "jsxCreateElement",
-		plugins: [pnpPlugin()],
+		// plugins: [pnpPlugin()],
 		define: {
 			HONEYBADGER_API_KEY: JSON.stringify(
 				process.env.HONEYBADGER_FRONTEND_API_KEY
